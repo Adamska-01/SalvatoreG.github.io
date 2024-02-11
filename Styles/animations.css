@@ -1,0 +1,65 @@
+.expand-on-hover {
+	transition: transform .2s linear, background-color .2s;
+}
+
+.expand-on-hover:hover {
+	transform: scale(1.04);
+	cursor:pointer;
+}
+
+/* Underline */
+.navigation-button:hover .underline-on-hover:before {
+	visibility: visible;
+	width: 100%;
+}
+
+.underline-on-hover {
+    position: relative;
+
+	&:before {
+		content: "";
+		position: absolute;
+		width: 0;
+		height: 2px;
+		bottom: -2px;
+		left: 0;
+		background-image: linear-gradient(to right, rgb(105, 105, 105), rgb(255, 255, 255));
+		visibility: hidden;
+		transition: all 0.15s ease-in-out;
+	}
+}
+
+.fade-in-anim {
+    animation: fade-in var(--change-tabPage-time) forwards;
+}
+
+.fade-out-anim {
+    animation: fade-out var(--change-tabPage-time) forwards;
+}
+
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+		transform: translateY(25px);
+		scale: 0.95;
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0px);
+		scale: 1;
+	}
+}
+
+@keyframes fade-out {
+	0% {
+		opacity: 1;
+		transform: translateY(0px);
+		scale: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(25px);
+		scale: 0.95;
+	}
+}

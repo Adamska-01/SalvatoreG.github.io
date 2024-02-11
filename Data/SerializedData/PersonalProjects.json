@@ -1,0 +1,70 @@
+{
+	"list":[
+		{
+			"title": "Solo Projects",
+			"projects": [
+				{
+					"title": "Portfolio Website",
+					"date": "2024",
+					"clickLink": "PortfolioWebsite",
+					"description": "The website you are currently viewing.",
+					"image": "PersonalProjects/PortfolioWebsite/Preview.png"
+				},
+				{
+					"title": "Army's Heaven",
+					"date": "2022 - Present",
+					"clickLink": "ArmysHeaven",
+					"description": "Online first person shooter.",
+					"image": "PersonalProjects/ArmysHeaven/Preview.png"
+				},
+				{
+					"title": "DirectX Framework",
+					"date": "2021 - 2022",
+					"clickLink": "PortfolioWebsite",
+					"description": "DirectX wrapper.",
+					"image": "PersonalProjects/DirectX/Preview.png"
+				},
+				{
+					"title": "Bobble Blast",
+					"date": "2021",
+					"clickLink": "BobbleBlast",
+					"description": "Puzzle Bobble-like game made with SDL.",
+					"image": "PersonalProjects/BobbleBlast/Preview.png"
+				},
+				{
+					"title": "Platform Demo",
+					"date": "2020",
+					"clickLink": "PlatformDemo",
+					"description": "SuperMario-like game made with SDL.",
+					"image": "PersonalProjects/PlatformDemo/Preview.png"
+				},
+				{
+					"title": "God Of Thunder",
+					"date": "2020",
+					"clickLink": "GodOfThunder",
+					"description": "Remake of the first part of the MS-DOS 'God of Thunder'.",
+					"image": "PersonalProjects/GodOfThunder/Preview.png"
+				}
+			]
+		},
+		{
+			"title": "Team Projects",
+			"projects": [
+				{
+					"title": "Hypersomnia",
+					"date": "2021",
+					"clickLink": "PortfolioWebsite",
+					"description": "Horror game made by SleepyTime Studios.",
+					"image": "PersonalProjects/Hypersomnia/Preview.png"
+				},
+				{
+					"title": "Iskandar: The Spear of Truth ",
+					"date": "2021 - 2022",
+					"clickLink": "Iskandar",
+					"description": "RPG action game made by Mysteric Studios.",
+					"image": "PersonalProjects/Iskandar/Preview.png"
+				}
+			]
+		}	
+	]
+}

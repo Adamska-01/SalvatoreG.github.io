@@ -1,0 +1,42 @@
+{
+	"list":[
+		{
+			"title": "West Pier Studio - Unity",
+			"projects": [
+				{
+					"title": "Deck Planner",
+					"date": "2022 - Present",
+					"clickLink": "DeckPlanner",
+					"description": "Providing maintanance and developing new features.",
+					"image": "WorkProjects/DeckPlanner/preview.png"
+				},
+				{
+					"title": "Fence Planner",
+					"date": "2022 - Present",
+					"clickLink": "FencePlanner",
+					"description": "Providing maintanance and developing new features.",
+					"image": "WorkProjects/FencePlanner/preview.png"
+				},
+				{
+					"title": "Pergola Planner",
+					"date": "2022 - Present",
+					"clickLink": "PergolaPlanner",
+					"description": "Providing maintanance and developing new features.",
+					"image": "WorkProjects/PergolaPlanner/preview.png"
+				}
+			]
+		},
+		{
+			"title": "West Pier Studio - Unreal",
+			"projects": [
+				{
+					"title": "HighUp",
+					"date": "2022 - Present",
+					"clickLink": "HighUp",
+					"description": "Leading the development of a vehicle customization system in UE5.",
+					"image": "WorkProjects/HighUp/preview.png"
+				}
+			]
+		}
+	]
+}

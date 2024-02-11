@@ -1,0 +1,16 @@
+@font-face {
+	font-family: UbuntuSansMono;
+	src: url(../Fonts/UbuntuSansMono-Regular.otf);
+}
+@font-face {
+	font-family: CommitMono;
+	src: url(../Fonts/CommitMono-Regular.otf);
+}
+
+.header-font { 
+	font-family: CommitMono;
+}
+
+.paragraph-font {
+	font-family: UbuntuSansMono;
+}
