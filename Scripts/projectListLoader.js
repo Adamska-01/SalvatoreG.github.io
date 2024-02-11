@@ -1,14 +1,14 @@
-function showPersonalProjects()
+function showPersonalProjectList()
 {
-	showPrimaryPage(PERSONAL_PROJECTS_JSON_NAME, loadProjects);
+	showPrimaryPage(PERSONAL_PROJECTS_JSON_NAME, loadProjectList);
 }
 
-function showWorkProjects()
+function showWorkProjectList()
 {
-	showPrimaryPage(WORK_PROJECTS_JSON_NAME, loadProjects);
+	showPrimaryPage(WORK_PROJECTS_JSON_NAME, loadProjectList);
 }
 
-function loadProjects(containerID, jsonName, cancellationToken)
+function loadProjectList(containerID, jsonName, cancellationToken)
 {
 	return new Promise((onResolve) => 
 	{
