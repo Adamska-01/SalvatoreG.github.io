@@ -15,9 +15,10 @@ var currentTabPage = "";
 var pageLoadingCancellationToken = new Token();
 
 
-// Hide the content container at startup
+// Hide/do stuff on start up
 $(document).ready(function() {
 	$(`#${CONTENT_CONTAINER_ID}`).css("display", "none").css("opacity", "0");
+	$(`#${BACK_BUTTON_CONTAINER_ID}`).css("display", "none");
 });
 
 
