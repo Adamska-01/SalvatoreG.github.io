@@ -1,0 +1,25 @@
+{
+	"title": "Portfolio Website",
+	"imageFolder" : "Images/PersonalProjects/",
+	"videos": [
+	],
+	"images": [
+		"1.png"
+	],
+	"descriptions": [
+		"Since my initial portfolio website was created using a template I discovered online, I saw this as a valuable opportunity to delve into front-end development and completely redesign it.",
+		"Opting for the traditional HTML/CSS/JavaScript combination, I also integrated some ThreeJS to add interactive graphics in the background."
+	],
+	"technologies": [
+		"HTML",
+		"CSS",
+		"JavaScript",
+		"ThreeJS"
+	],
+	"Links": [
+		{
+			"buttonText": "",
+			"buttonLink": "https://github.com/Adamska-01/SalvatoreG.github.io"
+		}
+	]
+}

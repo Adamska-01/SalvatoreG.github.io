@@ -20,7 +20,7 @@
 				{
 					"title": "DirectX Framework",
 					"date": "2021 - 2022",
-					"clickLink": "PortfolioWebsite",
+					"clickLink": "DirectXFramework",
 					"description": "DirectX wrapper.",
 					"image": "PersonalProjects/DirectX/Preview.png"
 				},
@@ -53,12 +53,12 @@
 				{
 					"title": "Hypersomnia",
 					"date": "2021",
-					"clickLink": "PortfolioWebsite",
+					"clickLink": "Hypersomnia",
 					"description": "Horror game made by SleepyTime Studios.",
 					"image": "PersonalProjects/Hypersomnia/Preview.png"
 				},
 				{
-					"title": "Iskandar: The Spear of Truth ",
+					"title": "Iskandar: The Spear of Truth",
 					"date": "2021 - 2022",
 					"clickLink": "Iskandar",
 					"description": "RPG action game made by Mysteric Studios.",

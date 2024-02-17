@@ -1,0 +1,34 @@
+{
+	"title": "Iskandar: The Spear of Truth - Mysteric Studios",
+	"imageFolder" : "Images/PersonalProjects/",
+	"videos": [
+	],
+	"images": [
+		"1.png"
+	],
+	"descriptions": [
+		"Mysteric Studios was created by a group of university students with the aim to create and publish an RPG Adventure game. We were no more than 20 individuals with different backgrounds such as game design, software development, and art. 'Agile methodologies' were applied during development.",
+		
+		"As a gameplay programmer, I was tasked with designing and implementing the following:",
+		"\t&#x2022 Inventory system along with the UI (using scriptable objects), which was also used to add functionalities like equipment (with stats update), accessories with special abilities, and shops.",
+		"\t&#x2022 Loot system that makes use of a logarithmic drop chance.",
+		"\t&#x2022 One of the puzzles in the game.",
+		"\t&#x2022 Helped with the event system.",
+		
+		"I have also had the chance to make some 3D models and texture them using 3ds Max."
+	],
+	"technologies": [
+		"C_Sharp",
+		"Unity"
+	],
+	"Links": [
+		{
+			"buttonText": "GitHub",
+			"buttonLink": "https://github.com/Xphalt/Iskandar-The-Spear-of-Truth"
+		},
+		{
+			"buttonText": "Itch.io",
+			"buttonLink": "https://mysteric-studios.itch.io/iskandar-the-spear-of-truth"
+		}
+	]
+}

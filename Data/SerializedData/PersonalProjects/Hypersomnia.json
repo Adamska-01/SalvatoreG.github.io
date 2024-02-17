@@ -1,0 +1,36 @@
+{
+	"title": "Hypersomnia - SleepyTime Studio",
+	"imageFolder" : "Images/PersonalProjects/",
+	"videos": [
+	],
+	"images": [
+		"1.png"
+	],
+	"descriptions": [
+		"SleepyTime Studio was created by a group of university students with the aim to create and publish a Horror game. We were no more than 9 individuals with a software development background. 'Waterfall methodologies' were applied during development.",
+		
+		"As a gameplay and asset programmer, I was tasked with designing and implementing the following:",
+		"\t&#x2022 Player stats (health, stamina, inventory, etc..)",
+		"\t&#x2022 Adding functionalities to all interactable in the game",
+		"\t&#x2022 Blending the main character's animations",
+		"\t&#x2022 Pin Pad Puzzle mechanic",
+		"\t&#x2022 Async scene loader",
+		"\t&#x2022 Pause menu",
+		
+		"I have also had the chance to make some 3D models and texture them using 3ds Max."
+	],
+	"technologies": [
+		"C_Sharp",
+		"Unity"
+	],
+	"Links": [
+		{
+			"buttonText": "GitHub",
+			"buttonLink": "https://github.com/Raheel-A/SleepyTimeStudio"
+		},
+		{
+			"buttonText": "Itch.io",
+			"buttonLink": "https://sleepytimestudio.itch.io/hypersomnia"
+		}
+	]
+}

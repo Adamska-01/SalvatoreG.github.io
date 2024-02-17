@@ -1,0 +1,23 @@
+{
+	"title": "DirectX Framework",
+	"imageFolder" : "Images/PersonalProjects/",
+	"videos": [
+	],
+	"images": [
+		"1.png"
+	],
+	"descriptions": [
+		"This project is a framework that wraps up some of the DirectX features to easily display graphics on the screen. It comes already with a playable demo.",
+		"It makes use of the windows API to construct the window and incorporates standard vertex and pixel shaders along with skybox and text rendering. Additionally, it supports ambient, directional, and point lighting effects. For input handling, the framework utilizes DirectInput 8."
+	],
+	"technologies": [
+		"C++",
+		"DirectX"
+	],
+	"Links": [
+		{
+			"buttonText": "GitHub",
+			"buttonLink": "https://github.com/Adamska-01/DirectX_Game"
+		}
+	]
+}
