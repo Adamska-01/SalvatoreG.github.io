@@ -1,6 +1,5 @@
 {
 	"title": "Bobble Blast",
-	"imageFolder" : "Images/PersonalProjects/",
 	"videos": [
 	],
 	"images": [
@@ -20,7 +19,7 @@
 		"C++",
 		"SDL"
 	],
-	"Links": [
+	"links": [
 		{
 			"buttonText": "GitHub",
 			"buttonLink": "https://github.com/Adamska-01/Bobble-Blast"

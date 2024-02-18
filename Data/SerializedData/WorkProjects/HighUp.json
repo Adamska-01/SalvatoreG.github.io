@@ -1,6 +1,5 @@
 {
 	"title": "High Up Trial Racing - WPS",
-	"imageFolder" : "Images/WorkProjects/DeckPlanner/",
 	"videos": [
 	],
 	"images": [
@@ -20,6 +19,6 @@
 		"C++",
 		"Unreal"
 	],
-	"Links": [
+	"links": [
 	]
 }

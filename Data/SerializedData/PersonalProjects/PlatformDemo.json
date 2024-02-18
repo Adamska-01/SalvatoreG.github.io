@@ -1,6 +1,5 @@
 {
 	"title": "Platform Demo",
-	"imageFolder" : "Images/PersonalProjects/",
 	"videos": [
 	],
 	"images": [
@@ -20,7 +19,7 @@
 		"C++",
 		"SDL"
 	],
-	"Links": [
+	"links": [
 		{
 			"buttonText": "GitHub",
 			"buttonLink": "https://github.com/Adamska-01/2D_Mario_Mock?tab=readme-ov-file"

@@ -1,6 +1,5 @@
 {
 	"title": "Hypersomnia - SleepyTime Studio",
-	"imageFolder" : "Images/PersonalProjects/",
 	"videos": [
 	],
 	"images": [
@@ -23,7 +22,7 @@
 		"C_Sharp",
 		"Unity"
 	],
-	"Links": [
+	"links": [
 		{
 			"buttonText": "GitHub",
 			"buttonLink": "https://github.com/Raheel-A/SleepyTimeStudio"

@@ -1,6 +1,5 @@
 {
 	"title": "Army's Heaven",
-	"imageFolder" : "Images/PersonalProjects/",
 	"videos": [
 		"https://www.youtube.com/watch?v=iTvzLS9thS4"
 	],
@@ -22,7 +21,7 @@
 		"Unity",
 		"Photon"
 	],
-	"Links": [
+	"links": [
 		{
 			"buttonText": "GitHub",
 			"buttonLink": "https://github.com/Adamska-01/SalvatoreG.github.io"

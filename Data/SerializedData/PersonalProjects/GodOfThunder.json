@@ -1,6 +1,5 @@
 {
 	"title": "God Of Thunder (Mobile Remake)",
-	"imageFolder" : "Images/PersonalProjects/",
 	"videos": [
 	],
 	"images": [
@@ -15,7 +14,7 @@
 		"C_Sharp",
 		"Unity"
 	],
-	"Links": [
+	"links": [
 		{
 			"buttonText": "GitHub",
 			"buttonLink": "https://github.com/Adamska-01/God_Of_Thunder_Mock"

@@ -1,6 +1,5 @@
 {
 	"title": "Deck Planner",
-	"imageFolder" : "Images/WorkProjects/DeckPlanner/",
 	"videos": [
 		{
 			"title": "Demo",
@@ -25,7 +24,7 @@
 	"technologies": [
 		"Unity"
 	],
-	"Links": [
+	"links": [
 		{
 			"buttonText": "",
 			"buttonLink": "https://deckplanner.strongtie.com/webgl"

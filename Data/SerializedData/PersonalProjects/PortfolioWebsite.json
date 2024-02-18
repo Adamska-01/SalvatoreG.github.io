@@ -1,6 +1,5 @@
 {
 	"title": "Portfolio Website",
-	"imageFolder" : "Images/PersonalProjects/",
 	"videos": [
 	],
 	"images": [
@@ -16,7 +15,7 @@
 		"JavaScript",
 		"ThreeJS"
 	],
-	"Links": [
+	"links": [
 		{
 			"buttonText": "",
 			"buttonLink": "https://github.com/Adamska-01/SalvatoreG.github.io"

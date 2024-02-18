@@ -1,6 +1,5 @@
 {
 	"title": "DirectX Framework",
-	"imageFolder" : "Images/PersonalProjects/",
 	"videos": [
 	],
 	"images": [
@@ -14,7 +13,7 @@
 		"C++",
 		"DirectX"
 	],
-	"Links": [
+	"links": [
 		{
 			"buttonText": "GitHub",
 			"buttonLink": "https://github.com/Adamska-01/DirectX_Game"

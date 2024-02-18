@@ -1,6 +1,5 @@
 {
 	"title": "Iskandar: The Spear of Truth - Mysteric Studios",
-	"imageFolder" : "Images/PersonalProjects/",
 	"videos": [
 	],
 	"images": [
@@ -21,7 +20,7 @@
 		"C_Sharp",
 		"Unity"
 	],
-	"Links": [
+	"links": [
 		{
 			"buttonText": "GitHub",
 			"buttonLink": "https://github.com/Xphalt/Iskandar-The-Spear-of-Truth"
