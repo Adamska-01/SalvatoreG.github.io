@@ -11,6 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="Styles/colors.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/buttons.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/fonts.css"/>
+		<link rel="stylesheet" type="text/css" href="Styles/projectDetails.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/projectList.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/textProperties.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/textSizes.css"/>
@@ -56,7 +57,7 @@
 						<button class="close-button" onClick="hideContent()"></button>
 					</div>
 					<div id="back-content-button-container">
-						<button class="back-button" onClick="hideContent()"></button>
+						<button class="back-button" onClick="goBack()"></button>
 					</div>
 				</div>
 
@@ -72,10 +73,13 @@
 		<script src="Scripts/Libs/jquery-3.7.1.min.js"></script>
 		<script src="Scripts/Libs/three.min.js"></script>
 		<script src="Scripts/Classes/Token.js"></script>
+		<script src="Scripts/constants.js"></script>
 		<script src="Scripts/main.js"></script>
 		<script src="Scripts/pageUtility.js"></script>
+		<script src="Scripts/slidingUtility.js"></script>
 		<script src="Scripts/infoLoader.js"></script>
 		<script src="Scripts/projectListLoader.js"></script>
+		<script src="Scripts/projectLoader.js"></script>
 		<script src="Scripts/tabButtons.js"></script>
 		<script>
 			// Get a reference to the container element that will hold our scene

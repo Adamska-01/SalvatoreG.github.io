@@ -18,25 +18,12 @@ function loadContact(containerID, pageName, cancellationToken)
 	return loadHTML(containerID, pageName, cancellationToken);
 }
 
-function loadHTML(containerID, pageName, cancellationToken)
-{
-	var container = $(`#${containerID}`);
-	$.get(`Pages/${pageName}.html`, function(data)
-	{
-		container.html(""); 
-
-		if (cancellationToken.isCancellationRequested)
-			return;
-
-		$(data).appendTo(container);
-	});
-}
-
 async function loadHTML(containerID, pageName, cancellationToken) 
 {
     return new Promise((resolve, reject) => {
+		$(`#${SECONDARY_CONTENT_ID}`).html(""); // Clear secondary content
+       
         var container = $(`#${containerID}`);
-
         $.get(`Pages/${pageName}.html`, function (data) {
             container.html(""); // Clear div
 

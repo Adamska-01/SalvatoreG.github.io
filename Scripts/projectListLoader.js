@@ -1,17 +1,24 @@
+function showList(pageName)
+{
+	showPrimaryPage(pageName, loadProjectList);
+}
+
 function showPersonalProjectList()
 {
-	showPrimaryPage(PERSONAL_PROJECTS_JSON_NAME, loadProjectList);
+	showPrimaryPage(PERSONAL_PROJECTS_PAGE_NAME, loadProjectList);
 }
 
 function showWorkProjectList()
 {
-	showPrimaryPage(WORK_PROJECTS_JSON_NAME, loadProjectList);
+	showPrimaryPage(WORK_PROJECTS_PAGE_NAME, loadProjectList);
 }
 
 function loadProjectList(containerID, jsonName, cancellationToken)
 {
 	return new Promise((onResolve) => 
 	{
+		$(`#${SECONDARY_CONTENT_ID}`).html(""); // Clear secondary content
+
 		var container = $(`#${containerID}`);
 		$.getJSON(`Data/SerializedData/${jsonName}.json`, async function(json) 
 		{
@@ -113,7 +120,7 @@ function loadProjectItem(container, project, listJSON, cancellationToken)
 				projectItem.click(function() { 
 					showItem(listJSON, link);
 				});
-			})(projectItem.clickLink);
+			})(project.clickLink);
 
 			onResolve();
 		});
