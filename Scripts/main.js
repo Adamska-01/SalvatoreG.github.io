@@ -1,17 +1,5 @@
-const OVERLAY_ID = "overlay";
-const CONTENT_CONTAINER_ID = "content-container";
-const PRIMARY_CONTENT_ID = "content-primary";
-const SECONDARY_CONTENT_ID = "content-secondary";
-const ABOUT_PAGE_NAME = "about";
-const CONTACT_PAGE_NAME = "contact";
-const PROJECT_TITLE_PAGE_NAME = "projectTitle";
-const PROJECT_LIST_PAGE_NAME = "projectList";
-const PROJECT_ITEM_PAGE_NAME = "projectItem";
-const PERSONAL_PROJECTS_JSON_NAME = "PersonalProjects";
-const WORK_PROJECTS_JSON_NAME = "WorkProjects";
-
-
 var currentTabPage = "";
+var currentProjectPage = "";
 var pageLoadingCancellationToken = new Token();
 
 
@@ -24,42 +12,54 @@ $(document).ready(function() {
 
 function showPrimaryPage(pageName, loadContentFunction)
 {
-	if(currentTabPage == pageName)
+	if(currentTabPage == pageName && currentProjectPage != "" && currentTabPage != currentProjectPage)
 	{
-		// TODO: slide to the primary content when the slide is implemented 
+		slideToPrimaryContent();
+		currentProjectPage = pageName;
 	}
 	else
 	{
+		loadViewPrimaryTab(pageName, loadContentFunction, function() { });
 	}
-	loadViewPrimaryTab(pageName, loadContentFunction);
+
+	$(`#${BACK_BUTTON_CONTAINER_ID}`).css("display", "none");
+	
+	currentTabPage = pageName;
 }
 
-function loadViewPrimaryTab(pageName, loadContentFunction)
+function loadViewPrimaryTab(pageName, loadContentFunction, onAnimationEnd)
 {
 	pageLoadingCancellationToken.cancel();
 	pageLoadingCancellationToken = new Token();
-	loadView(pageName, loadContentFunction, PRIMARY_CONTENT_ID, pageLoadingCancellationToken)
+	loadView(pageName, loadContentFunction, onAnimationEnd, PRIMARY_CONTENT_ID, instantlySlideToMainView, pageLoadingCancellationToken)
 }
 
-function loadViewSecondaryTab(pageName, loadContentFunction)
+function loadViewSecondaryTab(pageName, loadContentFunction, onAnimationEnd)
 {
-	
+	pageLoadingCancellationToken.cancel();
+	pageLoadingCancellationToken = new Token();
+	loadView(pageName, loadContentFunction, onAnimationEnd, SECONDARY_CONTENT_ID, instantlySlideToSecondaryView, pageLoadingCancellationToken);
 }
 
-async function loadView(pageName, loadFunction, containerID, cancellationToken) 
+async function loadView(pageName, loadFunction, onAnimationEnd, containerID, switchAction, cancellationToken) 
 {
-	if (currentTabPage == pageName) 
+	if (currentProjectPage == pageName)  // Same view -> Hide current view
 	{
 		unhighlightAllTabButtons();
+		
 		await fadeOutContent();
+		
 		currentTabPage = "";
+		currentProjectPage = "";
 	} 
-	else 
+	else  // Different view -> fade out old content -> fade in new content
 	{
-		currentTabPage = pageName;
+		currentProjectPage = pageName;
 		await fadeOutContent();
 		await loadFunction(containerID, pageName, cancellationToken);
+		switchAction();
 		await fadeInContent();
+		onAnimationEnd();
 	}
 }
 
@@ -109,6 +109,7 @@ async function hideContent()
 	await fadeOutContent();
 
 	currentTabPage = "";
+	currentProjectPage = "";
 
 	unhighlightAllTabButtons();
 }
