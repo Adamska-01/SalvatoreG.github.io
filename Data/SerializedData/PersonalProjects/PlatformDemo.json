@@ -23,10 +23,6 @@
 		{
 			"buttonText": "GitHub",
 			"buttonLink": "https://github.com/Adamska-01/2D_Mario_Mock?tab=readme-ov-file"
-		},
-		{
-			"buttonText": "Itch.io",
-			"buttonLink": "https://salvg.itch.io/bobble-blast"
 		}
 	]
 }
