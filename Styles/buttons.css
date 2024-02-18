@@ -109,3 +109,33 @@
 		background: var(--close-button-X-color);
 	}
 }
+
+.media-button {
+	border-radius: 50%;
+	width: 1.45em;
+	height: 1.45em;
+	margin: 0px 4px;
+
+	&:hover {
+		background-color: #626d8a;
+	}
+}
+
+.link-button {
+	border-radius: 50vh;
+	background-color: rgb(70, 71, 72);
+	width: fit-content;
+	height: 2em;
+	text-align: center;
+	padding: 0px 15px 0px 15px;
+	margin: 0px 5px 0px 5px;
+	color: white;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+
+	&:hover {
+		background-color: white;
+		color: black;
+	}
+}
