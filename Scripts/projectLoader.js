@@ -129,9 +129,10 @@ function loadItem(linkProjectName)
 			{
 				var link = linkButtons[index];
 				
-				$('<button />')
+				$('<a />')
 					.attr('class', 'link-button text-color-white text-size-medium')
-					.attr("href", link.buttonLink)
+					.attr('href', link.buttonLink)
+					.attr('target', '_blank')
 					.text(link.buttonText)
 					.appendTo(contentLinks);
 			}
