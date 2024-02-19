@@ -1,3 +1,5 @@
+let jsYT_APIenabler = "?enablejsapi=1" // This string enables interactions between js and the Youtube API (used to stop the video)
+
 let currentSlide = 0;
 let loadingFunctions = [];
 
@@ -21,18 +23,16 @@ function showItem(tabPageName, linkProjectName)
 	currentTabPage = tabPageName;
 }
 
-async function goBack() 
+function goBack() 
 {
 	showList(currentTabPage);
 }
 
-function onTransitionEnd() 
+function nextMedia(increment)
 {
-	finishedTransition = true;
-
-	if (finishedTransition && finishedLoad) {
-		//finishLoadingVideo();
-	}
+	var arraySize = loadingFunctions.length;
+	var newIndex = (currentSlide + increment + arraySize) % arraySize;
+	loadingFunctions[newIndex]();
 }
 
 function loadItem(linkProjectName)
@@ -53,16 +53,16 @@ function loadItem(linkProjectName)
 			var globalIndex = 0;
 			var projectLinksDiv = $(`#${PROJECT_LINKS_ID}`);
 			
-			currentSlide = 0;
+			currentSlide = -1;
 			loadingFunctions = [];
 			
 			// Load videos
 			for (var index in videos)
 			{
-				var videoLink = videos[index].link;
+				var videoLink = videos[index].link + jsYT_APIenabler;
 
 				var videoButton = $(`<button/>`)
-					.attr('class', 'media-button expand-on-hover background-color-1 text-size-medium') // TODO
+					.attr('class', 'media-button expand-on-hover background-color-1 text-size-medium')
 					.appendTo(projectLinksDiv);
 
 				(function(button, index, videoLink) {
@@ -136,10 +136,61 @@ function loadItem(linkProjectName)
 					.text(link.buttonText)
 					.appendTo(contentLinks);
 			}
+
+			// Load first meadia
+			if(loadingFunctions.length > 0)
+			{
+				loadingFunctions[0]();
+			}
 		});
 	})
 }
 
-function finishLoadingVideo() 
+function onTransitionEnd() 
 {
+	
+}
+
+function loadImage(button, index, src) 
+{
+	if (index == currentSlide)
+		return;
+
+	var imageShowcase = $(`#${IMAGE_SHOWCASE_ID}`);
+	var videoShowcase = $(`#${VIDEO_SHOWCASE_ID}`);
+
+	$('.yt_player_iframe').each(function () {
+		this.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*')
+	});
+
+	$('.project-image-highlighted').removeClass("project-image-highlighted");
+
+	button.addClass("project-image-highlighted");
+
+	imageShowcase.css("display", "block");
+
+	videoShowcase.css("display", "none");
+	videoShowcase.attr("src", src);
+
+	currentSlide = index;
+}
+
+function loadVideo(button, index, src) 
+{
+	if (index == currentSlide)
+		return;
+
+	var imageShowcase = $(`#${IMAGE_SHOWCASE_ID}`);
+	var videoShowcase = $(`#${VIDEO_SHOWCASE_ID}`);
+
+	$('.project-image-highlighted').removeClass("project-image-highlighted");
+
+	button.addClass("project-image-highlighted");
+
+	imageShowcase.css("display", "none");
+
+	videoShowcase.css("display", "block");
+	videoShowcase.attr("src", src);
+
+	currentSlide = index;
 }

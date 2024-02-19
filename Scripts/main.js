@@ -111,5 +111,7 @@ async function hideContent()
 	currentTabPage = "";
 	currentProjectPage = "";
 
+	stopYoutubeVideos()
+
 	unhighlightAllTabButtons();
 }

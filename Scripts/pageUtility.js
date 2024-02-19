@@ -18,3 +18,11 @@ function scrollToTop(elementId)
 
     element.scrollTop(0);
 }
+
+function stopYoutubeVideos() 
+{
+	$('.yt_player_iframe').each(function () 
+	{
+		this.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'stopVideo' }), '*');
+	});
+}

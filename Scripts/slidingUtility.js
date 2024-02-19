@@ -3,6 +3,8 @@ function slideToPrimaryContent(action)
 	changePrimaryContentLeftMargin(action, '0%');
 
 	$(`#${BACK_BUTTON_CONTAINER_ID}`).css("display", "none");
+
+	stopYoutubeVideos();
 }
 
 function slideToSecondaryContent(action) 
