@@ -2,13 +2,18 @@
 
 <div>
 	<div id="image-view"> 
-		<button id="left-arrow" class="arrow" onclick="prev()"> </button>
+		<div id="arrow-button-container">
+			<button class="left-button" onClick="nextMedia(-1)"></button>
+		</div>
 		<div class="responsive-video">
 			<div class="video-container">
 				<image id="image-showcase"> </image>
+				<iframe id="video-showcase" class="yt_player_iframe" allowscriptaccess="always" allowfullscreen="1" style="display: none;"></iframe>
 			</div>
 		</div>
-		<button id="right-arrow" class="arrow" onclick="next()"> </button>
+		<div id="arrow-button-container">
+			<button class="left-button" style="transform: rotate(180deg)" onClick="nextMedia(1)"></button>
+		</div>
 	</div>
 	<div id="project-links" class="paragraph"> 
 	</div>

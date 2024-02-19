@@ -35,8 +35,24 @@
 	height: 100%;
 }
 
+#arrow-button-container {
+	display: flex;
+	padding: 0px 10px 0px 10px; 
+	width: 40px;
+	height: 40px;
+}
+
 #image-showcase {
 	display: none;
+}
+
+#image-showcase {
+	display: none;
+}
+
+.project-image-highlighted { 
+	background-color: #242b3c !important;
+    border-bottom: solid 3px #191e2b !important;
 }
 
 #content-description {
