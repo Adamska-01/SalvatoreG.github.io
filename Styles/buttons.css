@@ -111,13 +111,14 @@
 }
 
 .media-button {
+	border: 1px solid black;
 	border-radius: 50%;
-	width: 1.45em;
-	height: 1.45em;
+	width: 1.40em;
+	height: 1.40em;
 	margin: 0px 4px;
 
 	&:hover {
-		background-color: #626d8a;
+		background-color: #b3b6bd;
 	}
 }
 

@@ -46,13 +46,8 @@
 	display: none;
 }
 
-#image-showcase {
-	display: none;
-}
-
 .project-image-highlighted { 
-	background-color: #242b3c !important;
-    border-bottom: solid 3px #191e2b !important;
+	background-color: rgb(165, 201, 88) !important;
 }
 
 #content-description {
