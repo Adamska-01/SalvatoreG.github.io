@@ -42,7 +42,6 @@ function loadItem(linkProjectName)
 			var title = json.title;
 			var videos = json.videos;
 			var images = json.images;
-			var imageFolder = json.imageFolder;
 			var descriptions = json.descriptions;
 			var technologies = json.technologies;
 			var linkButtons = json.links;
@@ -89,10 +88,10 @@ function loadItem(linkProjectName)
 			
 				(function(button, globalIndex, image) {
 					imageButton.click(function() { 
-						loadImage(button, globalIndex, imageFolder + image);
+						loadImage(button, globalIndex, `Images/${currentTabPage}/${linkProjectName}/${image}`);
 					});
 					loadingFunctions.push(function() {
-						loadImage(button, globalIndex, imageFolder + image);
+						loadImage(button, globalIndex, `Images/${currentTabPage}/${linkProjectName}/${image}`);
 					});
 				})(imageButton, globalIndex, image);
 
@@ -106,7 +105,7 @@ function loadItem(linkProjectName)
 				var description = descriptions[index];
 
 				$('<span />')
-					.text(description)
+					.html(description)
 					.attr('class', 'paragraph')
 					.appendTo(contentDescriptionDiv);
 			}
@@ -167,10 +166,10 @@ function loadImage(button, index, src)
 
 	button.addClass("project-image-highlighted");
 
-	imageShowcase.css("display", "block");
-
 	videoShowcase.css("display", "none");
-	videoShowcase.attr("src", src);
+
+	imageShowcase.css("display", "block");
+	imageShowcase.attr("src", src);
 
 	currentSlide = index;
 }
