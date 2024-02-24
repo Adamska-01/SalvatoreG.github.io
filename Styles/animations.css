@@ -1,3 +1,30 @@
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+		transform: translateY(25px);
+		scale: 0.95;
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0px);
+		scale: 1;
+	}
+}
+
+@keyframes fade-out {
+	0% {
+		opacity: 1;
+		transform: translateY(0px);
+		scale: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(25px);
+		scale: 0.95;
+	}
+}
+
 .expand-on-hover {
 	transition: transform .2s linear, background-color .2s;
 }
@@ -35,31 +62,4 @@
 
 .fade-out-anim {
     animation: fade-out var(--change-tabPage-time) forwards;
-}
-
-
-@keyframes fade-in {
-	0% {
-		opacity: 0;
-		transform: translateY(25px);
-		scale: 0.95;
-	}
-	100% {
-		opacity: 1;
-		transform: translateY(0px);
-		scale: 1;
-	}
-}
-
-@keyframes fade-out {
-	0% {
-		opacity: 1;
-		transform: translateY(0px);
-		scale: 1;
-	}
-	100% {
-		opacity: 0;
-		transform: translateY(25px);
-		scale: 0.95;
-	}
 }

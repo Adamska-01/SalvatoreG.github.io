@@ -65,7 +65,15 @@
 				<div id="content-secondary" class="content"></div>
 			</div>
 		</div>
-		
+
+		<!-- Image Zoom Overlay -->
+		<div id="image-zoom-container" onclick="this.style.display = 'none'">
+			<div class="image-zoom-bounds">
+				<img id="image-zoom" class="image-showcase2"></img>
+			</div>
+			<button class="close-button" style="top: 40px; right: 40px;"onclick="$(`#${IMAGE_ZOOM_CONTAINER_ID}`).css('display', 'none');"></button>
+		</div>
+
 		<!-- Three JS Canvas -->
 		<canvas id="container"></canvas>
 

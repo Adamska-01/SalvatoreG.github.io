@@ -104,7 +104,8 @@ a:hover {
 
 /*Contains the current and other contents*/
 #content-container {
-	display: flex;
+	display: none;
+	opacity: 0;
 	flex: 1;
 	flex-direction: column;
 	max-height: calc(100vh - (22vmin + 25px));
@@ -117,6 +118,17 @@ a:hover {
 	font-size: 0;
 	box-sizing: border-box;
 	z-index: 1;
+}
+
+#image-zoom-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100svw;
+    height: 100svh;
+    z-index: 999; 
+    background-color: rgba(0, 0, 0, 0.7); 
+    display: none; 
 }
 
 .content {
@@ -142,6 +154,7 @@ a:hover {
 }
 
 #back-content-button-container {
+	display: none;
 	position: relative;
 	margin-top: -60px; 
 	margin-left: 0; 
