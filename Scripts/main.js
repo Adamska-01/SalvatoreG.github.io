@@ -3,13 +3,6 @@ var currentProjectPage = "";
 var pageLoadingCancellationToken = new Token();
 
 
-// Hide/do stuff on start up
-$(document).ready(function() {
-	$(`#${CONTENT_CONTAINER_ID}`).css("display", "none").css("opacity", "0");
-	$(`#${BACK_BUTTON_CONTAINER_ID}`).css("display", "none");
-});
-
-
 function showPrimaryPage(pageName, loadContentFunction)
 {
 	if(currentTabPage == pageName && currentProjectPage != "" && currentTabPage != currentProjectPage)
