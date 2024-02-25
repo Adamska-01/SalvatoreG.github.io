@@ -106,7 +106,7 @@ function loadItem(linkProjectName)
 
 				$('<span />')
 					.html(description)
-					.attr('class', 'paragraph')
+					.addClass('paragraph')
 					.appendTo(contentDescriptionDiv);
 			}
 
@@ -121,19 +121,29 @@ function loadItem(linkProjectName)
 					.attr('src', `${SYMBOLS_IMAGE_PATH}/${technology}.png`)
 					.appendTo(contentTechnologyDiv);
 			}
-
+			
 			// Button links
 			var contentLinks = $(`#${LINKS_ID}`);
-			for (var index in linkButtons)
+			if(linkButtons.length <= 0)
 			{
-				var link = linkButtons[index];
-				
-				$('<a />')
-					.attr('class', 'link-button text-color-white text-size-medium')
-					.attr('href', link.buttonLink)
-					.attr('target', '_blank')
-					.text(link.buttonText)
+				$('<span />')
+					.text('No links are currently available.')
+					.attr('class', 'paragraph text-color-white text-size-medium')
 					.appendTo(contentLinks);
+			}
+			else
+			{
+				for (var index in linkButtons)
+				{
+					var link = linkButtons[index];
+					
+					$('<a />')
+						.attr('class', 'link-button text-color-white text-size-medium')
+						.attr('href', link.buttonLink)
+						.attr('target', '_blank')
+						.text(link.buttonText)
+						.appendTo(contentLinks);
+				}
 			}
 
 			// Load first meadia
