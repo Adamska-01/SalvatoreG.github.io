@@ -10,7 +10,7 @@
 		"I have re-used some of the SDL subsystems implementation I already had, and made a couple of adjustments to animate the bobble states.",
 		"Additionally I have added the following features to the SDL framework:",
 		"\t&#x2022 Texture rotation",
-		"\t&#x2022 Controller support",
+		"\t&#x2022 Controller input (Multiplayer support)",
 		"\t&#x2022 Audio support",
 		"\t&#x2022 Text rendering improvements",
 		"\t&#x2022 General improvements"
