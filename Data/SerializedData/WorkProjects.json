@@ -8,21 +8,21 @@
 					"date": "2022 - Present",
 					"clickLink": "DeckPlanner",
 					"description": "Providing maintanance and developing new features.",
-					"image": "WorkProjects/DeckPlanner/preview.png"
+					"image": "WorkProjects/DeckPlanner/Preview.png"
 				},
 				{
 					"title": "Fence Planner",
 					"date": "2022 - Present",
 					"clickLink": "FencePlanner",
 					"description": "Providing maintanance and developing new features.",
-					"image": "WorkProjects/FencePlanner/preview.png"
+					"image": "WorkProjects/FencePlanner/Preview.png"
 				},
 				{
 					"title": "Pergola Planner",
 					"date": "2022 - Present",
 					"clickLink": "PergolaPlanner",
 					"description": "Providing maintanance and developing new features.",
-					"image": "WorkProjects/PergolaPlanner/preview.png"
+					"image": "WorkProjects/PergolaPlanner/Preview.png"
 				}
 			]
 		},
@@ -34,7 +34,7 @@
 					"date": "2022 - Present",
 					"clickLink": "HighUp",
 					"description": "Leading the development of a vehicle customization system in UE5.",
-					"image": "WorkProjects/HighUp/preview.png"
+					"image": "WorkProjects/HighUp/Preview.png"
 				}
 			]
 		}
