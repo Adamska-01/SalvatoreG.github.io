@@ -3,7 +3,9 @@
 	"videos": [
 	],
 	"images": [
-		"1.png"
+		"1.png",
+		"2.png",
+		"3.png"
 	],
 	"descriptions": [
 		"This project is a framework that wraps up some of the DirectX features to easily display graphics on the screen. It comes already with a playable demo.",

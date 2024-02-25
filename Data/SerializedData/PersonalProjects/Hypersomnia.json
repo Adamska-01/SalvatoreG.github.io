@@ -3,7 +3,12 @@
 	"videos": [
 	],
 	"images": [
-		"1.png"
+		"1.png",
+		"2.png",
+		"3.png",
+		"4.png",
+		"5.png",
+		"6.png"
 	],
 	"descriptions": [
 		"SleepyTime Studio was created by a group of university students with the aim to create and publish a Horror game. We were no more than 9 individuals with a software development background. 'Waterfall methodologies' were applied during development.",

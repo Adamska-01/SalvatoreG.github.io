@@ -3,7 +3,9 @@
 	"videos": [
 	],
 	"images": [
-		"1.png"
+		"1.png",
+		"2.png",
+		"3.png"
 	],
 	"descriptions": [
 		"This project marks my first attempt to make a game using the SDL (Simple DirectMedia Layer) library.",

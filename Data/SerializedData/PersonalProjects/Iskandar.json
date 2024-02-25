@@ -1,9 +1,18 @@
 {
 	"title": "Iskandar: The Spear of Truth - Mysteric Studios",
 	"videos": [
+		{
+			"title": "Demo",
+			"link": "https://www.youtube.com/embed/vhmx-68ONhk"
+		}
 	],
 	"images": [
-		"1.png"
+		"1.png",
+		"2.png",
+		"3.png",
+		"4.png",
+		"5.png",
+		"6.png"
 	],
 	"descriptions": [
 		"Mysteric Studios was created by a group of university students with the aim to create and publish an RPG Adventure game. We were no more than 20 individuals with different backgrounds such as game design, software development, and art. 'Agile methodologies' were applied during development.",

@@ -3,7 +3,9 @@
 	"videos": [
 	],
 	"images": [
-		"1.png"
+		"1.png",
+		"2.png",
+		"3.png"
 	],
 	"descriptions": [
 		"The primary objective of this project was to explore the development of a 2D platformer optimized for mobile devices, aiming for a seamless and enjoyable gaming experience on such platforms.",
