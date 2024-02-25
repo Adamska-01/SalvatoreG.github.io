@@ -24,8 +24,8 @@ function loadProjectList(containerID, jsonName, cancellationToken)
 		{
 			if (cancellationToken.isCancellationRequested)
 				return;
-			
-			container.html("");
+
+			container.html("<div class='very-small-line-break'></div>");
 
 			for(var i = 0; i < json.list.length; i++) 
 			{
@@ -33,7 +33,7 @@ function loadProjectList(containerID, jsonName, cancellationToken)
 					return;
 
 				var projectGroup = json.list[i];
-				await loadOneProject(container, projectGroup, jsonName, cancellationToken);
+				await loadOneGroup(container, projectGroup, jsonName, cancellationToken);
 			}
 			
 			await loadSpacer(container);
@@ -43,7 +43,7 @@ function loadProjectList(containerID, jsonName, cancellationToken)
 	});
 }
 
-async function loadOneProject(container, projectGroup, listJSON, cancellationToken)
+async function loadOneGroup(container, projectGroup, listJSON, cancellationToken)
 {
 	await loadProjectTitle(container, projectGroup.title, cancellationToken);
 	await loadProjectGroup(container, projectGroup.projects, listJSON, cancellationToken);
