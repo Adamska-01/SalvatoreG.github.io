@@ -115,8 +115,8 @@
 .media-button {
 	border: 1px solid black;
 	border-radius: 50%;
-	width: 1.40em;
-	height: 1.40em;
+	width: 25px;
+	height: 25px;
 	margin: 0px 4px;
 
 	&:hover {
