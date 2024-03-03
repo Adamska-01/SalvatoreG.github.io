@@ -1,5 +1,5 @@
 {
-	"title": "Fence Planner",
+	"title": "Fence Planner - WPS",
 	"videos": [
 		{
 			"title": "Demo",
@@ -7,19 +7,16 @@
 		}
 	],
 	"images": [
-		"1.png",
-		"2.png",
-		"3.png",
-		"4.png",
-		"5.png",
-		"6.png",
-		"7.png",
-		"8.png",
-		"9.png",
-		"10.png"
+		
 	],
 	"descriptions": [
-		
+		"After one year at West Pier Studio, I switched over to the Unity team from the Unreal Engine project (High Up). Initially, my focus shifted towards updating the Unity version from 2019 to 2022, (which changed a lot of things on the WebGL stack, as replacing the <span class=\"text-color-green\">WebGL Unity loader</span>). In this capacity, my primary responsibility was fixing the WebGL templates across all 3 applications: Deck, Pergola, and Fence. Fortunately, the company used 'Webpack' for efficient bundling, expediting the testing process. This task involved the use of languages such as <span class=\"text-color-green\">JavaScript</span>, <span class=\"text-color-green\">HTML</span>, and <span class=\"text-color-green\">C#</span>.",
+		"Subsequently, I worked on a series of bugs to gain confidence with the codebase and gradually began undertaking tasks involving the implementation of new features.",
+		"Throughout this period, I have gained experience in:",
+		"&#x2022 Multi-platform programming",
+		"&#x2022 Advanced utilization of source control",
+		"&#x2022 Adherence to coding standards and design patterns",
+		"&#x2022 Backend development encompassing APIs, databases, and related technologies"
 	],
 	"technologies": [
 		"C_Sharp",

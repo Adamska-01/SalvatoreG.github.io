@@ -3,7 +3,8 @@
 	"videos": [
 	],
 	"images": [
-		"1.png"
+		"1.png",
+		"2.png"
 	],
 	"descriptions": [
 		"Upon joining West Pier Studio, I was given the chance to lead the development of a robust vehicle customization system in Unreal Engine 5. This was an attempt in trying to get visibility and acquire clients to co-develop AAA games.",

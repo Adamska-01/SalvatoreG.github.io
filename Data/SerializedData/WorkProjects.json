@@ -5,21 +5,21 @@
 			"projects": [
 				{
 					"title": "Deck Planner",
-					"date": "2022 - Present",
+					"date": "2023 - Present",
 					"clickLink": "DeckPlanner",
 					"description": "Providing maintanance and developing new features.",
 					"image": "WorkProjects/DeckPlanner/Preview.png"
 				},
 				{
 					"title": "Fence Planner",
-					"date": "2022 - Present",
+					"date": "2023 - Present",
 					"clickLink": "FencePlanner",
 					"description": "Providing maintanance and developing new features.",
 					"image": "WorkProjects/FencePlanner/Preview.png"
 				},
 				{
 					"title": "Pergola Planner",
-					"date": "2022 - Present",
+					"date": "2023 - Present",
 					"clickLink": "PergolaPlanner",
 					"description": "Providing maintanance and developing new features.",
 					"image": "WorkProjects/PergolaPlanner/Preview.png"
