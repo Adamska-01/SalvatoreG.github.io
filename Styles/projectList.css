@@ -52,7 +52,7 @@
 @media screen and (max-width: 768px), screen and (max-height: 700px) {
 	.list-object-wrapper {
 		width: 45%;
-		height: calc(35vmin + 20px);
+		height: calc(38vmin + 20px);
 	}
 }
 
