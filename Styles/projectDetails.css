@@ -69,7 +69,7 @@
 
 .image-zoom-bounds {
     width: 85%;
-    height: 80vh;
+    height: 80dvh;
     margin: auto;
     overflow: hidden;
     display: flex;
