@@ -1,11 +1,11 @@
 function showAbout()
 {
-	showPrimaryPage(ABOUT_PAGE_NAME, loadAbout);
+	showPrimaryPage(ABOUT_TAB_NAME, loadAbout);
 }
 
 function showContact()
 {
-	showPrimaryPage(CONTACT_PAGE_NAME, loadContact);
+	showPrimaryPage(CONTACT_TAB_NAME, loadContact);
 }
 
 function loadAbout(containerID, pageName, cancellationToken)

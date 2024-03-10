@@ -14,14 +14,16 @@ const DESCRIPTION_ID = "content-description";
 const TECHNOLOGIES_ID = "content-technology";
 const LINKS_ID = "content-links";
 
-// HTML Page names
-const ABOUT_PAGE_NAME = "about";
-const CONTACT_PAGE_NAME = "contact";
-const PERSONAL_PROJECTS_PAGE_NAME = "PersonalProjects"; // Also used as folder name for images and JSON data
-const WORK_PROJECTS_PAGE_NAME = "WorkProjects"; // Also used as folder name for images and JSON data
-const PROJECT_TITLE_PAGE_NAME = "projectTitle";
-const PROJECT_LIST_PAGE_NAME = "projectList";
-const PROJECT_ITEM_PAGE_NAME = "projectItem";
+// Tab Names
+const ABOUT_TAB_NAME = "about";
+const CONTACT_TAB_NAME = "contact";
+const PERSONAL_PROJECTS_TAB_NAME = "PersonalProjects"; // Also used as folder name for images and JSON data
+const WORK_PROJECTS_TAB_NAME = "WorkProjects"; // Also used as folder name for images and JSON data
+
+// HTML Pages
+const PROJECT_TITLE_PAGE = "Pages/projectTitle.html";
+const PROJECT_LIST_PAGE = "Pages/projectList.html";
+const PROJECT_ITEM_PAGE = "Pages/projectItem.html";
 
 // Root Paths
 const SYMBOLS_IMAGE_PATH = "Images/Symbols";

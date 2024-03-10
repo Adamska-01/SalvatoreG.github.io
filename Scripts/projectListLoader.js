@@ -5,12 +5,12 @@ function showList(pageName)
 
 function showPersonalProjectList()
 {
-	showPrimaryPage(PERSONAL_PROJECTS_PAGE_NAME, loadProjectList);
+	showPrimaryPage(PERSONAL_PROJECTS_TAB_NAME, loadProjectList);
 }
 
 function showWorkProjectList()
 {
-	showPrimaryPage(WORK_PROJECTS_PAGE_NAME, loadProjectList);
+	showPrimaryPage(WORK_PROJECTS_TAB_NAME, loadProjectList);
 }
 
 function loadProjectList(containerID, jsonName, cancellationToken)
@@ -53,7 +53,7 @@ function loadProjectTitle(container, title, cancellationToken)
 {
 	return new Promise((onResolve, onError) => 
 	{
-		$.get(`Pages/${PROJECT_TITLE_PAGE_NAME}.html`, function(data)
+		$.get(`${PROJECT_TITLE_PAGE}`, function(data)
 		{
 			if(cancellationToken.isCancellationRequested)
 			{
@@ -74,7 +74,7 @@ function loadProjectGroup(container, projects, listJSON, cancellationToken)
 {
 	return new Promise((onResolve, onError) =>
 	{
-		$.get(`Pages/${PROJECT_LIST_PAGE_NAME}.html`, async function(data)
+		$.get(`${PROJECT_LIST_PAGE}`, async function(data)
 		{
 			var projectContainer = $(data);
 			for(var i = 0; i < projects.length; i++) 
@@ -100,7 +100,7 @@ function loadProjectItem(container, project, listJSON, cancellationToken)
 {
 	return new Promise((onResolve, onError) =>
 	{
-		$.get(`Pages/${PROJECT_ITEM_PAGE_NAME}.html`, function(data)
+		$.get(`${PROJECT_ITEM_PAGE}`, function(data)
 		{
 			if (cancellationToken.isCancellationRequested)
 			{
