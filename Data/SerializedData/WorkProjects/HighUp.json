@@ -6,16 +6,7 @@
 		"1.png",
 		"2.png"
 	],
-	"descriptions": [
-		"Upon joining West Pier Studio, I was given the chance to lead the development of a robust vehicle customization system in Unreal Engine 5. This was an attempt in trying to get visibility and acquire clients to co-develop AAA games.",
-		"As part of the process, I gained experience in:",
-		"&#x2022 Developed a full vehicle customization system (Parts, colors, liveries).",
-		"&#x2022 Implementation of blueprints that allow designers to easily create vehicle parts (Adding functionalities such as color/livery swap thanks to actor components) and add them to the game.",		
-		"&#x2022 Created a fully packaged (portable) version of Unreal with PlayStation 5 build support to speed up the building process.",
-		"&#x2022 Designed and implemented custom UI widgets to overcome Unreal's UI limitations, such as pop-up buttons, bindable widgets, and a carousel system.",
-		"&#x2022 Designed and Implemented a proxy to easily bind widget events without the use of Unreal Functions (UFUNCTIONS).",
-		"&#x2022 Developed a custom UI navigation system that works with gamepads controls."
-	],
+	"descriptionPage": "HighUp",
 	"technologies": [
 		"C++",
 		"Unreal"

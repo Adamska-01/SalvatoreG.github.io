@@ -14,15 +14,7 @@
 		"5.png",
 		"6.png"
 	],
-	"descriptions": [
-		"Mysteric Studios was created by a group of university students with the aim to create and publish an RPG Adventure game. We were no more than 20 individuals with different backgrounds such as game design, software development, and art. 'Agile methodologies' were applied during development.",
-		"As a gameplay programmer, I was tasked with designing and implementing the following:",
-		"&#x2022 Inventory system along with the UI (using scriptable objects), which was also used to add functionalities like equipment (with stats update), accessories with special abilities, and shops.",
-		"&#x2022 Loot system with logarithmic drop chance.",
-		"&#x2022 One of the puzzles in the game.",
-		"&#x2022 Helped with the event system.",
-		"&#x2022 I have also had the chance to make some 3D models and texture them using 3ds Max."
-	],
+	"descriptionPage": "Iskandar",
 	"technologies": [
 		"C_Sharp",
 		"Unity"

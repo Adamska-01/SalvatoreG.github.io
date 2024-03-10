@@ -23,7 +23,6 @@ const PROJECT_TITLE_PAGE_NAME = "projectTitle";
 const PROJECT_LIST_PAGE_NAME = "projectList";
 const PROJECT_ITEM_PAGE_NAME = "projectItem";
 
-// JSON Data paths
-
-// Image paths
+// Root Paths
 const SYMBOLS_IMAGE_PATH = "Images/Symbols";
+const PROJECT_DESCRIPTIONS_PATH = "Pages/ProjectDescriptions";

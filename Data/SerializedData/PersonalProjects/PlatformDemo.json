@@ -7,16 +7,7 @@
 		"2.png",
 		"3.png"
 	],
-	"descriptions": [
-		"This project marks my first attempt to make a game using the SDL (Simple DirectMedia Layer) library.",
-		"I took inspiration from Super Mario and tried to make a clone of it. This gave me the chance to learn about SDL and develop a wrapper around it that would allow me to create games more easily.",
-		"Here are some of the features I have implemented:",
-		"&#x2022 Tile rendering (from a file)",
-		"&#x2022 Parallax background scrolling",
-		"&#x2022 Collision handler",
-		"&#x2022 Text rendering",
-		"&#x2022 Input events (Mouse/Keyboard)"
-	],
+	"descriptionPage": "PlatformDemo",
 	"technologies": [
 		"C++",
 		"SDL"

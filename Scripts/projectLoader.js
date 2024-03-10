@@ -42,7 +42,7 @@ function loadItem(linkProjectName)
 			var title = json.title;
 			var videos = json.videos;
 			var images = json.images;
-			var descriptions = json.descriptions;
+			var descriptionPage = json.descriptionPage;
 			var technologies = json.technologies;
 			var linkButtons = json.links;
 
@@ -99,16 +99,10 @@ function loadItem(linkProjectName)
 			}
 
 			// Load Description
-			var contentDescriptionDiv = $(`#${DESCRIPTION_ID}`);
-			for (var index in descriptions) 
+			$.get(`${PROJECT_DESCRIPTIONS_PATH}/${descriptionPage}.html`, function(data)
 			{
-				var description = descriptions[index];
-
-				$('<span />')
-					.html(description)
-					.addClass('paragraph')
-					.appendTo(contentDescriptionDiv);
-			}
+				$(`#${DESCRIPTION_ID}`).html(data);
+			});
 
 			// Load technologies
 			var contentTechnologyDiv = $(`#${TECHNOLOGIES_ID}`);
