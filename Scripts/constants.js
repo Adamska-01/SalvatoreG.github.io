@@ -1,5 +1,6 @@
 // IDs
 const OVERLAY_ID = "overlay";
+const THREE_CONTAINER_ID = "container";
 const CONTENT_CONTAINER_ID = "content-container";
 const BACK_BUTTON_CONTAINER_ID = "back-content-button-container";
 const PRIMARY_CONTENT_ID = "content-primary";

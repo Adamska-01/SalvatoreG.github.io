@@ -86,55 +86,20 @@
 		<!-- Fetching JS Scripts -->
 		<script src="Scripts/Libs/jquery-3.7.1.min.js"></script>
 		<script src="Scripts/Libs/three.min.js"></script>
+
 		<script src="Scripts/Classes/Token.js"></script>
 		<script src="Scripts/index.js"></script>
 		<script src="Scripts/constants.js"></script>
+
 		<script src="Scripts/Frontend/pageUtility.js"></script>
 		<script src="Scripts/Frontend/slidingUtility.js"></script>
 		<script src="Scripts/Frontend/infoLoader.js"></script>
 		<script src="Scripts/Frontend/projectListLoader.js"></script>
 		<script src="Scripts/Frontend/projectLoader.js"></script>
 		<script src="Scripts/Frontend/tabButtons.js"></script>
-		<script>
-			// Get a reference to the container element that will hold our scene
-			const container = document.getElementById("container");
-			const scene = new THREE.Scene();
-			const camera = new THREE.PerspectiveCamera( 75, container.clientWidth / container.clientHeight, 0.1, 1000 );
-
-			const renderer = new THREE.WebGLRenderer(
-				{
-					canvas: container
-				}
-			);
-			renderer.setSize( container.clientWidth, container.clientHeight );
-
-			const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-			const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-			const cube = new THREE.Mesh( geometry, material );
-
-			scene.add( cube );
-
-			camera.position.y = 1;
-			camera.position.z = 5;
-			
-			function animate() {
-				requestAnimationFrame( animate );
-
-				cube.rotation.x += 0.005;
-				cube.rotation.y += 0.005;
-
-				renderer.render( scene, camera );
-			}
-
-			animate();
-
-			window.addEventListener('resize', function() {
-				var width = window.innerWidth;
-				var height = window.innerHeight;
-				camera.aspect = width / height;
-				camera.updateProjectionMatrix();
-				renderer.setSize(width, height);
-			});
-		</script>
+		
+		<script src="Scripts/3D_Scene/cameraManager.js"></script>
+		<script src="Scripts/3D_Scene/sceneManager.js"></script>
+		<script src="Scripts/3D_Scene/sceneIndex.js"></script>
 	</body>
 </html>
