@@ -1,4 +1,8 @@
-class SceneManager 
+import * as THREE from 'three';
+import { CameraManager } from './cameraManager.js';
+
+
+export class SceneManager 
 {
 	constructor(canvasContainer) 
 	{

@@ -20,6 +20,18 @@
 		<link rel="stylesheet" type="text/css" href="Styles/projectList.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/textProperties.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/textSizes.css"/>
+		
+		<!-- Fetching Libs -->
+		<script type="importmap">
+			{
+				"imports": 
+				{
+					"three": "https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.js",
+					"three/addons/": "https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/"
+				}
+			}
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	</head>
 
 	<body>
@@ -84,9 +96,6 @@
 		<canvas id="container"></canvas>
 
 		<!-- Fetching JS Scripts -->
-		<script src="Scripts/Libs/jquery-3.7.1.min.js"></script>
-		<script src="Scripts/Libs/three.min.js"></script>
-
 		<script src="Scripts/Classes/Token.js"></script>
 		<script src="Scripts/index.js"></script>
 		<script src="Scripts/constants.js"></script>
@@ -98,8 +107,8 @@
 		<script src="Scripts/Frontend/projectLoader.js"></script>
 		<script src="Scripts/Frontend/tabButtons.js"></script>
 		
-		<script src="Scripts/3D_Scene/cameraManager.js"></script>
-		<script src="Scripts/3D_Scene/sceneManager.js"></script>
-		<script src="Scripts/3D_Scene/sceneIndex.js"></script>
+		<script type="module" src="Scripts/3D_Scene/cameraManager.js"></script>
+		<script type="module" src="Scripts/3D_Scene/sceneManager.js"></script>
+		<script type="module" src="Scripts/3D_Scene/sceneIndex.js"></script>
 	</body>
 </html>

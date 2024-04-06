@@ -1,4 +1,7 @@
-class CameraManager
+import * as THREE from 'three';
+
+
+export class CameraManager
 {
 	constructor(sceneContainer)
 	{

@@ -1,3 +1,7 @@
+import * as THREE from 'three';
+import { SceneManager } from './sceneManager.js';
+
+
 const container = document.getElementById(THREE_CONTAINER_ID);
 
 const sceneManager = new SceneManager(container);
