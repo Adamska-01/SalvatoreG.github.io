@@ -1,10 +1,20 @@
 import * as THREE from 'three';
-import { SceneManager } from './sceneManager.js';
+import { SceneManager } from './ThreeSubSystems/sceneManager.js';
+import { RenderManager } from './ThreeSubSystems/renderManager.js';
+import { CameraManager } from './ThreeSubSystems/cameraManager.js';
 
 
 const container = document.getElementById(THREE_CONTAINER_ID);
 
-const sceneManager = new SceneManager(container);
+// Create THREE.JS sub-systems
+const renderManager = new RenderManager(container);
+const cameraManager = new CameraManager(container, renderManager.renderer);
+const sceneManager = new SceneManager();
+
+const scene = sceneManager.scene;
+const camera = cameraManager.camera;
+
+renderManager.initialise(scene, camera);
 
 // Create cube
 const geometry = new THREE.BoxGeometry( 1, 1, 1 );
@@ -15,6 +25,7 @@ sceneManager.scene.add(cube);
 
 let clock = new THREE.Clock();
 
+
 function animate() 
 {
 	requestAnimationFrame( animate );
@@ -23,10 +34,13 @@ function animate()
 	cube.rotation.y += 0.005;
 
 	sceneManager.update(clock.getDelta());
+
+	renderManager.update(clock.getDelta())
 }
 animate();
 
 
 window.addEventListener('resize', function() {
-	sceneManager.onSceneResize();
+	renderManager.onSceneResize();
+	cameraManager.onSceneResize();
 });
