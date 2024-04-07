@@ -11,7 +11,19 @@ export class CameraManager
 		this.camera = new THREE.PerspectiveCamera( 75, sceneContainer.clientWidth / sceneContainer.clientHeight, 0.1, 1000 );
 		this.camera.position.set(0, 1, 5);
 
-		this.orbitControls = new CameraOrbitController(this.camera, renderer);
+		var controllerOptions = {
+			minPolarAngle: 0.2 * Math.PI,
+			maxPolarAngle: 0.55 * Math.PI,
+			idlePolarAngle: 0.3 * Math.PI,
+			enableDamping: true,
+			dampingFactor: 0.035,
+			rotateSpeed: 0.65,
+			enablePan: false,
+			minDistance: 5,
+			maxDistance: 50,
+			cameraTarget: new THREE.Vector3(0, 0, 0),
+		};
+		this.orbitControls = new CameraOrbitController(this.camera, renderer, controllerOptions);
 	}
 	
 
