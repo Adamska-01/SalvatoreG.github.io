@@ -37,4 +37,4 @@ const SYMBOLS_IMAGE_PATH = "Images/Symbols";
 const PROJECT_DESCRIPTIONS_PATH = "Pages/ProjectDescriptions";
 
 // Images
-const HDRI_PATH = baseUrl + "/Images/HDRIs/dikhololo_night_4k.hdr";
+const HDRI_PATH = baseUrl + "/Images/HDRIs/dikhololo_night_4k_11zon.jpg";
