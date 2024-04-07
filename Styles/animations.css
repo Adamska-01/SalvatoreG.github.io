@@ -25,6 +25,15 @@
 	}
 }
 
+@keyframes fade-out-no-transform {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
 .expand-on-hover {
 	transition: transform .2s linear, background-color .2s;
 }
@@ -62,4 +71,8 @@
 
 .fade-out-anim {
     animation: fade-out var(--change-tabPage-time) forwards;
+}
+
+.fade-out-anim-no-transform {
+    animation: fade-out-no-transform var(--change-tabPage-time) forwards;
 }

@@ -1,0 +1,80 @@
+#progress-container {
+	z-index: 9999;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	font-family: "IBM Plex Mono", monospace;
+	font-size: 2vh;
+	color: var(--dark);
+	overflow: hidden;
+	background: var(--bright);
+}
+
+#barcontainer {
+	position: absolute;
+	top: 18vh;
+	left: 0;
+	right: 0;
+	height: 75vh;
+	overflow: hidden;
+}
+
+#progress-title {
+	font-size: 7vh;
+	margin-left: 10vw;
+	margin-bottom: 7vh;
+	font-weight: 700;
+}
+
+#progress-info{
+	margin-left: 10vw;
+	margin-bottom: 1vh;
+}
+
+#progress-graph {
+	height: 3vh;
+	width: 80vw;
+	border: 1px solid var(--dark);
+	overflow: hidden;
+	margin-bottom: 5vh;
+	margin-left: 10vw;
+}
+
+#progress-percentage-container {
+	margin-left: 10vw;
+	margin-bottom: 1vh;
+}
+
+.progress-info-container {
+	box-sizing: border-box;
+	margin-left: 10vw;
+	margin-right: 10vw;
+}
+
+#progress-bar {
+	height: 3vh;
+	width: 0vw;
+	background: var(--dark);
+	transition: width 0.5s;
+}
+
+#progress-title::after {
+    content: '...';
+    animation: dots 1.0s infinite;
+}
+
+@keyframes dots {
+    25% { content: ''; }
+    50% { content: '.'; }
+    75% { content: '..'; }
+    100% { content: '...'; }
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--dark: #fff;
+		--bright: #000;
+	}
+}

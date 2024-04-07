@@ -3,12 +3,12 @@ import { RGBELoader } from 'three/addons/loaders/RGBELoader.js'
 
 export class HDRILoader
 {
-	constructor(scene, renderer)
+	constructor(scene, renderer, loadingManager)
 	{
 		this.scene = scene;
 		this.renderer = renderer;
 
-		this.hdriLoader = new RGBELoader();
+		this.hdriLoader = new RGBELoader(loadingManager);
 
 		this.isHDRILoaded = false;
 	}

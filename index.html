@@ -16,6 +16,7 @@
 		<link rel="stylesheet" type="text/css" href="Styles/colors.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/buttons.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/fonts.css"/>
+		<link rel="stylesheet" type="text/css" href="Styles/progressBar.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/projectDetails.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/projectList.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/textProperties.css"/>
@@ -36,6 +37,18 @@
 
 	<body>
 		<div id="main">
+			<!-- Progress Bar -->
+			<div id="progress-container">
+				<div id="barcontainer">
+					<div id="progress-title">Loading</div>
+					<div id="progress-percentage-container">Progress: <span id="progress-percentage"></span></div>
+					<div id="progress-graph">
+						<div id="progress-bar"></div>
+					</div>
+					<div class="progress-info-container"><span id="progress-info" style="margin: 0"></span></div>
+				</div>
+			</div>
+			
 			<!-- covers the page/canvas. if clicked, the current page  -->
 			<div id='overlay' onClick="hideContent()"></div>
 

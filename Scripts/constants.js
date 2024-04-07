@@ -1,3 +1,5 @@
+const baseUrl = window.location.protocol + "//" + window.location.host;
+
 // IDs
 const OVERLAY_ID = "overlay";
 const THREE_CONTAINER_ID = "container";
@@ -14,6 +16,10 @@ const PROJECT_LINKS_ID = "project-links";
 const DESCRIPTION_ID = "content-description";
 const TECHNOLOGIES_ID = "content-technology";
 const LINKS_ID = "content-links";
+const PROGRESS_CONTAINER_ID = "progress-container";
+const PROGRESS_BAR_ID = "progress-bar";
+const PROGRESS_PERCENTAGE_ID = "progress-percentage";
+const PROGRESS_INFO_ID = "progress-info";
 
 // Tab Names
 const ABOUT_TAB_NAME = "about";
@@ -29,3 +35,6 @@ const PROJECT_ITEM_PAGE = "Pages/projectItem.html";
 // Root Paths
 const SYMBOLS_IMAGE_PATH = "Images/Symbols";
 const PROJECT_DESCRIPTIONS_PATH = "Pages/ProjectDescriptions";
+
+// Images
+const HDRI_PATH = baseUrl + "/Images/HDRIs/dikhololo_night_4k.hdr";
