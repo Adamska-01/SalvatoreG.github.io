@@ -1,4 +1,4 @@
-const baseUrl = window.location.protocol + "//" + window.location.host;
+const baseUrl = window.location.origin + window.location.pathname;
 
 // IDs
 const OVERLAY_ID = "overlay";
@@ -37,4 +37,4 @@ const SYMBOLS_IMAGE_PATH = "Images/Symbols";
 const PROJECT_DESCRIPTIONS_PATH = "Pages/ProjectDescriptions";
 
 // Images
-const HDRI_PATH = baseUrl + "/Images/HDRIs/dikhololo_night_4k.hdr";
+const HDRI_PATH = "Images/HDRIs/dikhololo_night_4k.hdr";

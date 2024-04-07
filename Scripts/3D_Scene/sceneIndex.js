@@ -29,7 +29,7 @@ var lightOptions = {
     toneMappingExposure: 2
 };
 const hdriLightLoader = new HDRILoader(scene, renderManager.renderer, loadingManager.manager);
-hdriLightLoader.loadHDRI(new URL("Images/HDRIs/dikhololo_night_4k.hdr", baseUrl), lightOptions);
+hdriLightLoader.loadHDRI(new URL(HDRI_PATH, baseUrl), lightOptions);
 
 // Create cube
 const cube = new THREE.Mesh( 
