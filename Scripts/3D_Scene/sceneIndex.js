@@ -25,7 +25,7 @@ var lightOptions = {
     mapping: THREE.EquirectangularReflectionMapping,
     outputEncoding: THREE.sRGBEncoding,
     toneMapping: true,
-	setHDRAsBackground: true,
+	setHDRAsBackground: false,
     toneMappingExposure: 2
 };
 const hdriLightLoader = new HDRILoader(scene, renderManager.renderer, loadingManager.manager);
