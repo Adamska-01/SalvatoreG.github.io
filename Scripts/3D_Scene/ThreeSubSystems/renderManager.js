@@ -16,7 +16,7 @@ export class RenderManager
 		);
 
 		this.renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight, false);
-		this.renderer.setClearColor(0x1a2329, 1)
+		this.renderer.setClearColor(0x090909, 1)
 	}
 	
 

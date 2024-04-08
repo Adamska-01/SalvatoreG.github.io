@@ -2,6 +2,7 @@
 	--navigation-button-color: rgba(255, 255, 255, 0);
 	--navigation-button-border-color: rgba(255, 255, 255, 1);
 	--navigation-button-highlight-color: rgba(207, 49, 49, 0.35);
+	--body-background-color: rgba(9, 9, 9, 1);
 
 	--close-button-X-color: rgba(255, 255, 255, 1);
 	--close-button-border-color: rgba(202, 202, 202, 0.3);
@@ -34,7 +35,7 @@
 }
 
 body {
-	background-color: black;
+	background-color: var(--body-background-color);
 	margin: 0;
 	padding: 0;
 	max-width: 100%;

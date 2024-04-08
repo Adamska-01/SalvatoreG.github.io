@@ -11,6 +11,7 @@ export class LoadingManager
 		// Bind the loading function
 		this.manager.onStart = (url, item, total) => {
 			this.setProgress(0);
+			this.reportInfo(url, false);
 		}
 
 		this.manager.onProgress = (url, loaded, total) => {

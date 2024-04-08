@@ -27,7 +27,11 @@ export class CameraOrbitController
 		this.orbitControls.enablePan = controllerOptions.enablePan;
 		this.orbitControls.minDistance = controllerOptions.minDistance;
 		this.orbitControls.maxDistance = controllerOptions.maxDistance;
+		this.orbitControls.distance = controllerOptions.maxDistance;
 		this.orbitControls.target = controllerOptions.cameraTarget
+		
+		// Set initail camera position
+		camera.position.z = controllerOptions.minDistance + ((controllerOptions.maxDistance - controllerOptions.minDistance) / 2);
 
 		// Control callbacks
 		this.orbitControls.addEventListener('start', () => {

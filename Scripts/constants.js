@@ -36,5 +36,5 @@ const PROJECT_ITEM_PAGE = "Pages/projectItem.html";
 const SYMBOLS_IMAGE_PATH = "Images/Symbols";
 const PROJECT_DESCRIPTIONS_PATH = "Pages/ProjectDescriptions";
 
-// Images
-const HDRI_PATH = "Images/HDRIs/dikhololo_night_4k.hdr";
+// Three.JS Objs Paths
+const CODING_SETUP_MODEL_PATH = "Data/3DModels/CodingSetup/scene.gltf";

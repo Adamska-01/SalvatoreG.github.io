@@ -13,8 +13,8 @@ export class SceneManager
 
 	AddObjectToScene(obj) 
 	{
-		this.sceneObjects.add(obj);
-		this.scene.add(obj);
+		this.sceneObjects.push(obj);
+		this.scene.add(obj.entity);
 	}
 
 	update(deltaTime) 

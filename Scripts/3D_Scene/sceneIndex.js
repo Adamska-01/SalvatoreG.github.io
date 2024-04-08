@@ -2,8 +2,10 @@ import * as THREE from 'three';
 import { SceneManager } from './ThreeSubSystems/sceneManager.js';
 import { RenderManager } from './ThreeSubSystems/renderManager.js';
 import { CameraManager } from './ThreeSubSystems/cameraManager.js';
-import { HDRILoader } from './Loaders/HDRILoader.js';
 import { LoadingManager } from './Loaders/loadingManager.js';
+import { ModelLoader } from './Loaders/modelLoader.js';
+import { CodingSetup } from './Models/codingSetup.js';
+import { AmbientLight } from './Lights/AmbientLight.js';
 
 
 const container = document.getElementById(THREE_CONTAINER_ID);
@@ -19,32 +21,16 @@ const camera = cameraManager.camera;
 renderManager.initialise(scene, camera);
 
 // Content Loaders
-const loadingManager = new LoadingManager()
+const loadingManager = new LoadingManager();
+const modelLoader = new ModelLoader(loadingManager.manager);
 
-var lightOptions = {
-    mapping: THREE.EquirectangularReflectionMapping,
-    outputEncoding: THREE.sRGBEncoding,
-    toneMapping: true,
-	setHDRAsBackground: false,
-    toneMappingExposure: 2
-};
-const hdriLightLoader = new HDRILoader(scene, renderManager.renderer, loadingManager.manager);
-hdriLightLoader.loadHDRI(new URL(HDRI_PATH, baseUrl), lightOptions);
+new AmbientLight(0xa290fe, 0.15, sceneManager);
 
-// Create cube
-const cube = new THREE.Mesh( 
-	new THREE.BoxGeometry( 1, 1, 1 ), 
-	new THREE.MeshStandardMaterial({
-		roughness: 1,
-		color: 0xffaf00
-	}) 
-);
+// Load Models
+new CodingSetup(modelLoader, sceneManager);
 
-sceneManager.scene.add(cube);
 
 let clock = new THREE.Clock();
-
-
 function animate() 
 {
 	requestAnimationFrame( animate );
