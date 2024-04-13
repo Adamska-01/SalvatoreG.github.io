@@ -11,7 +11,7 @@ export class CameraOrbitController
 		// Cache values
 		this.currentIdleTime = 0.0;
 		this.currentLerpTime = 0.0;
-		this.idleDuration = 3.5;
+		this.idleDuration = 2.0;
 		this.lerpDuration = 1.5;
 		this.isIdle = true;
 		this.currentMinPolarAngle = this.minPolarAngle = controllerOptions.minPolarAngle;
