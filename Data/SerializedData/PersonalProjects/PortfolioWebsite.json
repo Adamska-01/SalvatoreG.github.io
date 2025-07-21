@@ -5,7 +5,10 @@
 	"images": [
 		"1.png"
 	],
-	"descriptionPage": "PortfolioWebsite",
+	"description": [
+		{ "type": "paragraph", "text": "Since my initial portfolio website was created using a template I downloaded online, I saw this as a valuable opportunity to delve into <span class='text-color-green'>front-end development</span> and completely redesign it." },
+		{ "type": "paragraph", "text": "Opting for the traditional <span class='text-color-green'>HTML/CSS/JavaScript</span> combination, I also used <span class='text-color-green'>ThreeJS</span> to add interactive graphics in the background." }
+	],
 	"technologies": [
 		"HTML",
 		"CSS",

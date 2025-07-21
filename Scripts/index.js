@@ -24,17 +24,17 @@ function loadViewPrimaryTab(pageName, loadContentFunction, onAnimationEnd)
 {
 	pageLoadingCancellationToken.cancel();
 	pageLoadingCancellationToken = new Token();
-	loadView(pageName, loadContentFunction, onAnimationEnd, PRIMARY_CONTENT_ID, instantlySlideToMainView, pageLoadingCancellationToken)
+	loadView(pageName, loadContentFunction, onAnimationEnd, instantlySlideToMainView, pageLoadingCancellationToken)
 }
 
 function loadViewSecondaryTab(pageName, loadContentFunction, onAnimationEnd)
 {
 	pageLoadingCancellationToken.cancel();
 	pageLoadingCancellationToken = new Token();
-	loadView(pageName, loadContentFunction, onAnimationEnd, SECONDARY_CONTENT_ID, instantlySlideToSecondaryView, pageLoadingCancellationToken);
+	loadView(pageName, loadContentFunction, onAnimationEnd, instantlySlideToSecondaryView, pageLoadingCancellationToken);
 }
 
-async function loadView(pageName, loadFunction, onAnimationEnd, containerID, switchAction, cancellationToken) 
+async function loadView(pageName, loadFunction, onAnimationEnd, switchAction, cancellationToken) 
 {
 	if (currentProjectPage == pageName)  // Same view -> Hide current view
 	{
@@ -49,7 +49,7 @@ async function loadView(pageName, loadFunction, onAnimationEnd, containerID, swi
 	{
 		currentProjectPage = pageName;
 		await fadeOutContent();
-		await loadFunction(containerID, pageName, cancellationToken);
+		await loadFunction(pageName, cancellationToken);
 		switchAction();
 		await fadeInContent();
 		onAnimationEnd();
@@ -58,9 +58,9 @@ async function loadView(pageName, loadFunction, onAnimationEnd, containerID, swi
 
 function fadeInContent() 
 {
-    $(`#${OVERLAY_ID}`).css('display', 'block');
+	$(`#${OVERLAY_ID}`).css('display', 'block');
 
-    var content = $(`#${CONTENT_CONTAINER_ID}`);
+	var content = $(`#${CONTENT_CONTAINER_ID}`);
 
 	content.css("display", "block");
 
@@ -68,33 +68,33 @@ function fadeInContent()
 	content.one("animationstart", function (event) {
 		scrollToTop(PRIMARY_CONTENT_ID);
 		scrollToTop(SECONDARY_CONTENT_ID);
-    });
+	});
 
 	content.removeClass('fade-out-anim').addClass('fade-in-anim');
 
-    return new Promise((resolve) => {
-        content.one("animationend", function (event) {          
+	return new Promise((resolve) => {
+		content.one("animationend", function (event) {          
 			resolve();
-        });
-    });
+		});
+	});
 }
 
 function fadeOutContent() 
 {
-    $(`#${OVERLAY_ID}`).css('display', 'none');
+	$(`#${OVERLAY_ID}`).css('display', 'none');
 
-    var content = $(`#${CONTENT_CONTAINER_ID}`);
-    if (parseFloat(content.css('opacity')) > 0) 
+	var content = $(`#${CONTENT_CONTAINER_ID}`);
+	if (parseFloat(content.css('opacity')) > 0) 
 	{
 		content.removeClass('fade-in-anim').addClass('fade-out-anim');
 
-        return new Promise((resolve) => {
-            content.one("animationend", function (event) {
-                content.css('display', 'none');
-                resolve();
-            });
-        });
-    }
+		return new Promise((resolve) => {
+			content.one("animationend", function (event) {
+				content.css('display', 'none');
+				resolve();
+			});
+		});
+	}
 }
 
 async function hideContent()

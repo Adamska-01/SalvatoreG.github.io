@@ -7,17 +7,26 @@
 		}
 	],
 	"images": [
-		
 	],
-	"descriptionPage": "PlannerApps",
+	"description": [
+		{ "type": "paragraph", "text": "After one year at West Pier Studio, I switched over to the Unity team from the Unreal Engine project (High Up). Initially, my focus shifted towards updating the Unity version from 2019 to 2022, (which changed a lot of things on the WebGL stack, as replacing the <span class=\"text-color-green\">WebGL Unity loader</span>). In this capacity, my primary responsibility was fixing the WebGL templates across all 3 applications: Deck, Pergola, and Fence. Fortunately, the company used 'Webpack' for efficient bundling, expediting the testing process. This task involved the use of languages such as <span class=\"text-color-green\">JavaScript</span>, <span class=\"text-color-green\">HTML</span>, and <span class=\"text-color-green\">C#</span>.." },
+		{ "type": "paragraph", "text": "Subsequently, I worked on a series of bugs to gain confidence with the codebase and gradually began undertaking tasks involving the implementation of new features." },
+		{ "type": "paragraph", "text": "Throughout this period, I have gained experience in:" },
+		{ "type": "list", "items": [
+			"Multi-platform programming.",
+			"Advanced utilization of source control.",
+			"Adherence to coding standards and design patterns.",
+			"Backend development encompassing APIs, databases, and related technologies."
+		]}
+	],
 	"technologies": [
 		"C_Sharp",
 		"Unity"
 	],
 	"links": [
 		{
-			"buttonText": "Website",
-			"buttonLink": "https://deckplanner.strongtie.com/webgl"
+			"buttonText": "App Website",
+			"buttonLink": "https://deckplanner.strongtie.com/ols/surface/contentbuilder/deckplanner"
 		}
 	]
 }

@@ -10,7 +10,21 @@
 		"5.png",
 		"6.png"
 	],
-	"descriptionPage": "Hypersomnia",
+	"description": [
+		{ "type": "paragraph", "text": "<span class='text-color-green'>SleepyTime Studio</span> was created by a group of university students with the aim to create and publish a Horror game. We were no more than 9 individuals with a software development background." },
+		{ "type": "paragraph", "text": "As a <span class='text-color-green'>gameplay and asset programmer</span>, I was tasked with designing and implementing the following:" },
+		{ "type": "list", "items": [
+			"Player stats (health, stamina, inventory, etc..).",
+			"Adding functionalities to all interactable in the game.",
+			"Blending the main character's animations.",
+			"Pin Pad Puzzle mechanic.",
+			"Async scene loader.",
+			"Pause menu.",
+			"I have also had the chance to make some 3D models using 3ds Max."
+		]},
+		{ "type": "paragraph", "text": "" },
+		{ "type": "paragraph", "text": "<span class='text-color-green'>Waterfall</span> methodologies were applied during development." }
+	],
 	"technologies": [
 		"C_Sharp",
 		"Unity"

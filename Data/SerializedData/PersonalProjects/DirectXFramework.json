@@ -7,7 +7,10 @@
 		"2.png",
 		"3.png"
 	],
-	"descriptionPage": "DirectX",
+	"description": [
+		{ "type": "paragraph", "text": "This project is a framework that wraps up some of the <span class='text-color-green'>DirectX</span> features to easily display graphics on the screen. It comes already with a playable demo." },
+		{ "type": "paragraph", "text": "The application leverages the <span class='text-color-green'>Windows API</span> to create the window and integrates standard vertex and pixel shaders, along with skybox and text rendering functionalities. Furthermore, it includes support for ambient, directional, and point lighting effects. For input management, it uses <span class='text-color-green'>DirectInput 8</span>." }
+	],
 	"technologies": [
 		"C++",
 		"DirectX"

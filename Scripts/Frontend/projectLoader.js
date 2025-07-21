@@ -42,7 +42,7 @@ function loadItem(linkProjectName)
 			var title = json.title;
 			var videos = json.videos;
 			var images = json.images;
-			var descriptionPage = json.descriptionPage;
+			var description = json.description;
 			var technologies = json.technologies;
 			var linkButtons = json.links;
 
@@ -99,10 +99,30 @@ function loadItem(linkProjectName)
 			}
 
 			// Load Description
-			$.get(`${PROJECT_DESCRIPTIONS_PATH}/${descriptionPage}.html`, function(data)
+			const container = $(`#${DESCRIPTION_ID}`);
+			for (let block of description) 
 			{
-				$(`#${DESCRIPTION_ID}`).html(data);
-			});
+				if (block.type === "paragraph") 
+				{
+					$('<span/>')
+						.addClass("paragraph")
+						.html(block.text)
+						.appendTo(container);
+				}
+				else if (block.type === "list") 
+				{
+					const ul = $('<ul/>')
+						.attr("style", "margin: 0; padding-right:7px; list-style-type: disc;")
+						.appendTo(container);
+				
+					for (let item of block.items) 
+					{
+						$('<li/>')
+							.html(item)
+							.appendTo(ul);
+					}
+				}
+			}
 
 			// Load technologies
 			var contentTechnologyDiv = $(`#${TECHNOLOGIES_ID}`);
@@ -151,7 +171,7 @@ function loadItem(linkProjectName)
 
 function onTransitionEnd() 
 {
-	
+
 }
 
 function loadImage(button, index, src) 

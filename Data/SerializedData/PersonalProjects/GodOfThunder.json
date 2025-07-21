@@ -7,7 +7,11 @@
 		"2.png",
 		"3.png"
 	],
-	"descriptionPage": "GodOfThunder",
+	"description": [
+		{ "type": "paragraph", "text": "The primary objective of this project was to explore the development of a <span class='text-color-green'>2D platformer</span> optimized for mobile devices, aiming for a seamless and enjoyable gaming experience on such platforms." },
+		{ "type": "paragraph", "text": "Inspired by the classic <span class='text-color-green'>MS-DOS</span> game 'God of Thunder,' I tried to create a game world that dynamically adjusts to fit the dimensions of the player's device, ensuring optimal scaling and immersive gameplay across various screen sizes." },
+		{ "type": "paragraph", "text": "In addition to scaling adaptability, I incorporated various modern game design elements, such as intuitive touch controls, fluid animations, and engaging level designs to enhance the overall experience." }
+	],
 	"technologies": [
 		"C_Sharp",
 		"Unity"

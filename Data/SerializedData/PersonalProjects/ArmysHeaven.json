@@ -15,7 +15,18 @@
 		"6.png",
 		"7.png"
 	],
-	"descriptionPage": "ArmysHeaven",
+	"description": [
+		{ "type": "paragraph", "text": "Army's Heaven is a Single Player/Multiplayer FPS game that makes use of <span class='text-color-green'>PUN2 (Photon Unity Package)</span> for its multiplayer backend. Originally conceived as a multiplayer project, the game currently features a deathmatch mode and offers a selection of two distinct maps." },
+		{ "type": "paragraph", "text": "I am currently focusing on the single player mode that will provide a campaign of a few hours, and introduce all the mechanics that I will transfer back in the multiplayer modes." },
+		{ "type": "paragraph", "text": "Here are some of the things I am currently working on:" },
+		{ "type": "list", "items": [
+			"General Character Controller refactor.",
+			"Replacing the current hand rig with new ones from an asset pack (introducing new guns, new animations, etc..).",
+			"Replace shooting system with the one used in the multiplayer.",
+			"Fix any potential issues with the zombies/npc AI that will (for sure) arise at the end of the refactor.",
+			"Implementing an event system similar to the one used in '<span class='text-color-green'>Deck Planner</span>'."
+		]}
+	],
 	"technologies": [
 		"C_Sharp",
 		"Unity",

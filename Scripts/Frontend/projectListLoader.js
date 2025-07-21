@@ -13,40 +13,43 @@ function showWorkProjectList()
 	showPrimaryPage(WORK_PROJECTS_TAB_NAME, loadProjectList);
 }
 
-function loadProjectList(containerID, jsonName, cancellationToken)
+function loadProjectList(jsonFileName, cancellationToken)
 {
 	return new Promise((onResolve) => 
 	{
-		$(`#${SECONDARY_CONTENT_ID}`).html(""); // Clear secondary content
+		// Clear both primary and secondary content
+		$(`#${SECONDARY_CONTENT_ID}`).html(""); 
 
-		var container = $(`#${containerID}`);
-		$.getJSON(`Data/SerializedData/${jsonName}.json`, async function(json) 
+		var container = $(`#${PRIMARY_CONTENT_ID}`);
+		container.html("<div class='very-small-line-break'></div>");
+		
+		$.getJSON(`Data/SerializedData/${jsonFileName}.json`, async function(json) 
 		{
 			if (cancellationToken.isCancellationRequested)
 				return;
-
-			container.html("<div class='very-small-line-break'></div>");
 
 			for(var i = 0; i < json.list.length; i++) 
 			{
 				if (cancellationToken.isCancellationRequested)
 					return;
 
+				addMediumSpacerDiv(container);
+				
 				var projectGroup = json.list[i];
-				await loadOneGroup(container, projectGroup, jsonName, cancellationToken);
+				await loadOneGroup(container, projectGroup, jsonFileName, cancellationToken);
+
+				addMediumSpacerDiv(container);
 			}
-			
-			await loadSpacer(container);
 
 			onResolve();
 		});
 	});
 }
 
-async function loadOneGroup(container, projectGroup, listJSON, cancellationToken)
+async function loadOneGroup(container, projectGroup, jsonFileName, cancellationToken)
 {
 	await loadProjectTitle(container, projectGroup.title, cancellationToken);
-	await loadProjectGroup(container, projectGroup.projects, listJSON, cancellationToken);
+	await loadProjectGroup(container, projectGroup.projects, jsonFileName, cancellationToken);
 }
 
 function loadProjectTitle(container, title, cancellationToken)
@@ -57,7 +60,7 @@ function loadProjectTitle(container, title, cancellationToken)
 		{
 			if(cancellationToken.isCancellationRequested)
 			{
-				onError();
+				onError(new Error("Load cancelled by cancellation token."));
 				return;
 			}
 
@@ -70,33 +73,30 @@ function loadProjectTitle(container, title, cancellationToken)
 	});
 }
 
-function loadProjectGroup(container, projects, listJSON, cancellationToken)
+function loadProjectGroup(container, projects, jsonFileName, cancellationToken)
 {
-	return new Promise((onResolve, onError) =>
+	return new Promise(async (onResolve, onError) =>
 	{
-		$.get(`${PROJECT_LIST_PAGE}`, async function(data)
+		var projectContainer = $('<div/>').addClass('list');
+
+		for (var i = 0; i < projects.length; i++) 
 		{
-			var projectContainer = $(data);
-			for(var i = 0; i < projects.length; i++) 
+			if (cancellationToken.isCancellationRequested)
 			{
-				if (cancellationToken.isCancellationRequested)
-				{
-					onError();
-					return;
-				}
-
-				var project = projects[i];
-				await loadProjectItem(projectContainer, project, listJSON, cancellationToken);
+				onError(new Error("Load cancelled by cancellation token."));
+				return;
 			}
-			
-			projectContainer.appendTo(container);
 
-			onResolve();
-		});
+			var project = projects[i];
+			await loadProjectItem(projectContainer, project, jsonFileName, cancellationToken);
+		}
+
+		projectContainer.appendTo(container);
+		onResolve();
 	});
 }
 
-function loadProjectItem(container, project, listJSON, cancellationToken)
+function loadProjectItem(container, project, jsonFileName, cancellationToken)
 {
 	return new Promise((onResolve, onError) =>
 	{
@@ -104,7 +104,7 @@ function loadProjectItem(container, project, listJSON, cancellationToken)
 		{
 			if (cancellationToken.isCancellationRequested)
 			{
-				onError();
+				onError(new Error("Load cancelled by cancellation token."));
 				return;
 			}
 
@@ -118,7 +118,7 @@ function loadProjectItem(container, project, listJSON, cancellationToken)
 			// Set up click event handler
 			(function(link) {
 				projectItem.click(function() { 
-					showItem(listJSON, link);
+					showItem(jsonFileName, link);
 				});
 			})(project.clickLink);
 

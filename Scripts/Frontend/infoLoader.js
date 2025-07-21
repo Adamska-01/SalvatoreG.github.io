@@ -1,42 +1,38 @@
 function showAbout()
 {
-	showPrimaryPage(ABOUT_TAB_NAME, loadAbout);
+	showPrimaryPage(ABOUT_TAB_NAME, loadInfo);
 }
 
 function showContact()
 {
-	showPrimaryPage(CONTACT_TAB_NAME, loadContact);
+	showPrimaryPage(CONTACT_TAB_NAME, loadInfo);
 }
 
-function loadAbout(containerID, pageName, cancellationToken)
+async function loadInfo(pageName, cancellationToken) 
 {
-	return loadHTML(containerID, pageName, cancellationToken);
-}
+	return new Promise((resolve, reject) => 
+	{
+		// Clear primary and secondary content
+		$(`#${SECONDARY_CONTENT_ID}`).html(""); 
 
-function loadContact(containerID, pageName, cancellationToken)
-{
-	return loadHTML(containerID, pageName, cancellationToken);
-}
+		var container = $(`#${PRIMARY_CONTENT_ID}`);
+		container.html(""); 
+		
+		$.get(`Pages/${pageName}.html`, function (data) 
+		{
+			if (cancellationToken.isCancellationRequested) 
+			{
+				reject(new Error("Operation cancelled"));
+				return;
+			}
 
-async function loadHTML(containerID, pageName, cancellationToken) 
-{
-    return new Promise((resolve, reject) => {
-		$(`#${SECONDARY_CONTENT_ID}`).html(""); // Clear secondary content
-       
-        var container = $(`#${containerID}`);
-        $.get(`Pages/${pageName}.html`, function (data) {
-            container.html(""); // Clear div
+			$(data).appendTo(container);
 
-            if (cancellationToken.isCancellationRequested) {
-                reject(new Error("Operation cancelled"));
-                return;
-            }
-
-            $(data).appendTo(container);
-
-            resolve(); 
-        }).fail(function (error) {
-            reject(new Error("Error loading HTML: " + error.statusText));
-        });
-    });
+			resolve(); 
+		})
+		.fail(function (error) 
+		{
+			reject(new Error("Error loading HTML: " + error.statusText));
+		});
+	});
 }
