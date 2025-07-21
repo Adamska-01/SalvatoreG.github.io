@@ -7,19 +7,24 @@ const CONTENT_CONTAINER_ID = "content-container";
 const BACK_BUTTON_CONTAINER_ID = "back-content-button-container";
 const PRIMARY_CONTENT_ID = "content-primary";
 const SECONDARY_CONTENT_ID = "content-secondary";
-const IMAGE_SHOWCASE_ID = "image-showcase";
 const IMAGE_ZOOM_CONTAINER_ID = "image-zoom-container";
 const IMAGE_ZOOM_OVERLAY_ID = "image-zoom";
-const VIDEO_SHOWCASE_ID = "video-showcase";
+
+// Project details template IDs
 const PROJECT_TITLE_ID = "content-title";
 const PROJECT_LINKS_ID = "project-links";
 const DESCRIPTION_ID = "content-description";
 const TECHNOLOGIES_ID = "content-technology";
 const LINKS_ID = "content-links";
+const IMAGE_SHOWCASE_ID = "image-showcase";
+const VIDEO_SHOWCASE_ID = "video-showcase";
+
+// Progress Bar IDs
 const PROGRESS_CONTAINER_ID = "progress-container";
 const PROGRESS_BAR_ID = "progress-bar";
 const PROGRESS_PERCENTAGE_ID = "progress-percentage";
 const PROGRESS_INFO_ID = "progress-info";
+
 
 // Tab Names
 const ABOUT_TAB_NAME = "about";
