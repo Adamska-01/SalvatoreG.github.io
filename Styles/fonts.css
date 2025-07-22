@@ -1,16 +1,8 @@
-@font-face {
-	font-family: UbuntuSansMono;
-	src: url(../Fonts/UbuntuSansMono-Regular.otf);
-}
-@font-face {
-	font-family: CommitMono;
-	src: url(../Fonts/CommitMono-Regular.otf);
-}
-
 .header-font { 
-	font-family: CommitMono;
+	font-family: "Doto", sans-serif;
+	font-optical-sizing: auto;
 }
 
 .paragraph-font {
-	font-family: UbuntuSansMono;
+	font-family: "Roboto Mono", monospace;
 }
