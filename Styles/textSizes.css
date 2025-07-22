@@ -6,8 +6,12 @@
 	font-size: calc(5px + 3vmin);
 }
 
+.text-size-medium-2 {
+	font-size: calc(5px + 2vmin);
+}
+
 .text-size-medium {
-	font-size: calc(5px + 1.4vmin);
+	font-size: calc(5px + 1.2vmin);
 }
 
 .text-size-small {
