@@ -54,10 +54,6 @@
 	height: 10px;
 }
 
-.empty-line {
-	height: 30px;
-}
-
 .center-all {
 	display: flex;
 	justify-content: center;
