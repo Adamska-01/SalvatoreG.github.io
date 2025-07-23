@@ -16,7 +16,7 @@
 	max-width: 700px;
 	display: flex;
 	flex-direction: column;
-  	justify-content: center;
+	justify-content: center;
 }
 
 .video-container {
@@ -60,20 +60,20 @@
 
 .image-showcase2 {
 	max-width: 100%;
-    max-height: 100%;
+	max-height: 100%;
 	border-radius: 1em;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+	width: auto;
+	height: auto;
+	object-fit: contain;
 }
 
 .image-zoom-bounds {
-    width: 85%;
-    height: 80dvh;
-    margin: auto;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+	width: 85%;
+	height: 80dvh;
+	margin: auto;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
 }
