@@ -1,7 +1,4 @@
 :root {
-	--navigation-button-color: rgba(255, 255, 255, 0);
-	--navigation-button-border-color: rgba(255, 255, 255, 1);
-	--navigation-button-highlight-color: rgba(207, 49, 49, 0.35);
 	--body-background-color: rgba(35, 35, 35, 1);
 
 	--close-button-X-color: rgba(255, 255, 255, 1);
@@ -17,46 +14,41 @@
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-    width: 7px;
+	width: 7px;
 }
 ::-webkit-scrollbar-thumb {
-    background: rgb(154, 156, 160);
+	background: rgb(154, 156, 160);
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: rgb(184, 186, 190);
+	background: rgb(184, 186, 190);
 }
 ::-webkit-scrollbar-track {
-    background: rgba(154, 156, 160, 0.05);
+	background: rgba(154, 156, 160, 0.05);
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	margin-block-end: 3px;
 }
 
-body {
-	background-color: var(--body-background-color);
+html, body {
+	height: 100dvh;
+	max-height: 100dvh;
+	width: 100vw;
 	margin: 0;
 	padding: 0;
-	max-width: 100%;
-	max-height: 100%;
-	width: 100dvw;
-	height: 100dvh;
 	box-sizing: border-box;
-}
-
-a {
-	text-decoration: none;
-	color: inherit;
-}
-a:hover {
-	text-decoration: underline;
+	background-color: var(--body-background-color);
+	overflow-x: hidden; /* optional: prevents scrollbars */
+	overflow-y: auto; /* optional: prevents scrollbars */
 }
 
 /*main is the highest container for all UI*/
 #main {
 	position: absolute;
 	display: block;
+	height: 100dvh;
+	max-height: 100dvh;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -64,12 +56,12 @@ a:hover {
 	z-index: 1;
 	pointer-events: none;
 }
-#main * {
+#main *{
 	pointer-events: auto;
 }
 
 #headline {
-	height: calc(12vmin + 15px);
+	height: 10dvh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -112,40 +104,38 @@ a:hover {
 	opacity: 0;
 	flex: 1;
 	flex-direction: column;
-	max-height: calc(100dvh - (21vmin + 20px));
-	width : 90vmin;
+	width: min(90vw, 90vh);
+	max-height: calc(100dvh - 19dvh);
 	margin: 0 auto;
 	border-radius: 10px;
 	pointer-events: none !important;
 	overflow: hidden;
 	white-space: nowrap;
-	font-size: 0;
 	box-sizing: border-box;
 	z-index: 1;
 }
 
-#image-zoom-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100svw;
-    height: 100dvh;
-    z-index: 999; 
-    background-color: rgba(0, 0, 0, 0.7); 
-    display: none; 
+.content {
+	display: inline-block;
+	position: relative;
+	width : 100%;
+	max-height: calc(100dvh - 19dvh - 60px);
+	margin: 0 auto;
+	overflow-y: auto;
+	white-space: normal;
+	transition: height .5s, margin-left .5s;
+	will-change: height, margin-left;
 }
 
-.content {
-    display: inline-block;
-    position: relative;
-	width : 100%;
-	height: inherit;
-	max-height: calc(100dvh - (21vmin + 20px) - 60px);
-    margin: 0 auto;
-    overflow-y: auto;
-    white-space: normal;
-    transition: height .5s, margin-left .5s;
-    will-change: height, margin-left;
+#image-zoom-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100svw;
+	height: 100dvh;
+	z-index: 999; 
+	background-color: rgba(0, 0, 0, 0.7); 
+	display: none; 
 }
 
 #close-content-button-container {
@@ -204,7 +194,7 @@ a.link:hover {
 @media screen and (max-width: 768px) , screen and (max-height: 700px) {
 	.content {
 		width : 100%;
-	    padding-right: 0px;
-	    overflow: auto;
+		padding-right: 0px;
+		overflow: auto;
 	}
 }
