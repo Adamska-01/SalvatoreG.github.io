@@ -1,51 +1,55 @@
+:root {
+	--list-item-highlight-color: rgba(207, 49, 49, 0.35);
+}
+
 .list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
 }
 
 .list-object-wrapper {
-    width: 31%;
-    height: calc(29vmin + 20px);
-    margin: 0.5%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    border: solid 2px #000000;
-    transition: background-color 0.3s, border-bottom-color 0.3s;
+	width: 31%;
+	height: calc(29vmin + 20px);
+	margin: 0.5%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	border: solid 2px #000000;
+	transition: background-color 0.3s, border-bottom-color 0.3s;
 	border-radius: 10px;
 }
 
 .list-object-wrapper:hover {
-    background-color: var(--navigation-button-highlight-color);
+	background-color: var(--list-item-highlight-color);
 }
 
 .list-image {
-    width: 94%;
-    height: auto;
-    margin-top: 2.1%;
-    border: solid 2px #000000;
+	width: 94%;
+	height: auto;
+	margin-top: 2.1%;
+	border: solid 2px #000000;
 	border-radius: inherit;
 }
 
 .list-title {
-    margin-top: 4px;
-    font-size: 1.5rem; 
-    font-weight: bold;
+	margin-top: 4px;
+	font-size: 1.5rem; 
+	font-weight: bold;
 }
 
 .list-date {
-    margin-top: -4px;
-    color: #ffffff;
-    font-size: 1.3rem; 
+	margin-top: -4px;
+	color: #ffffff;
+	font-size: 1.3rem; 
 }
 
 .list-description {
-    margin: 8px 3px 0px 3px;
-    color: #ffffff;
-    font-size: 1rem; 
+	margin: 8px 3px 0px 3px;
+	color: #ffffff;
+	font-size: 1rem; 
 }
 
 /* For mobile phones: */
