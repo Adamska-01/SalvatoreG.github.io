@@ -26,6 +26,12 @@ const PROGRESS_PERCENTAGE_ID = "progress-percentage";
 const PROGRESS_INFO_ID = "progress-info";
 
 
+// Navigation Bar classes
+const NAV_LINK_CLASS = "nav_link";
+const NAV_LIGHT_CLASS = "nav_light";
+const NAV_CLASS = "nav";
+
+
 // Tab Names
 const ABOUT_TAB_NAME = "about";
 const CONTACT_TAB_NAME = "contact";
