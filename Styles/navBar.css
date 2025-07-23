@@ -1,0 +1,124 @@
+:root {
+	--tab-color: #191919;
+	--link-color: #ffffff;
+
+	--about-color: #00f7ff;
+	--projects-color: #ff0000;
+	--work-color: #adff2f;
+	--contact-color: #ee82ee;
+}
+
+.nav-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.5em 0;
+}
+
+.nav {
+	background-color: var(--tab-color);
+	width: 100%;
+	max-width: min(90vw, 90vh);
+	height: 3.5em;
+	border-radius: 1.2em;
+	box-shadow: 0 1em 1em rgba(0, 0, 0, 0.2);
+
+	display: flex;
+	align-items: center;
+	position: relative;
+	overflow: hidden;
+	padding: 0 1em; /* Padding for some breathing room */
+	box-sizing: border-box;
+}
+
+.nav_links {
+	width: 100%;
+	display: flex;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.nav_link {
+	flex-grow: 1;
+	text-align: center;
+}
+
+.nav_link a {
+	display: block;
+	width: 100%;
+	font-size: clamp(0.9rem, 1.4vw, 1.4rem);
+	font-weight: bold;
+	color: var(--link-color);
+	opacity: 0.5;
+	text-decoration: none;
+	padding: 0.8em 0; /* Adequate vertical padding */
+	box-sizing: border-box;
+	transition: opacity 0.3s ease, color 0.3s ease;
+	position: relative;
+	z-index: 2;
+}
+
+.nav_link.active a {
+	opacity: 1;
+	color: var(--active-color, var(--link-color));
+}
+
+/* Highlight bar under active tab */
+.nav_light {
+	position: absolute;
+	top: 0;
+	height: 0.15em;
+	border-radius: 5px;
+	background-color: var(--about-color);
+	color: var(--about-color);
+	width: 4.5em; /* Base width, overridden dynamically by JS */
+	left: 0;
+	transition:
+		opacity 0.3s ease,
+		transform 0.3s ease,
+		left 0.3s ease,
+		width 0.3s ease,
+		background-color 0.3s ease;
+	opacity: 0;
+	transform: scale(1);
+	z-index: 1;
+	pointer-events: none;
+}
+
+.nav_light.visible {
+	opacity: 1;
+}
+
+/* Beam cone effect */
+.nav_light::before {
+	content: '';
+	position: absolute;
+	top: 0.3em;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 130%;
+	height: 5em;
+	background: linear-gradient(
+		to bottom,
+		color-mix(in srgb, currentColor 30%, transparent) -50%,
+		transparent 90%
+	);
+	clip-path: polygon(30% 0, 70% 0, 100% 100%, 0% 100%);
+	pointer-events: none;
+	filter: blur(2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+	.nav {
+		height: 3em;
+		border-radius: 1em;
+		padding: 0 0.5em;
+	}
+
+	.nav_link a {
+		font-size: clamp(0.8rem, 2vw, 1.1rem);
+		padding: 0.6em 0;
+	}
+}

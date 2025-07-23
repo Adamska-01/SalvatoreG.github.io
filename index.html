@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<meta name="description" content="Welcome to Salvatore's portfolio! Explore a showcase of Unity and Unreal Engine projects, including immersive games, interactive simulations, and frameworks. Discover innovative game mechanics, stunning graphics, and seamless user experiences. Additionally, browse through a collection of professional apps Salvatore has worked on during his career. Contact him for job opportunities or further information!">
-		
+
 		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,12 +22,13 @@
 		<link rel="stylesheet" type="text/css" href="Styles/colors.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/buttons.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/fonts.css"/>
+		<link rel="stylesheet" type="text/css" href="Styles/navBar.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/progressBar.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/projectDetails.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/projectList.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/textProperties.css"/>
 		<link rel="stylesheet" type="text/css" href="Styles/textSizes.css"/>
-		
+
 		<!-- Fetching Libs -->
 		<script type="importmap">
 			{
@@ -60,31 +61,31 @@
 
 			<!-- Header -->
 			<div id="headline" class="header-font text-color-white">
-				<span class="headline text-size-title">Salvatore Galeotta</span>
-				<span class="headline text-size-big" style="margin-top: 10px;">Unity/Unreal Developer</span>
+				<span class="headline text-size-title text-color-green">Salvatore Galeotta</span>
+				<span class="headline text-size-big text-color-blue" style="margin-top: 10px;">Software Developer</span>
 			</div>
 
-			<!-- Navigation Buttons -->
-			<div id="navigation-container">
-				<div class="button-container">
-					<button class="navigation-button extreme-left-navigation-button" onClick="onTabButtonClick(this, function () { showAbout(); })">
-						<span class="underline-on-hover header-font text-size-medium text-color-white">About</span>
-					</button>
-
-					<button class="navigation-button" onClick="onTabButtonClick(this, function () { showPersonalProjectList(); })">
-						<span class="underline-on-hover header-font text-size-medium text-color-white">Projects</span>
-					</button>
-
-					<button class="navigation-button" onClick="onTabButtonClick(this, function () { showWorkProjectList(); })">
-						<span class="underline-on-hover header-font text-size-medium text-color-white">Work</span>
-					</button>
-
-					<button class="navigation-button extreme-right-navigation-button" onClick="onTabButtonClick(this, function () { showContact(); })">
-						<span class="underline-on-hover header-font text-size-medium text-color-white">Contact</span>
-					</button>
-				</div>	 
+			<!-- Navigation Bar -->
+			<div class="nav-wrapper header-font">
+				<nav class="nav">
+					<ul class="nav_links">
+						<li class="nav_link">
+							<a href="#" onclick="onTabButtonClick(this, function () { showAbout(); })">About</a>
+						</li>
+						<li class="nav_link">
+							<a href="#" onclick="onTabButtonClick(this, function () { showPersonalProjectList(); })">Projects</a>
+						</li>
+						<li class="nav_link">
+							<a href="#" onclick="onTabButtonClick(this, function () { showWorkProjectList(); })">Work</a>
+						</li>
+						<li class="nav_link">
+							<a href="#" onclick="onTabButtonClick(this, function () { showContact(); })">Contact</a>
+						</li>
+					</ul>
+					<div class="nav_light"></div>
+				</nav>
 			</div>
-			
+
 			<div class="medium-line-break"></div>
 
 			<div id="content-container" class="background-color-black">
@@ -124,8 +125,8 @@
 		<script src="Scripts/Frontend/infoLoader.js"></script>
 		<script src="Scripts/Frontend/projectListLoader.js"></script>
 		<script src="Scripts/Frontend/projectLoader.js"></script>
-		<script src="Scripts/Frontend/tabButtons.js"></script>
-		
+		<script src="Scripts/Frontend/navBar.js"></script>
+
 		<script type="module" src="Scripts/3D_Scene/sceneIndex.js"></script>
 	</body>
 </html>
