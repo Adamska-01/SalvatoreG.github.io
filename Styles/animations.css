@@ -43,14 +43,8 @@
 	cursor:pointer;
 }
 
-/* Underline */
-.navigation-button:hover .underline-on-hover:before {
-	visibility: visible;
-	width: 100%;
-}
-
 .underline-on-hover {
-    position: relative;
+	position: relative;
 
 	&:before {
 		content: "";
@@ -66,13 +60,13 @@
 }
 
 .fade-in-anim {
-    animation: fade-in var(--change-tabPage-time) forwards;
+	animation: fade-in var(--change-tabPage-time) forwards;
 }
 
 .fade-out-anim {
-    animation: fade-out var(--change-tabPage-time) forwards;
+	animation: fade-out var(--change-tabPage-time) forwards;
 }
 
 .fade-out-anim-no-transform {
-    animation: fade-out-no-transform var(--change-tabPage-time) forwards;
+	animation: fade-out-no-transform var(--change-tabPage-time) forwards;
 }
