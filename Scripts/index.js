@@ -16,7 +16,7 @@ function showPrimaryPage(pageName, loadContentFunction)
 	}
 
 	$(`#${BACK_BUTTON_CONTAINER_ID}`).css("display", "none");
-	
+
 	currentTabPage = pageName;
 }
 
@@ -38,14 +38,14 @@ async function loadView(pageName, loadFunction, onAnimationEnd, switchAction, ca
 {
 	if (currentProjectPage == pageName)  // Same view -> Hide current view
 	{
-		unhighlightAllTabButtons();
-		
+		setNavLightVisibility(false);
+
 		await fadeOutContent();
-		
+
 		currentTabPage = "";
 		currentProjectPage = "";
-	} 
-	else  // Different view -> fade out old content -> fade in new content
+	}
+	else // Different view -> fade out old content -> fade in new content
 	{
 		currentProjectPage = pageName;
 		await fadeOutContent();
@@ -106,5 +106,5 @@ async function hideContent()
 
 	stopYoutubeVideos()
 
-	unhighlightAllTabButtons();
+	setNavLightVisibility(false);
 }
