@@ -1,0 +1,24 @@
+{
+	"title": "OLS Data Model - WPS",
+	"description": [
+		{
+			"type": "paragraph",
+			"text": "<span class='text-color-green'>OLS Data Model</span> is a shared repository containing the request and response data models used by the 3 OLS Unity apps, the internal QA Dashboard, and the backend API."
+		},
+		{
+			"type": "paragraph",
+			"text": "To ensure consistency and reduce code duplication, the models are packaged and distributed as both a <span class='text-color-green'>versioned NuGet package</span> for the API and QA Dashboard, and a <span class='text-color-green'>Unity package</span> compatible with the Unity Package Manager (UPM) for the OLS apps."
+		},
+		{
+			"type": "paragraph",
+			"text": "Unity in particular required custom handling due to its requirement for <span class='text-color-green'><code>.meta</code></span> files for every file and folder the package includes. Also limited support for modern .NET features like <span class='text-color-green'><code>init</code></span>, <span class='text-color-green'><code>records</code></span>, and <span class='text-color-green'><code>System.Text.Json</code></span> serializer required special handling."
+		},
+		{
+			"type": "paragraph",
+			"text": "This project strengthened my skills in cross-platform <span class='text-color-green'>package management</span>, <span class='text-color-green'>CI/CD automation</span>, and maintaining consistent data contracts across multiple systems."
+		}
+	],
+	"technologies": [
+		"C_Sharp"
+	]
+}

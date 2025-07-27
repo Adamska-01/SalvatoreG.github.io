@@ -1,0 +1,82 @@
+{
+	"title": "DeadFrame2D - 2D Game Engine",
+	"videos": [
+	],
+	"images": [
+		"1.png",
+		"2.png",
+		"3.png",
+		"4.png",
+		"5.png"
+	],
+	"description": [
+		{
+			"type": "paragraph",
+			"text": "<span class='text-color-green'>DeadFrame2D</span> is a lightweight and modular 2D game engine written in C++, designed for rapid prototyping and high-performance game development."
+		},
+		{
+			"type": "paragraph",
+			"text": "It leverages popular libraries like <span class='text-color-green'>SDL2</span> for rendering and input, <span class='text-color-green'>Box2D</span> for physics, and uses a <span class='text-color-green'>Premake</span>-based build system to simplify cross-platform setup."
+		},
+		{
+			"type": "paragraph",
+			"text": "Inspired by modern engines such as Unity, it features a scene-based architecture and an Entity Component System (ECS) design. It also supports tile maps (including Tiled), coroutine scheduling, and a debug mode with collider visualizations."
+		},
+		{
+			"type": "paragraph",
+			"text": "The engine is organized for modular development and includes a template project that helps developers get started quickly with a clean structure and build scripts for both Windows and Linux."
+		},
+		{
+			"type": "paragraph",
+			"text": "I used this engine to develop two games: <span class='text-color-green'>BobbleBlast</span> (a classic puzzle-style bubble shooter) and a <span class='text-color-green'>Retro Platformer</span> demo inspired by Super Mario. These demonstrate the engine's flexibility for different game genres."
+		},
+		{
+			"type": "paragraph",
+			"text": "Key features include:"
+		},
+		{
+			"type": "list",
+			"items": [
+				"🎥 Camera-based rendering.",
+				"⚙️ Physics-based collisions via Box2D.",
+				"🧱 Scene and ECS architecture.",
+				"🎮 Controller and keyboard/mouse input support.",
+				"🗺️ Tilemap rendering with Tiled support.",
+				"⏳ Coroutines.",
+				"🧠 Event-driven memory and object management.",
+				"🐞 Debug mode with visual overlays.",
+				"🔧 Cross-platform setup with Premake."
+			]
+		},
+		{
+			"type": "paragraph",
+			"text": "Development is ongoing and guided by a structured <a href=\"https://excalidraw.com/#json=MwfqT_r168ImA-rdfvIns,DPgS7jd4DRs6UnH7zHazqw\" class=\"link\" target=\"_blank\" rel=\"noopener noreferrer\">Roadmap</a> that outlines upcoming improvements and planned features."
+		}
+	],
+	"technologies": [
+		"C++",
+		"SDL"
+	],
+	"links": [
+		{
+			"buttonText": "GitHub - DeadFrame2D",
+			"buttonLink": "https://github.com/Adamska-01/DeadFrame2D"
+		},
+		{
+			"buttonText": "GitHub - DeadFrame2D_Template",
+			"buttonLink": "https://github.com/Adamska-01/DeadFrame2D_Template"
+		},
+		{
+			"buttonText": "GitHub - Bobble Blast",
+			"buttonLink": "https://github.com/Adamska-01/Bobble_Blast"
+		},
+		{
+			"buttonText": "itch.io - Bobble Blast",
+			"buttonLink": "https://salvg.itch.io/bobble-blast"
+		},
+		{
+			"buttonText": "GitHub - Retro Platformer",
+			"buttonLink": "https://github.com/Adamska-01/Retro_Platformer"
+		}
+	]
+}

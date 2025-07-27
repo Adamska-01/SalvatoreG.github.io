@@ -4,25 +4,18 @@
 			"title": "West Pier Studio - Unity",
 			"projects": [
 				{
-					"title": "Deck Planner",
-					"date": "2023 - Present",
-					"clickLink": "DeckPlanner",
-					"description": "Providing maintanance and developing new features.",
-					"image": "WorkProjects/DeckPlanner/Preview.png"
+					"title": "Outdoor Living Solutions (OLS)",
+					"date": "2023 - 2025",
+					"clickLink": "OLS",
+					"description": "Suite of planning tools for outdoor structures.",
+					"image": "WorkProjects/OLS/Preview.png"
 				},
 				{
-					"title": "Fence Planner",
-					"date": "2023 - Present",
-					"clickLink": "FencePlanner",
-					"description": "Providing maintanance and developing new features.",
-					"image": "WorkProjects/FencePlanner/Preview.png"
-				},
-				{
-					"title": "Pergola Planner",
-					"date": "2023 - Present",
-					"clickLink": "PergolaPlanner",
-					"description": "Providing maintanance and developing new features.",
-					"image": "WorkProjects/PergolaPlanner/Preview.png"
+					"title": "OLS Data Model",
+					"date": "2024 - 2025",
+					"clickLink": "OLSDataModel",
+					"description": "Shared data models for OLS apps, API, and internal QA Dashboard.",
+					"image": "WorkProjects/OLSDataModel/Preview.png"
 				}
 			]
 		},
@@ -31,9 +24,9 @@
 			"projects": [
 				{
 					"title": "HighUp",
-					"date": "2022 - Present",
+					"date": "2022 - 2023",
 					"clickLink": "HighUp",
-					"description": "Leading the development of a vehicle customization system in UE5.",
+					"description": "Led the development of a vehicle customization system in UE5.",
 					"image": "WorkProjects/HighUp/Preview.png"
 				}
 			]

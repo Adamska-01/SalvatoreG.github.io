@@ -4,11 +4,11 @@
 			"title": "Solo Projects",
 			"projects": [
 				{
-					"title": "Portfolio Website",
-					"date": "2024",
-					"clickLink": "PortfolioWebsite",
-					"description": "The website you are currently viewing.",
-					"image": "PersonalProjects/PortfolioWebsite/Preview.png"
+					"title": "DeadFrame2D",
+					"date": "2023 - Present",
+					"clickLink": "DeadFrame2D",
+					"description": "C++ 2D Game Engine powered by SDL2, Box2D, Premake, more...",
+					"image": "PersonalProjects/DeadFrame2D/Preview.png"
 				},
 				{
 					"title": "Army's Heaven",
@@ -18,25 +18,18 @@
 					"image": "PersonalProjects/ArmysHeaven/Preview.png"
 				},
 				{
+					"title": "Portfolio Website",
+					"date": "2023 - Present",
+					"clickLink": "PortfolioWebsite",
+					"description": "The website you are currently viewing.",
+					"image": "PersonalProjects/PortfolioWebsite/Preview.png"
+				},
+				{
 					"title": "DirectX Framework",
 					"date": "2021 - 2022",
 					"clickLink": "DirectXFramework",
 					"description": "DirectX wrapper.",
 					"image": "PersonalProjects/DirectXFramework/Preview.png"
-				},
-				{
-					"title": "Bobble Blast",
-					"date": "2021",
-					"clickLink": "BobbleBlast",
-					"description": "Puzzle Bobble-like multiplayer game made with SDL.",
-					"image": "PersonalProjects/BobbleBlast/Preview.png"
-				},
-				{
-					"title": "Platform Demo",
-					"date": "2020",
-					"clickLink": "PlatformDemo",
-					"description": "SuperMario-like game made with SDL.",
-					"image": "PersonalProjects/PlatformDemo/Preview.png"
 				},
 				{
 					"title": "God Of Thunder",

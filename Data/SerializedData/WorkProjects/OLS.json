@@ -1,0 +1,68 @@
+{
+	"title": "Outdoor Living Solutions (OLS)",
+	"videos": [
+		{
+			"title": "Deck Planner Demo",
+			"link": "https://www.youtube.com/embed/XT3VvS794iY"
+		},
+		{
+			"title": "Pergola Planner Demo",
+			"link": "https://www.youtube.com/embed/EVf7U4epsxs"
+		},
+		{
+			"title": "Fence Planner Demo",
+			"link": "https://www.youtube.com/embed/N5kmXCuNmaE"
+		}
+	],
+	"description": [
+		{
+			"type": "paragraph",
+			"text": "<span class='text-color-green'>Outdoor Living Solutions (OLS)</span> is a family of Unity WebGL applications for deck, pergola, and fence planning, produced by <span class='text-color-green'>West Pier Studio</span> for <span class='text-color-green'>Simpson Strong-Tie</span>. The <span class='text-color-green'>Deck Planner</span> app is also available on iOS."
+		},
+		{
+			"type": "paragraph",
+			"text": "I played a key role in backend modernization, mobile infrastructure development, and front-end stability improvements across all apps. Notable contributions throughout the suite included:"
+		},
+		{
+			"type": "list",
+			"items": [
+				"Led <span class='text-color-green'>Migration of legacy PHP</span> and <span class='text-color-green'>ASP.NET</span> APIs to modern <span class='text-color-green'>.NET</span> using <span class='text-color-green'>Entity Framework Core</span>, refactoring schemas and improving performance and maintainability.",
+				"Designed and implemented a <span class='text-color-green'>version deprecation system</span> for the iOS mobile app, enabling server-controlled access management based on semantic versioning. This system was also fully integrated into the company’s internal <span class='text-color-green'>QA Dashboard to manage Development, Staging and Production data</span>.",
+				"Supported early development of an <span class='text-color-green'>OAuth</span>-based authentication flow for secure login and token lifecycle management.",
+				"Participated in Unity build upgrades (2019 → 2022), focusing on fixing <span class='text-color-green'>WebGL templates</span> and giving <span class='text-color-green'>CI pipeline</span> support.",
+				"Improved and Fixed UI issues and rendering correctness by resolving bugs linked to dynamically generated vertex data.",
+				"Wrote and maintained <span class='text-color-green'>unit tests</span> using <span class='text-color-green'>NSubstitute</span> to validate backend logic and ensure long-term code reliability."
+			]
+		},
+		{
+			"type": "paragraph",
+			"text": "Additionally, I <span class='text-color-green'>contributed to team growth and quality</span> by participating in the hiring process alongside lead developers, conducting technical interviews, assessing candidates’ skills, and helping select new developers aligned with project and team needs."
+		},
+		{
+			"type": "paragraph",
+			"text": "This project demonstrated my ability to integrate Unity with backend services, develop scalable solutions to meet increasing demands, and maintain code stability in a professional development setting."
+		}
+	],
+	"technologies": [
+		"C_Sharp",
+		"Unity"
+	],
+	"links": [
+		{
+			"buttonText": "Deck Planner - WebGL",
+			"buttonLink": "https://deckplanner.strongtie.com/ols/surface/contentbuilder/deckplanner"
+		},
+		{
+			"buttonText": "Deck Planner - iOS",
+			"buttonLink": "https://apps.apple.com/us/app/deck-planner/id1567236987"
+		},
+		{
+			"buttonText": "Pergola Planner - WebGL",
+			"buttonLink": "https://deckplanner.strongtie.com/ols/surface/contentbuilder/pergolaplanner"
+		},
+		{
+			"buttonText": "Fence Planner - WebGL",
+			"buttonLink": "https://deckplanner.strongtie.com/ols/surface/contentbuilder/fenceplanner"
+		}
+	]
+}

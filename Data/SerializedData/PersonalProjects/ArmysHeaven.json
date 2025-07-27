@@ -2,8 +2,12 @@
 	"title": "Army's Heaven",
 	"videos": [
 		{
-			"title": "Demo",
-			"link": "https://www.youtube.com/embed/iTvzLS9thS4"
+			"title": "Video Update",
+			"link": "https://www.youtube.com/embed/_yTgHGTRmaQ?si=Z2dH63Ie9P14aiqH"
+		},
+		{
+			"title": "Video Demonstration",
+			"link": "https://www.youtube.com/embed/iTvzLS9thS4?si=4Z06WivlpkVzaneD"
 		}
 	],
 	"images": [
@@ -16,16 +20,33 @@
 		"7.png"
 	],
 	"description": [
-		{ "type": "paragraph", "text": "Army's Heaven is a Single Player/Multiplayer FPS game that makes use of <span class='text-color-green'>PUN2 (Photon Unity Package)</span> for its multiplayer backend. Originally conceived as a multiplayer project, the game currently features a deathmatch mode and offers a selection of two distinct maps." },
-		{ "type": "paragraph", "text": "I am currently focusing on the single player mode that will provide a campaign of a few hours, and introduce all the mechanics that I will transfer back in the multiplayer modes." },
-		{ "type": "paragraph", "text": "Here are some of the things I am currently working on:" },
-		{ "type": "list", "items": [
-			"General Character Controller refactor.",
-			"Replacing the current hand rig with new ones from an asset pack (introducing new guns, new animations, etc..).",
-			"Replace shooting system with the one used in the multiplayer.",
-			"Fix any potential issues with the zombies/npc AI that will (for sure) arise at the end of the refactor.",
-			"Implementing an event system similar to the one used in '<span class='text-color-green'>Deck Planner</span>'."
-		]}
+		{
+			"type": "paragraph",
+			"text": "<span class='text-color-green'>Army’s Heaven</span> is a first-person shooter project featuring both single-player and multiplayer modes. Initially developed with <span class='text-color-green'>PUN2 (Photon Unity Package)</span> for online gameplay, the project has since expanded to include a robust single-player campaign framework designed to demonstrate modular gameplay systems and scalable architecture."
+		},
+		{
+			"type": "paragraph",
+			"text": "Recent development efforts have focused on building a high-quality single-player experience that lays the groundwork for enhanced multiplayer functionality. The project features a custom-built <span class='text-color-green'>FPS controller</span>, an animation-driven <span class='text-color-green'>shooting system</span>, and a state-driven <span class='text-color-green'>AI architecture</span>."
+		},
+		{
+			"type": "paragraph",
+			"text": "<strong>Key Systems Developed:</strong>"
+		},
+		{
+			"type": "list",
+			"items": [
+				"<span class='text-color-green'>Custom FPS Controller</span> — Built from the ground up for responsive movement, fluid aiming, and modular input handling.",
+				"<span class='text-color-green'>AI Behavior System</span> — Finite state machine–driven enemy agents with support for path finding, perception, combat states, and dynamic reactions to the player.",
+				"<span class='text-color-green'>Ragdoll Reanimation</span> — A ragdoll-to-animation blending system that allows NPCs to seamlessly stand up after being knocked down, preserving bone pose and orientation.",
+				"<span class='text-color-green'>Damage-Based Animation Layering</span> — AI character animations adapt dynamically based on damaged body parts (e.g. limping when legs are injured), leveraging Unity’s animation system.",
+				"<span class='text-color-green'>Inventory and Item System</span> — ScriptableObject-based inventory architecture supporting pickups, weapon management, and UI feedback.",
+				"<span class='text-color-green'>Editor Tooling</span> — A custom inspector tool for visualizing and editing AI patrol waypoints directly in the Unity Editor, improving iteration speed and level design workflow."
+			]
+		},
+		{
+			"type": "paragraph",
+			"text": "The ultimate goal is to merge these refined single-player systems back into the multiplayer version, ensuring both modes benefit from the same polished mechanics."
+		}
 	],
 	"technologies": [
 		"C_Sharp",
