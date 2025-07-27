@@ -3,6 +3,8 @@ import * as THREE from 'three';
 
 export class RenderManager
 {
+	static CLEAR_COLOR = 0x191919;
+
 	constructor(canvasContainer)
 	{
 		this.canvas = canvasContainer;
@@ -16,7 +18,7 @@ export class RenderManager
 		);
 
 		this.renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight, false);
-		this.renderer.setClearColor(0x232323, 1)
+		this.renderer.setClearColor(RenderManager.CLEAR_COLOR, 1)
 	}
 	
 
