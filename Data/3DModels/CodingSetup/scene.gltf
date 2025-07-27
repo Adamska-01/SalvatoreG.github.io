@@ -42,10 +42,10 @@
     },
     {
       "rotation": [
-        0,
-        -0.7071066498756409,
-        0.70710688829422,
-        5.3385061704602776e-8
+        9.136456701524065e-16,
+        -0.7071066619772444,
+        0.707106900395828,
+        5.338506353189432e-8
       ],
       "translation": [
         0.8613482713699341,
@@ -53,9 +53,9 @@
         3.7304787635803223
       ],
       "scale": [
-        0.817622184753418,
-        0.8176222443580627,
-        0.8176222443580627
+        0.8176221287814389,
+        0.8176222163720622,
+        0.8176222163720811
       ],
       "name": "Characters-2",
       "extras": {
@@ -65,10 +65,10 @@
     },
     {
       "rotation": [
-        0.44660842418670654,
-        0.3446263372898102,
-        -0.5482163429260254,
-        0.6174402236938477
+        0.44660841937222445,
+        0.3446263343808368,
+        -0.5482163391165185,
+        0.6174402366055424
       ],
       "translation": [
         -0.7275032997131348,
@@ -76,9 +76,9 @@
         2.55859112739563
       ],
       "scale": [
-        0.8176224827766418,
-        0.8176224231719971,
-        0.8176223039627075
+        0.817622472762139,
+        0.8176224112303028,
+        0.8176222963623876
       ],
       "name": "Characters-2001",
       "extras": {
@@ -88,10 +88,10 @@
     },
     {
       "rotation": [
-        0.508569598197937,
-        -0.3870735466480255,
-        0.4892130494117737,
-        0.5934658050537109
+        0.5085696108138532,
+        -0.3870735572812942,
+        0.48921305958797767,
+        0.5934657720603059
       ],
       "translation": [
         0.7843520641326904,
@@ -99,9 +99,9 @@
         2.812140703201294
       ],
       "scale": [
-        0.8176223039627075,
-        0.8176223039627075,
-        0.8176223039627075
+        0.8176223270046317,
+        0.8176223334477024,
+        0.8176223281481934
       ],
       "name": "Characters-2002",
       "extras": {
@@ -112,9 +112,9 @@
     {
       "rotation": [
         0,
-        -1,
+        0.9999999999999971,
         0,
-        7.549790126404332e-8
+        -7.549790126404266e-8
       ],
       "translation": [
         0.373817503452301,
@@ -122,9 +122,9 @@
         1.5280293226242065
       ],
       "scale": [
+        0.8176223039627168,
         0.8176223039627075,
-        0.8176223039627075,
-        0.8176223039627075
+        0.8176223039627168
       ],
       "name": "Characters-2003",
       "extras": {
@@ -135,9 +135,9 @@
     {
       "rotation": [
         0,
-        -1,
+        0.9999999999999971,
         0,
-        7.549790126404332e-8
+        -7.549790126404266e-8
       ],
       "translation": [
         -0.43835440278053284,
@@ -145,9 +145,9 @@
         1.5116357803344727
       ],
       "scale": [
-        0.8180000185966492,
+        0.8180000185966585,
         0.8176223039627075,
-        0.8176223039627075
+        0.8176223039627168
       ],
       "name": "Characters-2004",
       "extras": {
@@ -157,10 +157,10 @@
     },
     {
       "rotation": [
-        0,
-        -0.6089618802070618,
-        0.7931994795799255,
-        6.128033902541574e-8
+        4.1584674364207834e-16,
+        -0.6089618844846572,
+        0.7931994851516806,
+        6.128033999753227e-8
       ],
       "translation": [
         -0.0025136470794677734,
@@ -168,9 +168,9 @@
         2.7968642711639404
       ],
       "scale": [
-        0.8176223039627075,
-        0.8176222443580627,
-        0.8176222443580627
+        0.817622280989464,
+        0.8176222299040934,
+        0.8176222358387905
       ],
       "name": "Characters-2005",
       "extras": {
@@ -180,15 +180,20 @@
     },
     {
       "rotation": [
-        -0.70710688829422,
+        -0.7071068882942235,
         0,
         0,
-        0.7071066498756409
+        0.7071066740788552
       ],
       "translation": [
         0,
         0,
         0.42329442501068115
+      ],
+      "scale": [
+        1,
+        0.9999999657714758,
+        0.9999999657714758
       ],
       "name": "Sketchfab_model",
       "extras": {
@@ -209,10 +214,15 @@
     },
     {
       "rotation": [
-        0.70710688829422,
+        0.7071068882942235,
         0,
         0,
-        0.7071066498756409
+        0.7071066740788552
+      ],
+      "scale": [
+        1,
+        0.9999999657714758,
+        0.9999999657714758
       ],
       "name": "GLTF_SceneRootNode",
       "extras": {
@@ -224,10 +234,15 @@
     },
     {
       "rotation": [
-        0.70710688829422,
+        0.7071068882942235,
         0,
         0,
-        0.7071066498756409
+        0.7071066740788552
+      ],
+      "scale": [
+        1,
+        0.9999999657714758,
+        0.9999999657714758
       ],
       "name": "Computer_0",
       "extras": {
@@ -272,8 +287,8 @@
       "rotation": [
         0,
         0,
-        0.3886421322822571,
-        0.9213888049125671
+        0.3886421372734763,
+        0.921388782835728
       ],
       "translation": [
         -1.320195198059082,
@@ -281,8 +296,8 @@
         -2.093909740447998
       ],
       "scale": [
-        0.8176224231719971,
-        0.8176224231719971,
+        0.8176224322620633,
+        0.8176224322620633,
         0.8176223039627075
       ],
       "name": "Object_4003",
@@ -295,8 +310,8 @@
       "rotation": [
         0,
         0,
-        0.3886421322822571,
-        0.9213888049125671
+        0.3886421372734763,
+        0.921388782835728
       ],
       "translation": [
         -1.320195198059082,
@@ -304,8 +319,8 @@
         -2.093909740447998
       ],
       "scale": [
-        0.8176224231719971,
-        0.8176224231719971,
+        0.8176224322620633,
+        0.8176224322620633,
         0.8176223039627075
       ],
       "name": "Object_4004",
@@ -318,8 +333,8 @@
       "rotation": [
         0,
         0,
-        0.3886421322822571,
-        0.9213888049125671
+        0.3886421372734763,
+        0.921388782835728
       ],
       "translation": [
         -1.320195198059082,
@@ -327,8 +342,8 @@
         -2.093909740447998
       ],
       "scale": [
-        0.8176224231719971,
-        0.8176224231719971,
+        0.8176224322620633,
+        0.8176224322620633,
         0.8176223039627075
       ],
       "name": "Object_4005",
@@ -376,8 +391,8 @@
       "rotation": [
         0,
         0,
-        0.3886421322822571,
-        0.9213888049125671
+        0.3886421372734763,
+        0.921388782835728
       ],
       "translation": [
         -0.06426158547401428,
@@ -385,8 +400,8 @@
         -0.018647678196430206
       ],
       "scale": [
-        0.8176224231719971,
-        0.8176224231719971,
+        0.8176224322620633,
+        0.8176224322620633,
         0.8176223039627075
       ],
       "name": "Object_9001",
@@ -2651,18 +2666,18 @@
     {
       "pbrMetallicRoughness": {
         "baseColorFactor": [
-          0.03433980792760849,
-          0.03433980792760849,
-          0.9911020994186401,
+          0.0343398068028541,
+          0.0343398068028541,
+          0.9911020971136257,
           1
         ],
         "metallicFactor": 1,
         "roughnessFactor": 1
       },
       "emissiveFactor": [
-        0.03433980792760849,
-        0.03433980792760849,
-        0.9911020994186401
+        0.0343398068028541,
+        0.0343398068028541,
+        0.9911020971136257
       ],
       "doubleSided": true,
       "name": "Material.002"
@@ -2673,9 +2688,9 @@
         "roughnessFactor": 1
       },
       "emissiveFactor": [
-        0.002369409892708063,
+        0.002428215868235294,
         1,
-        0.002369409892708063
+        0.002428215868235294
       ],
       "doubleSided": true,
       "name": "Material.003"
@@ -2696,9 +2711,9 @@
     {
       "pbrMetallicRoughness": {
         "baseColorFactor": [
-          0.32777801156044006,
-          0.34670400619506836,
-          0.3864290118217468,
+          0.3277780980458375,
+          0.34670405634441115,
+          0.38642943377667954,
           1
         ],
         "metallicFactor": 0.4000000059604645,
@@ -2737,11 +2752,11 @@
   "images": [
     {
       "mimeType": "image/png",
-      "uri": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAABCAYAAAAxWXB3AAAAAXNSR0IArs4c6QAAAZFJREFUOE+NUj1LA0EQfYtgUBu7BNOqlZUEzxArLdSkErTQWlAskl40heAPCEHQ3kaxNU1s40esBAsRMeSiIBYWiUE9lJWb2d27y0XwituPmX3z5s0TmUxaQgrQpxbpbflef/8ImBR3Q5gSUgJCKHD8BeK7lzCU3HRBP/q7cIanuXD5h+oAFFcc+JHLhXOFOntgXpMUlRK0CobR7DlL36jV1AkL1clZoRKEVDxCmql+uZLmGh4FjyzIzjAjyfjk0dN81UpNBQXl3ll/eskbI6aeZZCXOnHQp3t3+1Car0ctqWfDbj25NbhjmqRvBGQtCqr6wbLKf52YfPZ6DPpP++a8coGn5wai0Rja7XfMp9OoXlVhWZbRLmRJn0fGYxE4P98Ym1nCTfkI6/kCctms8euI7WBicQr3L7cYODhBz8YKRueWYdt12PUGrEkL8fgQri8P8ZDbQwUSwwBqvRFknC+kCpsobRUxvb2G17cmdo7P0Gy1MPv5gXJfPwZ393G3uoBUMoniYw35RIL9L4HTUkn8AuC4twIZQSL9AAAAAElFTkSuQmCC"
+      "uri": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAABCAYAAAAxWXB3AAAAAXNSR0IArs4c6QAAAa9JREFUOE9VUz8sw1EQ/l4k/i620lVYTOJPVTcG0t8kLKwWImnMojGwCyHsNqy16NomrU0MItKodukioSRNiSf37u79fv0NfXfvvrt3991XEwSBhX5kGUAOOMs5kUtrYY2B8VnsE844MNfgH853cVjJMRLXGGCsSwAdVNcaC0PVLBXltzjGPjflKvJTeq/tcjMCk/eis7l0wejA0Lnk9KQI1uEizLiyod9hyrWLW8O9ix0SRzcM9HXCTXTsoWMfPDF/GvAA4cXTpLwS98xDSGF0zmifgtF9UJeuXlQY1LkSLFpwrtbU/XgxSNecp9rRcX1pxy/rjblhdrRp/6poMmSQtRCuNEIM8U9R0Y2unuCsHhUXWTyV8kpesVhAvV7HcGwIza9vBOk0SuUyEolpRYfzqG5lPVRrItaLn79fjM+v4CF/ja39I2QyGZ87Wm1jZjWF58YjBs5v0LW9jrGlNbxVq6jWakgmZhGPx3FfusTLzikKMBixFq/dPQjabaSOd3G7d4KF7CYa7584uLrDR7OJxVYL+f4+DB5e4GljGcnUHM4qFWQnp9yfjGbP5XLmH5Qh2AJ/Cd5qAAAAAElFTkSuQmCC"
     },
     {
       "mimeType": "image/png",
-      "uri": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAABCAYAAAAxWXB3AAAAAXNSR0IArs4c6QAAAZpJREFUOE9lk0GOFDEMRZ8lzsKSBbPiOKzmSsAFOExXUtIsR5r0CUh6C2LK6DtOTY9YtFL5duzv/93m7g4Fp2AU9B2/4v9jVmDzGfcCpncbRo18dNqWMZ07lOPMxStuG+YV9ns8+1uhHMJVp/Dp7xeePnydvMqBWwVUV+fsz3ZEPdd3zuDiVn3Gfc4VceHF5/2cdQvedsc/YjFfTT6qvUV/E6739ZhzLx6BVx5+fqZ8/J46Kn4J3MvKn/2W3h58KvgW/eJUzd2Dg3ivnsKLS589dU69la95k9vpoXD5ldqcuPQTf/mXvEPX9H3pE2fqEPle+OYPPNpj6CHe23FXf/kb+3BMneRJaK/6+zsd3nZO+a8RnzovLytc3nw/9zP8Vf3ch9RT/arW2StmGx7xy9yX+t73uRN17k/6vfouHZZemtO5nHs+66Zezz+wP+C/83+x9soKncJwo+EMg4YxXKfuxtWdDtw6+ACaoQS7At3w5tgA1/1XJgqgrQeqiOueiUan9xf6GLTWGONGuzZG77y0xm0Mrq1FfIzBP4wzaRBQBvYdAAAAAElFTkSuQmCC"
+      "uri": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAABCAYAAAAxWXB3AAAAAXNSR0IArs4c6QAAAbVJREFUOE9Vk0GS1TAMRJ+KOQtLFlPFYm7DEm4EHIDLxHaq2LGI/wl+nFlSkIhq2ebDIpVYbkmtbsX8uhxbcRbMC24ZI+P5AitAxjzjeluG5BGLR/GJLw5eMJae58IUyBfuPVc1FDfdlxN8BUtxH33IZNFBPBLvfr/w/enDqOOg/iTMB1/hxFN9LQUueIqX+Ki/5rI18qJP8t7fxbPXEc6y6o945HW+yS+MFTz97e/Cl9536tJnKLz/9szy9mvw8eC1IDxZc+Uxr+LSouszdfxP63L1vIHr9TKrj7in0Cl8EGbO673frC99wtehgytP+Jg3d2/Cz4Rr/mXoFnoOn6Xp2IfP5zMf33wi6kifa+gWOkrPHpf+UVe6hG/jW3XCJ+Ee+OA/9yzu5VuBpHml/9J9sO6XS8/QRjsoHboe+Ty7n2Pfgot8KGevM/mN3OlL381/9mjwjP0Z+xg6psd/EX1+fIFf4D8fus3/pVlhx6lAA6rrbWzAKx7v3eB1B78DN+AQUBdgG7jON4szTUF9VMwbbhXThVfcDoyK09j3jX1v3OpGawe1Vvamc+VoB9ut0u53juPgD3SRgBEZNIF2AAAAAElFTkSuQmCC"
     }
   ],
   "meshes": [
@@ -3007,11 +3022,11 @@
         {
           "name": "PointLight",
           "color": [
-            0.24620132669705552,
-            0.23839757380151394,
-            0.9559733532482866
+            0.20507873637973145,
+            0.19461783043107173,
+            1
           ],
-          "intensity": 1,
+          "intensity": 10,
           "type": "point"
         }
       ]
