@@ -98,6 +98,15 @@ function loadItem(linkProjectName)
 				globalIndex++;
 			}
 
+			if ((!videos || videos.length === 0) && (!images || images.length === 0)) 
+			{
+				$('#image-view').hide();
+			} 
+			else 
+			{
+				$('#image-view').show();
+			}
+
 			// Load Description
 			const container = $(`#${DESCRIPTION_ID}`);
 			for (let block of description) 
