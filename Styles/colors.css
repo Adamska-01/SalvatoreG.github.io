@@ -3,6 +3,10 @@
 }
 
 .background-color-black {
+	background-color: rgba(40, 40, 40, 0.9)
+}
+
+.background-color-gray {
 	background-color: rgba(71, 71, 71, 0.4)
 }
 
