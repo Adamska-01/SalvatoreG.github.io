@@ -138,7 +138,7 @@ function loadItem(linkProjectName)
 			
 			// Button links
 			var contentLinks = $(`#${LINKS_ID}`);
-			if(linkButtons.length <= 0)
+			if(linkButtons == null || linkButtons.length <= 0)
 			{
 				$('<span />')
 					.text('No links are currently available.')
