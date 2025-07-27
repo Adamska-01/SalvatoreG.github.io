@@ -6,6 +6,8 @@
 	--projects-color: #ff0000;
 	--work-color: #adff2f;
 	--contact-color: #ee82ee;
+
+	--default-shadow: rgba(100, 100, 100, 0.3);
 }
 
 .nav-wrapper {
@@ -21,7 +23,8 @@
 	max-width: min(90vw, 90vh);
 	height: 3.5em;
 	border-radius: 1.2em;
-	box-shadow: 0 1em 1em rgba(0, 0, 0, 0.2);
+	border-top: 1px solid rgba(255, 255, 255, 0.05);
+	box-shadow: 0 0.5em 0.8em var(--default-shadow); 
 
 	display: flex;
 	align-items: center;
@@ -29,6 +32,8 @@
 	overflow: hidden;
 	padding: 0 1em; /* Padding for some breathing room */
 	box-sizing: border-box;
+
+	transition: box-shadow 0.3s ease;
 }
 
 .nav_links {

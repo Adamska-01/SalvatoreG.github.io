@@ -11,6 +11,10 @@ function setNavLightVisibility(state)
 	if (!state)
 	{
 		links.forEach(link => link.classList.remove('active'));
+
+		nav.style.boxShadow = `0 0.5em 0.8em var(--default-shadow)`;
+
+		currentActiveElement = null;
 	}
 }
 
@@ -42,6 +46,8 @@ function moveLight(activeElement)
 	light.style.color = activeColor;
 	light.style.left = `${lightLeft}px`;
 	nav.style.setProperty('--active-color', activeColor);
+
+	nav.style.boxShadow = `0 0.5em 0.8em color-mix(in srgb, ${activeColor} 40%, transparent)`;
 
 	setNavLightVisibility(true);
 }
