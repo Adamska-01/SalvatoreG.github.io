@@ -2,7 +2,7 @@ function addMediumSpacerDiv(container)
 {
 	// Add spacer
 	$('<div/>')
-		.addClass('medium-br')
+		.addClass('medium-line-break')
 		.appendTo(container);
 }
 

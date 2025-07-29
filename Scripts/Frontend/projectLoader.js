@@ -130,6 +130,11 @@ function loadItem(linkProjectName)
 							.html(item)
 							.appendTo(ul);
 					}
+
+					// Add a spacing <div> after the list
+					$('<div/>')
+						.addClass('small-line-break')
+						.appendTo(container);
 				}
 			}
 
@@ -142,6 +147,8 @@ function loadItem(linkProjectName)
 				$('<img />')
 					.attr('style', 'width: 50px; height: auto; margin: 5px 10px 0px 10px')
 					.attr('src', `${SYMBOLS_IMAGE_PATH}/${technology}.png`)
+					.attr('alt', technology)
+					.attr('title', technology)
 					.appendTo(contentTechnologyDiv);
 			}
 			
