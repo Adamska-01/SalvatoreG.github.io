@@ -19,7 +19,7 @@
 			"items": [
 				"Developing a full vehicle customization system (Parts, colors, liveries).",
 				"Implementation of <span class='text-color-green'>blueprints</span> that allow designers to easily create vehicle parts (Adding functionalities such as part/color/livery swap thanks to actor components) and add them to the game.",
-				"Designed and implemented custom <span class='text-color-green'>UI widgets</span>, including a <span class='text-color-green'>carousel system</span>.",
+				"Designed and implemented custom <span class='text-color-green'>UI widgets</span>, including a <span class='text-color-green'>carousel UI system</span>.",
 				"Developed a custom <span class='text-color-green'>UI navigation</span> system that works with gamepads controls.",
 				"Implemented a <span class='text-color-green'>custom camera view systems</span> for free-look, rotation, and UI-contextual focus views.",
 				"<span class='text-color-green'>Collaborated with designers</span> to streamline workflows for asset imports, proxy models, and menu flows.",

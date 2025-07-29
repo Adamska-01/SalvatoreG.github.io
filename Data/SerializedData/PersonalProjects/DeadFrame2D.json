@@ -20,7 +20,7 @@
 		},
 		{
 			"type": "paragraph",
-			"text": "Inspired by modern engines such as Unity, it features a scene-based architecture and an Entity Component System (ECS) design. It also supports tile maps (including Tiled), coroutine scheduling, and a debug mode with collider visualizations."
+			"text": "Inspired by modern engines such as Unity, it features a scene-based architecture and an Entity Component System (ECS) design. It also supports tile maps (including <a href=\"https://www.mapeditor.org/\" class=\"link\" target=\"_blank\" rel=\"noopener noreferrer\">Tiled</a>), coroutine scheduling, and a debug mode with collider visualizations."
 		},
 		{
 			"type": "paragraph",
@@ -37,7 +37,7 @@
 				"⚙️ Physics-based collisions via Box2D.",
 				"🧱 Scene and ECS architecture.",
 				"🎮 Controller and keyboard/mouse input support.",
-				"🗺️ Tilemap rendering with Tiled support.",
+				"🗺️ Tilemap rendering with <a href=\"https://www.mapeditor.org/\" class=\"link\" target=\"_blank\" rel=\"noopener noreferrer\">Tiled</a> support.",
 				"⏳ Coroutines.",
 				"🧠 Event-driven memory and object management.",
 				"🐞 Debug mode with visual overlays.",
