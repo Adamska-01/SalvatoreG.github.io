@@ -28,10 +28,6 @@
 		},
 		{
 			"type": "paragraph",
-			"text": "I used this engine to develop two games: <span class='text-color-green'>BobbleBlast</span> (a classic puzzle-style bubble shooter) and a <span class='text-color-green'>Retro Platformer</span> demo inspired by Super Mario. These demonstrate the engine's flexibility for different game genres."
-		},
-		{
-			"type": "paragraph",
 			"text": "Key features include:"
 		},
 		{
@@ -45,8 +41,23 @@
 				"⏳ Coroutines.",
 				"🧠 Event-driven memory and object management.",
 				"🐞 Debug mode with visual overlays.",
-				"🔧 Cross-platform setup with Premake."
+				"🔧 Cross-platform setup with Premake.<span class='medium-line-break'></span>"
 			]
+		},
+		{
+			"type": "paragraph",
+			"text": "I used this engine to develop two games:"
+		},
+		{
+			"type": "list",
+			"items": [
+				"<span class='text-color-green'>BobbleBlast</span> - a classic puzzle-style bubble shooter.",
+				"<span class='text-color-green'>Retro Platformer</span> - a platform demo inspired by Super Mario."
+			]
+		},
+		{
+			"type": "paragraph",
+			"text": "These demonstrate the engine's flexibility for different game genres."
 		},
 		{
 			"type": "paragraph",
@@ -55,7 +66,10 @@
 	],
 	"technologies": [
 		"C++",
-		"SDL"
+		"Lua",
+		"SDL",
+		"Box2D",
+		"Premake"
 	],
 	"links": [
 		{

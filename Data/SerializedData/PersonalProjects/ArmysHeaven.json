@@ -26,7 +26,7 @@
 		},
 		{
 			"type": "paragraph",
-			"text": "Recent development efforts have focused on building a high-quality single-player experience that lays the groundwork for enhanced multiplayer functionality. The project features a custom-built <span class='text-color-green'>FPS controller</span>, an animation-driven <span class='text-color-green'>shooting system</span>, and a state-driven <span class='text-color-green'>AI architecture</span>."
+			"text": "Recent development efforts have focused on building a high-quality single-player experience. The project now features a custom-built <span class='text-color-green'>FPS controller</span>, an animation-driven <span class='text-color-green'>shooting system</span>, and a state-driven <span class='text-color-green'>AI architecture</span>."
 		},
 		{
 			"type": "paragraph",
