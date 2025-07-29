@@ -27,7 +27,7 @@
 			"type": "list",
 			"items": [
 				"Led <span class='text-color-green'>Migration of legacy PHP</span> and <span class='text-color-green'>ASP.NET</span> APIs to modern <span class='text-color-green'>.NET</span> using <span class='text-color-green'>Entity Framework Core</span>, refactoring schemas and improving performance and maintainability.",
-				"Designed and implemented a <span class='text-color-green'>version deprecation system</span> for the iOS mobile app, enabling server-controlled access management based on semantic versioning. This system was also fully integrated into the company’s internal <span class='text-color-green'>QA Dashboard to manage Development, Staging and Production data</span>.",
+				"Designed and implemented a <span class='text-color-green'>version deprecation system</span> for the iOS mobile app, enabling server-controlled access management based on semantic versioning. This system was also fully integrated into the company’s internal <span class='text-color-green'>QA Dashboard</span> (a <span class='text-color-green'>Blazor Server app</span>) to manage <span class='text-color-green'>Development, Staging and Production data</span>.",
 				"Supported early development of an <span class='text-color-green'>OAuth</span>-based authentication flow for secure login and token lifecycle management.",
 				"Participated in Unity build upgrades (2019 → 2022), focusing on fixing <span class='text-color-green'>WebGL templates</span> and giving <span class='text-color-green'>CI pipeline</span> support.",
 				"Improved and Fixed UI issues and rendering correctness by resolving bugs linked to dynamically generated vertex data.",
