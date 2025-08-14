@@ -157,7 +157,7 @@ function loadItem(linkProjectName)
 			if(linkButtons == null || linkButtons.length <= 0)
 			{
 				$('<span />')
-					.text('No links are currently available.')
+					.text('No links are available.')
 					.attr('class', 'paragraph text-color-white text-size-medium')
 					.appendTo(contentLinks);
 			}
