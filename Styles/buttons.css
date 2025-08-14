@@ -90,17 +90,20 @@
 }
 
 .link-button {
-	display: inline-flex;
+	display: flex;
+	text-align: center;
+	justify-content: center;
 	align-items: center;
 	border-radius: 50dvh;
-	background-color: rgb(70, 71, 72);
+	background-color: #444;
 	width: fit-content;
-	height: 2em;
-	padding: 0px 15px 0px 15px;
-	margin: 5px 5px 5px 5px;
+	height: 0.8em;
+	padding: 10px 20px;
+	margin: 0 auto 8px auto; 
 	font-family: "Roboto Mono", monospace;
-	color: white;
+	text-decoration: none;
 	cursor: pointer;
+	color: white;
 	
 	transition: background-color 0.3s ease;
 
