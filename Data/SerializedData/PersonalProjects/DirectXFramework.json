@@ -8,8 +8,23 @@
 		"3.png"
 	],
 	"description": [
-		{ "type": "paragraph", "text": "This project is a framework that wraps up some of the <span class='text-color-green'>DirectX</span> features to easily display graphics on the screen. It comes already with a playable demo." },
-		{ "type": "paragraph", "text": "The application leverages the <span class='text-color-green'>Windows API</span> to create the window and integrates standard vertex and pixel shaders, along with skybox and text rendering functionalities. Furthermore, it includes support for ambient, directional, and point lighting effects. For input management, it uses <span class='text-color-green'>DirectInput 8</span>." }
+		{ 
+			"type": "paragraph", 
+			"text": "This project is a framework that wraps up some of the <span class='text-color-green'>DirectX</span> features to easily display graphics on the screen. It comes already with a playable demo."
+		},
+		{
+			"type": "paragraph",
+			"text": "The project leverages low-level graphics and input systems, featuring:"
+		},
+		{
+			"type": "list",
+			"items": [
+				"<span class='text-color-green'>Windows API Integration</span> — Handles window creation and management for a native desktop application experience.",
+				"<span class='text-color-green'>Shader Support</span> — Implements standard vertex and pixel shaders, including skybox rendering and text rendering functionalities.",
+				"<span class='text-color-green'>Lighting System</span> — Supports ambient, directional, and point lighting for dynamic scene illumination.",
+				"<span class='text-color-green'>Input Management</span> — Utilizes DirectInput 8 for precise keyboard, mouse, and controller input handling."
+			]
+		}
 	],
 	"technologies": [
 		"C++",

@@ -20,11 +20,7 @@
 		},
 		{
 			"type": "paragraph",
-			"text": "Inspired by modern engines such as Unity, it features a scene-based architecture and an Entity Component System (ECS) design. It also supports tile maps (including <a href=\"https://www.mapeditor.org/\" class=\"link\" target=\"_blank\" rel=\"noopener noreferrer\">Tiled</a>), coroutine scheduling, and a debug mode with collider visualizations."
-		},
-		{
-			"type": "paragraph",
-			"text": "The engine is organized for modular development and includes a template project that helps developers get started quickly with a clean structure and build scripts for both Windows and Linux."
+			"text": "The engine is organized for modular development and includes a template project that helps developers get started quickly with a clean structure and build scripts for both <span class='text-color-green'>Windows</span> and <span class='text-color-green'>Linux</span>."
 		},
 		{
 			"type": "paragraph",
@@ -46,13 +42,13 @@
 		},
 		{
 			"type": "paragraph",
-			"text": "I used this engine to develop two games:"
+			"text": "I used this engine to develop the following games:"
 		},
 		{
 			"type": "list",
 			"items": [
-				"<span class='text-color-green'>BobbleBlast</span> - a classic puzzle-style bubble shooter.",
-				"<span class='text-color-green'>Retro Platformer</span> - a platform demo inspired by Super Mario."
+				"<a href=\"https://github.com/Adamska-01/Bobble_Blast/\" class=\"link\" target=\"_blank\" rel=\"noopener noreferrer\">BobbleBlast</a> - a classic puzzle-style bubble shooter.",
+				"<a href=\"https://github.com/Adamska-01/Retro_Platformer/\" class=\"link\" target=\"_blank\" rel=\"noopener noreferrer\">Retro Platformer</a> - a platform demo inspired by Super Mario."
 			]
 		},
 		{

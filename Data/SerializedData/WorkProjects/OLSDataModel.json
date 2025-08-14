@@ -7,7 +7,7 @@
 		},
 		{
 			"type": "paragraph",
-			"text": "To ensure consistency and reduce code duplication, the models are packaged and distributed as both a <span class='text-color-green'>versioned NuGet package</span> for the API and QA Dashboard, and a <span class='text-color-green'>Unity package</span> compatible with the Unity Package Manager (UPM) for the Unity apps."
+			"text": "To ensure consistency and reduce code duplication, the models are distributed as a <span class='text-color-green'>versioned NuGet package</span> for the API and QA Dashboard, and as a <span class='text-color-green'>Unity package</span> (compatible with the Unity Package Manager) for the Unity apps."
 		},
 		{
 			"type": "paragraph",
@@ -15,11 +15,11 @@
 		},
 		{
 			"type": "paragraph",
-			"text": "Ultimately, I automated the build and packaging process using <span class='text-color-green'>Bitbucket Pipelines</span>, generating NuGet and UPM packages on every commit. Versioning followed defined rules."
+			"text": "Ultimately, I automated the build and packaging process using <span class='text-color-green'>Bitbucket Pipelines</span>, generating NuGet and UPM packages on every commit (versioning followed defined rules)."
 		},
 		{
 			"type": "paragraph",
-			"text": "This project strengthened my skills in cross-platform <span class='text-color-green'>package management</span>, <span class='text-color-green'>CI/CD automation</span>, and maintaining consistent data contracts across multiple systems."
+			"text": "This project strengthened my skills in cross-platform <span class='text-color-green'>package management</span>, <span class='text-color-green'>CI/CD automation</span>, and maintaining consistent data models across multiple systems."
 		}
 	],
 	"technologies": [

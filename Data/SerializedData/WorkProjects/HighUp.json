@@ -8,7 +8,7 @@
 	"description": [
 		{
 			"type": "paragraph",
-			"text": "Upon joining <span class='text-color-green'>West Pier Studio</span>, I was given the chance to lead the development of a robust vehicle customization system in <span class='text-color-green'>Unreal Engine 5</span>. This was an attempt in trying to get visibility and acquire clients to co-develop AAA games."
+			"text": "Upon joining <a href=\"https://www.westpierstudio.com/\" class=\"link\" target=\"_blank\" rel=\"noopener noreferrer\">West Pier Studio</a>, I was given the chance to take ownership of the development of a robust <span class='text-color-green'>vehicle customization system</span> in <span class='text-color-green'>Unreal Engine 5</span>. This was an attempt in trying to get visibility and acquire clients to co-develop AAA games."
 		},
 		{
 			"type": "paragraph",
@@ -22,9 +22,9 @@
 				"Designed and implemented custom <span class='text-color-green'>UI widgets</span>, including a <span class='text-color-green'>carousel UI system</span>.",
 				"Developed a custom <span class='text-color-green'>UI navigation</span> system that works with gamepads controls.",
 				"Implemented a <span class='text-color-green'>custom camera view systems</span> for free-look, rotation, and UI-contextual focus views.",
-				"<span class='text-color-green'>Collaborated with designers</span> to streamline workflows for asset imports, proxy models, and menu flows.",
-				"Built Unreal Engine 5 from source, creating a portable version with integrated <span class='text-color-green'>PS5 build tools</span> to support platform-specific development."
-	]
+				"<span class='text-color-green'>Collaborated with designers</span> to streamline workflows for vehicle asset imports and UI.",
+				"Built a <span class='text-color-green'>portable custom Unreal Engine 5</span> from source with integrated <span class='text-color-green'>PS5 SDK tools</span>."
+			]
 		}
 	],
 	"technologies": [

@@ -22,15 +22,11 @@
 	"description": [
 		{
 			"type": "paragraph",
-			"text": "<span class='text-color-green'>Army’s Heaven</span> is a first-person shooter project featuring both single-player and multiplayer modes. Initially developed with <span class='text-color-green'>PUN2 (Photon Unity Package)</span> for online gameplay, the project has since expanded to include a robust single-player campaign framework designed to demonstrate modular gameplay systems and scalable architecture."
+			"text": "<span class='text-color-green'>Army’s Heaven</span> is a first-person shooter project featuring both single-player and multiplayer modes. Initially developed with <span class='text-color-green'>PUN2 (Photon Unity Package)</span> for online gameplay, the project has since expanded to include a single-player campaign designed to demonstrate the newly added gameplay systems."
 		},
 		{
 			"type": "paragraph",
-			"text": "Recent development efforts have focused on building a high-quality single-player experience. The project now features a custom-built <span class='text-color-green'>FPS controller</span>, an animation-driven <span class='text-color-green'>shooting system</span>, and a state-driven <span class='text-color-green'>AI architecture</span>."
-		},
-		{
-			"type": "paragraph",
-			"text": "<strong>Key Systems Developed:</strong>"
+			"text": "Recent development efforts have focused on building a high-quality single-player experience. The project now features:"
 		},
 		{
 			"type": "list",
@@ -45,7 +41,7 @@
 		},
 		{
 			"type": "paragraph",
-			"text": "The ultimate goal is to merge these refined single-player systems back into the multiplayer version, ensuring both modes benefit from the same polished mechanics."
+			"text": "The ultimate goal is to merge these refined single-player systems back into the multiplayer online version, ensuring both modes benefit from the same polished mechanics."
 		}
 	],
 	"technologies": [
