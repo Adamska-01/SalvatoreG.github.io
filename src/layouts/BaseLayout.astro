@@ -1,0 +1,107 @@
+---
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import Nav from '../components/Nav.astro';
+import Scene3D from '../components/Scene3D.astro';
+import { withBase } from '../scripts/paths';
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+		<meta name="generator" content={Astro.generator} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+
+		<!-- Icon made by Muhamad Ulum from https://www.flaticon.com/authors/muhamad-ulum -->
+		<link rel="icon" type="image/png" href={withBase('/favicon.png')} />
+		<link rel="sitemap" href={withBase('/sitemap-index.xml')} />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Doto:wght@100..900&display=swap"
+			rel="stylesheet"
+		/>
+
+		<ClientRouter />
+	</head>
+
+	<body>
+		<Scene3D />
+
+		<div id="ui-root">
+			<header id="headline" class="header-font">
+				<span class="headline-title">Salvatore Galeotta</span>
+				<span class="headline-subtitle">Software Developer</span>
+			</header>
+
+			<Nav />
+
+			<main>
+				<slot />
+			</main>
+		</div>
+	</body>
+</html>
+
+<style>
+	#ui-root {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		height: 100dvh;
+		pointer-events: none;
+	}
+
+	#ui-root :global(a),
+	#ui-root :global(button),
+	#ui-root :global(nav),
+	#ui-root :global(.content-panel) {
+		pointer-events: auto;
+	}
+
+	#headline {
+		height: 10dvh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+	}
+
+	.headline-title {
+		font-size: var(--text-title);
+		font-weight: bold;
+		color: var(--accent-green);
+	}
+
+	.headline-subtitle {
+		font-size: var(--text-big);
+		font-weight: bold;
+		color: var(--accent-blue);
+		margin-top: 10px;
+	}
+
+	main {
+		flex: 1;
+		min-height: 0;
+		margin-top: 10px;
+	}
+</style>
