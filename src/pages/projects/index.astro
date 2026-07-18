@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectListPanel from '../../components/ProjectListPanel.astro';
+
+const entries = await getCollection('personalProjects');
+---
+
+<BaseLayout
+	title="Projects - Salvatore Galeotta"
+	description="Personal and university game development projects: a C++ 2D game engine, an online FPS, mobile games, and more."
+>
+	<ProjectListPanel entries={entries} basePath="/projects" />
+</BaseLayout>

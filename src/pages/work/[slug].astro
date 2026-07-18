@@ -1,0 +1,22 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectDetail from '../../components/ProjectDetail.astro';
+import { withBase } from '../../scripts/paths';
+
+export async function getStaticPaths() {
+	const entries = await getCollection('workProjects');
+
+	return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+interface Props {
+	entry: CollectionEntry<'workProjects'>;
+}
+
+const { entry } = Astro.props;
+---
+
+<BaseLayout title={`${entry.data.title} - Salvatore Galeotta`} description={entry.data.summary}>
+	<ProjectDetail entry={entry} backHref={withBase('/work/')} />
+</BaseLayout>

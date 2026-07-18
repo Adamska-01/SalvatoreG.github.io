@@ -1,0 +1,91 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContentPanel from '../components/ContentPanel.astro';
+import { withBase } from '../scripts/paths';
+import githubIcon from '../assets/symbols/github.png';
+import linkedinIcon from '../assets/symbols/linkedin.png';
+import pdfIcon from '../assets/symbols/pdf.png';
+---
+
+<BaseLayout
+	title="Contact - Salvatore Galeotta"
+	description="Get in touch with Salvatore Galeotta — email, GitHub, LinkedIn, and resume."
+>
+	<ContentPanel>
+		<div class="contact">
+			<p>Hope you're having a great time exploring my website!</p>
+			<p>Feel free to reach out if you'd like to get in touch 😊</p>
+			<p>
+				<a href="mailto:salvatoreg.jobs@gmail.com" class="link">salvatoreg.jobs@gmail.com</a>
+			</p>
+
+			<div class="socials">
+				<a href="https://github.com/Adamska-01" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+					<Image class="social-icon expand-on-hover" src={githubIcon} alt="GitHub" width={50} />
+				</a>
+				<a
+					href="https://www.linkedin.com/in/salvatore-galeotta-10baa9127/"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="LinkedIn profile"
+				>
+					<Image class="social-icon expand-on-hover" src={linkedinIcon} alt="LinkedIn" width={50} />
+				</a>
+			</div>
+
+			<div class="line-long"></div>
+
+			<h2 class="section-title header-font">My Resume</h2>
+			<!-- PDF icon made by Dimitry Miroliubov, https://www.flaticon.com/authors/dimitry-miroliubov -->
+			<a class="resume-link" href={withBase('/downloads/Salvatore_Galeotta_CV.pdf')} target="_blank">
+				<Image class="resume-icon expand-on-hover" src={pdfIcon} alt="" width={120} />
+				<span>Click to view</span>
+			</a>
+		</div>
+	</ContentPanel>
+</BaseLayout>
+
+<style>
+	.contact {
+		text-align: center;
+		font-size: var(--text-medium);
+		padding: 7px 7px 25px;
+	}
+
+	.contact p {
+		padding: 7px;
+		margin: 0;
+	}
+
+	.socials {
+		display: flex;
+		justify-content: center;
+		gap: 15px;
+		padding: 20px 0;
+	}
+
+	.social-icon {
+		width: min(50px, 10vw);
+		height: auto;
+	}
+
+	.section-title {
+		font-size: var(--text-big);
+		margin: 25px 0 15px;
+	}
+
+	.resume-link {
+		display: inline-flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+		color: var(--text-color);
+		text-decoration: none;
+	}
+
+	.resume-icon {
+		width: min(120px, 20vw);
+		height: auto;
+	}
+</style>

@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectListPanel from '../../components/ProjectListPanel.astro';
+
+const entries = await getCollection('workProjects');
+---
+
+<BaseLayout
+	title="Work - Salvatore Galeotta"
+	description="Professional projects at West Pier Studio: Unity WebGL planning tools, .NET backend modernization, and an Unreal Engine 5 vehicle customization system."
+>
+	<ProjectListPanel entries={entries} basePath="/work" />
+</BaseLayout>

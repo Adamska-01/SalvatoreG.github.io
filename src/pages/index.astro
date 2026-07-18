@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const description =
+	"Salvatore Galeotta's portfolio — .NET backend & game developer. Explore Unity and Unreal Engine projects, a custom C++ game engine, and professional work.";
+
+const jsonLd = JSON.stringify({
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Salvatore Galeotta',
+	jobTitle: 'Software Developer',
+	url: new URL(import.meta.env.BASE_URL, Astro.site).href,
+	sameAs: ['https://github.com/Adamska-01', 'https://www.linkedin.com/in/salvatore-galeotta-10baa9127/'],
+});
+---
+
+<BaseLayout title="Salvatore Galeotta - Portfolio" description={description}>
+	<script type="application/ld+json" set:html={jsonLd} is:inline />
+</BaseLayout>

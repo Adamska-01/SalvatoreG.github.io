@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContentPanel from '../components/ContentPanel.astro';
+import { withBase } from '../scripts/paths';
+---
+
+<BaseLayout title="Page Not Found - Salvatore Galeotta" description="This page does not exist.">
+	<ContentPanel>
+		<div class="not-found">
+			<h1 class="header-font">404</h1>
+			<p>This page does not exist.</p>
+			<a class="link" href={withBase('/')}>Back to the homepage</a>
+		</div>
+	</ContentPanel>
+</BaseLayout>
+
+<style>
+	.not-found {
+		text-align: center;
+		padding: 40px 0;
+		font-size: var(--text-medium);
+	}
+
+	.not-found h1 {
+		font-size: var(--text-title);
+		margin: 0 0 10px;
+	}
+</style>
