@@ -1,0 +1,44 @@
+/* Design tokens — single source of truth for colors, fonts, sizes, timings */
+:root {
+	/* Surfaces */
+	--body-background-color: rgb(35, 35, 35);
+	--panel-background-color: rgba(40, 40, 40, 0.9);
+	--card-background-color: rgba(71, 71, 71, 0.4);
+	--chip-background-color: #222831e6;
+	--tab-color: #191919;
+
+	/* Text */
+	--text-color: #ffffff;
+	--accent-green: #bada55;
+	--accent-blue: #80ccff;
+	--link-color: #4aa5f0;
+	--link-hover-color: #2f8cd2;
+
+	/* Nav tab accents */
+	--about-color: #00f7ff;
+	--projects-color: #ff0000;
+	--work-color: #adff2f;
+	--contact-color: #ee82ee;
+	--default-shadow: rgba(100, 100, 100, 0.3);
+
+	/* Misc */
+	--list-item-highlight-color: rgba(207, 49, 49, 0.35);
+	--media-highlight-color: rgb(165, 201, 88);
+	--close-button-X-color: rgba(255, 255, 255, 1);
+	--close-button-border-color: rgba(202, 202, 202, 0.3);
+
+	/* Fonts */
+	--font-header: 'Doto', sans-serif;
+	--font-body: 'Geist', sans-serif;
+
+	/* Type scale (viewport-fluid, from legacy textSizes.css) */
+	--text-title: calc(10px + 4vmin);
+	--text-big: calc(5px + 3vmin);
+	--text-medium-2: calc(5px + 2vmin);
+	--text-medium: calc(5px + 1.2vmin);
+	--text-small: calc(5px + 1vmin);
+
+	/* Motion */
+	--transition-time: 0.5s;
+	--page-fade-time: 0.25s;
+}
