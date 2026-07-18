@@ -1,0 +1,181 @@
+---
+import { withBase } from '../scripts/paths';
+
+const tabs = [
+	{ label: 'About', href: withBase('/about/'), accent: 'var(--about-color)' },
+	{ label: 'Projects', href: withBase('/projects/'), accent: 'var(--projects-color)' },
+	{ label: 'Work', href: withBase('/work/'), accent: 'var(--work-color)' },
+	{ label: 'Contact', href: withBase('/contact/'), accent: 'var(--contact-color)' },
+];
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''));
+---
+
+<div class="nav-wrapper header-font">
+	<nav class="nav" aria-label="Main navigation">
+		<ul class="nav_links">
+			{
+				tabs.map((tab) => (
+					<li class:list={['nav_link', { active: isActive(tab.href) }]} style={`--tab-accent: ${tab.accent}`}>
+						<a href={tab.href} aria-current={isActive(tab.href) ? 'page' : undefined}>
+							{tab.label}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+		<div class="nav_light" aria-hidden="true"></div>
+	</nav>
+</div>
+
+<style>
+	.nav-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0.5em 0;
+	}
+
+	.nav {
+		background-color: var(--tab-color);
+		width: 100%;
+		max-width: min(90vw, 90vh);
+		height: 3.5em;
+		border-radius: 1.2em;
+		border-top: 1px solid rgba(255, 255, 255, 0.05);
+		box-shadow: 0 0.5em 0.8em var(--default-shadow);
+		display: flex;
+		align-items: center;
+		position: relative;
+		overflow: hidden;
+		padding: 0 1em;
+		transition: box-shadow 0.3s ease;
+	}
+
+	.nav:has(.nav_link.active) {
+		box-shadow: 0 0.5em 0.8em color-mix(in srgb, var(--active-color) 40%, transparent);
+	}
+
+	.nav_links {
+		width: 100%;
+		display: flex;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.nav_link {
+		flex-grow: 1;
+		text-align: center;
+	}
+
+	.nav_link a {
+		display: block;
+		width: 100%;
+		font-size: clamp(0.9rem, 1.4vw, 1.4rem);
+		font-weight: bold;
+		color: var(--text-color);
+		opacity: 0.5;
+		text-decoration: none;
+		padding: 0.8em 0;
+		transition: opacity 0.3s ease, color 0.3s ease;
+		position: relative;
+		z-index: 2;
+	}
+
+	.nav_link.active a {
+		opacity: 1;
+		color: var(--tab-accent);
+	}
+
+	/* Highlight bar above active tab */
+	.nav_light {
+		position: absolute;
+		top: 0;
+		height: 0.15em;
+		border-radius: 5px;
+		background-color: var(--active-color, var(--about-color));
+		color: var(--active-color, var(--about-color));
+		width: 4.5em;
+		left: 0;
+		transition:
+			opacity 0.3s ease,
+			left 0.3s ease,
+			width 0.3s ease,
+			background-color 0.3s ease;
+		opacity: 0;
+		z-index: 1;
+		pointer-events: none;
+	}
+
+	.nav_light.visible {
+		opacity: 1;
+	}
+
+	/* Beam cone effect */
+	.nav_light::before {
+		content: '';
+		position: absolute;
+		top: 0.3em;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 130%;
+		height: 5em;
+		background: linear-gradient(
+			to bottom,
+			color-mix(in srgb, currentColor 30%, transparent) -50%,
+			transparent 90%
+		);
+		clip-path: polygon(30% 0, 70% 0, 100% 100%, 0% 100%);
+		pointer-events: none;
+		filter: blur(2px);
+	}
+
+	@media (max-width: 600px) {
+		.nav {
+			height: 3em;
+			border-radius: 1em;
+			padding: 0 0.5em;
+		}
+
+		.nav_link a {
+			font-size: clamp(0.8rem, 2vw, 1.1rem);
+			padding: 0.6em 0;
+		}
+	}
+</style>
+
+<script>
+	function positionNavLight() {
+		const nav = document.querySelector<HTMLElement>('.nav');
+		const light = document.querySelector<HTMLElement>('.nav_light');
+		const active = document.querySelector<HTMLElement>('.nav_link.active');
+
+		if (!nav || !light) return;
+
+		if (!active) {
+			light.classList.remove('visible');
+			nav.style.removeProperty('--active-color');
+			return;
+		}
+
+		const accent = getComputedStyle(active).getPropertyValue('--tab-accent').trim();
+		const lightLeft = active.offsetLeft + active.offsetWidth / 2 - light.offsetWidth / 2;
+
+		// Snap into place without animating when the light was hidden
+		if (!light.classList.contains('visible')) {
+			light.style.transition = 'none';
+			light.style.left = `${lightLeft}px`;
+			void light.offsetWidth; // force reflow
+			light.style.transition = '';
+		}
+
+		nav.style.setProperty('--active-color', accent);
+		light.style.left = `${lightLeft}px`;
+		light.classList.add('visible');
+	}
+
+	document.addEventListener('astro:page-load', positionNavLight);
+	window.addEventListener('resize', positionNavLight);
+</script>

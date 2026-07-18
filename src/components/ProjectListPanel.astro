@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ContentPanel from './ContentPanel.astro';
+import ProjectCard from './ProjectCard.astro';
+import { withBase } from '../scripts/paths';
+
+interface Props {
+	entries: CollectionEntry<'personalProjects'>[] | CollectionEntry<'workProjects'>[];
+	/** Site-relative base path for detail links, e.g. "/projects" */
+	basePath: string;
+}
+
+const { entries, basePath } = Astro.props;
+
+const sorted = [...entries].sort((a, b) => a.data.order - b.data.order);
+const groups = [...new Set(sorted.map((entry) => entry.data.group))];
+---
+
+<ContentPanel>
+	{
+		groups.map((group) => (
+			<section class="project-group">
+				<h2 class="group-title header-font line-long">{group}</h2>
+				<div class="card-grid">
+					{sorted
+						.filter((entry) => entry.data.group === group)
+						.map((entry) => (
+							<ProjectCard
+								href={withBase(`${basePath}/${entry.id}/`)}
+								title={entry.data.title}
+								dateRange={entry.data.dateRange}
+								summary={entry.data.summary}
+								preview={entry.data.preview}
+							/>
+						))}
+				</div>
+			</section>
+		))
+	}
+</ContentPanel>
+
+<style>
+	.project-group {
+		margin: 10px 0 20px;
+	}
+
+	.group-title {
+		font-size: var(--text-big);
+		text-align: center;
+		margin: 0 auto 15px;
+		padding-bottom: 5px;
+	}
+
+	.card-grid {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-content: center;
+	}
+</style>

@@ -1,0 +1,112 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import ContentPanel from './ContentPanel.astro';
+import MediaGallery from './MediaGallery.astro';
+import TechIcons from './TechIcons.astro';
+
+interface Props {
+	entry: CollectionEntry<'personalProjects'> | CollectionEntry<'workProjects'>;
+	backHref: string;
+}
+
+const { entry, backHref } = Astro.props;
+const { title, images, videos, technologies, links } = entry.data;
+
+const { Content } = await render(entry);
+---
+
+<ContentPanel backHref={backHref}>
+	<article>
+		<h1 class="project-title header-font line-long">{title}</h1>
+
+		<MediaGallery projectTitle={title} images={images} videos={videos} />
+
+		<div class="markdown">
+			<Content />
+		</div>
+
+		<h2 class="section-title header-font line-long">Technologies</h2>
+		<TechIcons technologies={technologies} />
+
+		<h2 class="section-title header-font line-long">Links</h2>
+		<div class="project-links">
+			{links.length === 0 && <span class="no-links">No links are available.</span>}
+			{
+				links.map((link) => (
+					<a class="link-button" href={link.href} target="_blank" rel="noopener noreferrer">
+						{link.text}
+					</a>
+				))
+			}
+		</div>
+	</article>
+</ContentPanel>
+
+<style>
+	.project-title,
+	.section-title {
+		font-size: var(--text-big);
+		text-align: center;
+		margin: 12px auto;
+		padding-bottom: 5px;
+		font-weight: 700;
+	}
+
+	.markdown {
+		font-size: var(--text-medium);
+		text-align: justify;
+		text-align-last: left;
+		padding: 7px;
+	}
+
+	.markdown :global(strong) {
+		color: var(--accent-green);
+		font-weight: 600;
+	}
+
+	.markdown :global(a) {
+		color: var(--link-color);
+		text-decoration: underline;
+		transition: color 0.2s ease;
+	}
+
+	.markdown :global(a:hover) {
+		color: var(--link-hover-color);
+	}
+
+	.markdown :global(li) {
+		margin-bottom: 3px;
+	}
+
+	.project-links {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+		padding: 8px 0 15px;
+	}
+
+	.no-links {
+		font-size: var(--text-medium);
+	}
+
+	.link-button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50dvh;
+		background-color: #444;
+		width: fit-content;
+		padding: 10px 20px;
+		font-size: var(--text-medium);
+		text-decoration: none;
+		cursor: pointer;
+		color: var(--text-color);
+		transition: background-color 0.3s ease, color 0.3s ease;
+	}
+
+	.link-button:hover {
+		background-color: white;
+		color: black;
+	}
+</style>

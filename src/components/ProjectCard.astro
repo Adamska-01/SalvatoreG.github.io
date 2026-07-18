@@ -1,0 +1,85 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+	href: string;
+	title: string;
+	dateRange: string;
+	summary: string;
+	preview: ImageMetadata;
+}
+
+const { href, title, dateRange, summary, preview } = Astro.props;
+---
+
+<a class="project-card expand-on-hover" href={href}>
+	<Image src={preview} alt={`${title} preview`} widths={[320, 640]} sizes="(max-width: 768px) 45vw, 30vw" />
+	<span class="card-title header-font">{title}</span>
+	<span class="card-date">{dateRange}</span>
+	<span class="card-summary">{summary}</span>
+</a>
+
+<style>
+	.project-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		width: 31%;
+		margin: 0.5%;
+		padding-bottom: 10px;
+		border: solid 2px #000000;
+		border-radius: 10px;
+		background-color: var(--card-background-color);
+		transition: background-color 0.3s, transform 0.2s linear;
+		text-decoration: none;
+		color: var(--text-color);
+	}
+
+	.project-card:hover {
+		background-color: var(--list-item-highlight-color);
+	}
+
+	.project-card img {
+		width: 94%;
+		height: auto;
+		margin-top: 2.1%;
+		border: solid 2px #000000;
+		border-radius: inherit;
+	}
+
+	.card-title {
+		margin-top: 8px;
+		font-size: 1.5rem;
+		font-weight: bold;
+		color: var(--accent-green);
+	}
+
+	.card-date {
+		font-size: 1.1rem;
+	}
+
+	.card-summary {
+		margin: 8px 6px 0;
+		font-size: 1rem;
+	}
+
+	@media (max-width: 768px) {
+		.project-card {
+			width: 46%;
+		}
+
+		.card-title {
+			font-size: 1.1rem;
+		}
+
+		.card-date {
+			font-size: 0.9rem;
+		}
+
+		.card-summary {
+			font-size: 0.85rem;
+		}
+	}
+</style>
