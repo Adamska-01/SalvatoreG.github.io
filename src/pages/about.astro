@@ -1,158 +1,18 @@
 ---
-import { Image } from 'astro:assets';
+import { getEntry, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContentPanel from '../components/ContentPanel.astro';
-import universityLogo from '../assets/symbols/UniversityLogo.png';
-import righiLogo from '../assets/symbols/IISSAugustoRighi_Logo.png';
+
+const entry = await getEntry('pages', 'about');
+if (!entry) throw new Error('Missing content file: src/content/pages/about.md');
+
+const { Content } = await render(entry);
 ---
 
-<BaseLayout
-	title="About - Salvatore Galeotta"
-	description=".NET backend & game developer with 3+ years of professional experience building scalable, maintainable software in C#, Unity, and Unreal Engine 5."
->
+<BaseLayout title={entry.data.title} description={entry.data.description}>
 	<ContentPanel>
-		<div class="about">
-			<p>
-				Welcome! I’m Salvatore Galeotta, a <span class="accent">.NET backend &amp; game developer</span> with 3+ years of
-				professional experience building scalable, maintainable software.
-			</p>
-
-			<p>
-				I specialize in building high-performance <span class="accent">REST APIs</span> using
-				<span class="accent">C#</span> and <span class="accent">.NET</span> 8+, applying clean architecture and
-				<span class="accent">SOLID</span> principles to ensure long-term reliability. I work with
-				<span class="accent">Entity Framework</span> in a <span class="accent">Database-First</span> setup, evolving
-				existing schemas with a focus on maintainability and performance, and I also integrate
-				<span class="accent">AWS services</span> such as <span class="accent">S3</span> and
-				<span class="accent">Lambda</span> when cloud-based scalability and automation are required.
-			</p>
-
-			<p>
-				On the <span class="accent">Unity</span> side, I’ve contributed to production-ready applications by fixing
-				critical bugs, improving build stability, and enhancing performance and user experience.
-			</p>
-
-			<p>
-				Earlier in my career, I led the development of a vehicle customization system in
-				<span class="accent">Unreal Engine 5</span> — a high-risk solo project that taught me how to quickly master new
-				tools and deliver tangible results under pressure.
-			</p>
-
-			<p>In my spare time, I enjoy game engine architecture and systems programming. I'm currently working on:</p>
-			<ul>
-				<li>
-					<a href="https://github.com/Adamska-01/DeadFrame2D" class="link" target="_blank" rel="noopener noreferrer">
-						DeadFrame2D
-					</a>
-					— a <span class="accent">C++</span> 2D game engine powered by <span class="accent">SDL2</span>
-				</li>
-				<li>
-					<a href="https://github.com/Adamska-01/Online_FPS" class="link" target="_blank" rel="noopener noreferrer">
-						Army’s Heaven
-					</a>
-					— an <span class="accent">online FPS</span> built in <span class="accent">Unity</span> using
-					<span class="accent">PUN2</span> (<span class="accent">Photon Unity Networking</span>)
-				</li>
-			</ul>
-
-			<p>
-				Whether building robust backend systems or experimenting with game tech, I care about writing clean, elegant
-				code and continuously pushing my skills forward.
-			</p>
-
-			<h2 class="section-title header-font line-long">Education</h2>
-			<div class="education">
-				<div class="education-entry">
-					<p>
-						BSc (Hons) Computer Games Programming at
-						<a
-							href="https://www.solent.ac.uk/courses/undergraduate/computer-games-programming-and-design-bsc"
-							class="link"
-							target="_blank"
-							rel="noopener noreferrer">Solent University</a
-						>.
-					</p>
-					<a
-						href="https://www.solent.ac.uk/courses/undergraduate/computer-games-programming-and-design-bsc"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<Image class="education-logo expand-on-hover" src={universityLogo} alt="Solent University logo" width={90} />
-					</a>
-					<p>2019 - 2022</p>
-				</div>
-
-				<div class="line-short"></div>
-
-				<div class="education-entry">
-					<p>
-						Electronics Diploma at
-						<a
-							href="https://www.iissrighi.it/indirizzo-di-studio/elettronica-ed-elettrotecnica/"
-							class="link"
-							target="_blank"
-							rel="noopener noreferrer">IISS Augusto Righi</a
-						>.
-					</p>
-					<a
-						href="https://www.iissrighi.it/indirizzo-di-studio/elettronica-ed-elettrotecnica/"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<Image
-							class="education-logo round expand-on-hover"
-							src={righiLogo}
-							alt="IISS Augusto Righi logo"
-							width={90}
-						/>
-					</a>
-					<p>2010 – 2016</p>
-				</div>
-			</div>
-
-			<h2 class="section-title header-font line-long">Experience</h2>
-
-			<h3 class="accent">Backend Development (C# / .NET 8+)</h3>
-			<ul>
-				<li>3+ years building scalable REST APIs using .NET 8+, Entity Framework Core, and MySQL.</li>
-				<li>Experienced in migrating legacy PHP and ASP.NET systems.</li>
-				<li>Contributed to the design and early implementation of OAuth-based authentication flows.</li>
-			</ul>
-
-			<h3 class="accent">Game/App Development</h3>
-			<ul>
-				<li>Commercial experience in Unity (C#) and Unreal Engine 5 (C++/Blueprints).</li>
-				<li>Contributed to WebGL and iOS builds for OLS (Outdoor Living Solutions).</li>
-				<li>Took ownership of the development of a vehicle customization system in Unreal Engine.</li>
-				<li>Developed a variety of solo and collaborative projects in Unity, Unreal Engine, and C++.</li>
-			</ul>
-
-			<h3 class="accent">Frontend &amp; Full-Stack (HTML, CSS, JS, PHP, SQL)</h3>
-			<ul>
-				<li>Adequate experience from commercial projects and maintaining this website.</li>
-			</ul>
-
-			<h3 class="accent">Additional Skills</h3>
-			<ul>
-				<li>Familiar with automating builds and CI/CD workflows using Bitbucket Pipelines and related tools.</li>
-				<li>Assisted lead developers in recruitment processes, including candidate evaluations.</li>
-				<li>Comfortable writing unit tests and working within Docker-based environments.</li>
-				<li>Exposure to AWS cloud services and Agile/Scrum methodologies.</li>
-			</ul>
-
-			<h2 class="section-title header-font line-long">Technologies &amp; Tools</h2>
-			<ul class="tools-list">
-				<li>REST APIs, Entity Framework Core</li>
-				<li>Unity Engine, Unreal Engine 5</li>
-				<li>Git, Jira, Docker, CI/CD pipelines</li>
-				<li>Unit Testing</li>
-				<li>Console Development (Unreal)</li>
-				<li>Photon Unity Networking (PUN2)</li>
-				<li>SDL2, Box2D, Premake</li>
-				<li>AWS Cloud Services</li>
-				<li>Agile/Scrum methodologies</li>
-				<li>Basic 3D Modeling (3DSMax, Blender)</li>
-			</ul>
+		<div class="about markdown">
+			<Content />
 		</div>
 	</ContentPanel>
 </BaseLayout>
@@ -165,41 +25,80 @@ import righiLogo from '../assets/symbols/IISSAugustoRighi_Logo.png';
 		padding: 7px;
 	}
 
-	.about li {
+	/* Green accent for **bold** text, same convention as project pages */
+	.about :global(strong) {
+		color: var(--accent-green);
+		font-weight: 600;
+	}
+
+	.about :global(a) {
+		color: var(--link-color);
+		text-decoration: underline;
+		transition: color 0.2s ease;
+	}
+
+	.about :global(a:hover) {
+		color: var(--link-hover-color);
+	}
+
+	.about :global(li) {
 		margin-bottom: 3px;
 	}
 
-	.section-title {
+	/* ## headings render like the legacy section titles */
+	.about :global(h2) {
+		font-family: var(--font-header);
+		font-optical-sizing: auto;
+		font-weight: 700;
 		font-size: var(--text-big);
 		text-align: center;
-		margin: 20px auto 12px;
+		margin: 25px auto 12px;
 		padding-bottom: 5px;
+		border-bottom: 2px solid white;
+		width: 90%;
 	}
 
-	.about h3 {
+	/* ### headings = green sub-sections */
+	.about :global(h3) {
+		color: var(--accent-green);
 		font-size: var(--text-medium);
+		font-weight: 600;
 		margin: 14px 0 4px;
 	}
 
-	.education {
+	/* Education logos: centered images with hover grow; links around them lose underline */
+	.about :global(p:has(> a > img)) {
 		text-align: center;
 		text-align-last: center;
 	}
 
-	.education-entry {
-		margin: 10px 0 20px;
+	.about :global(a:has(> img)) {
+		display: inline-block;
+		text-decoration: none;
 	}
 
-	.education-logo {
+	.about :global(img) {
 		width: 90px;
 		height: auto;
+		transition: transform 0.2s linear;
 	}
 
-	.education-logo.round {
+	.about :global(img[alt*='Righi']) {
 		border-radius: 50%;
 	}
 
-	.tools-list {
+	.about :global(a:hover > img) {
+		transform: scale(1.04);
+	}
+
+	/* Center the education date lines (paragraph right after a logo paragraph) */
+	.about :global(p:has(> a > img) + p) {
+		text-align: center;
+		text-align-last: center;
+	}
+
+	/* Center the plain list under Technologies & Tools */
+	.about :global(h2:last-of-type ~ ul) {
 		width: fit-content;
 		margin: 0 auto 15px;
 	}
