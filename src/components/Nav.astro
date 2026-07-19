@@ -554,7 +554,7 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 			event.preventDefault();
 			setMenuOpen(false);
 
-			const menu = document.querySelector('.mobile-menu');
+			const menu = document.querySelector<HTMLElement>('.mobile-menu');
 			let navigated = false;
 			const go = () => {
 				if (navigated) return;
