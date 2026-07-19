@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { CameraOrbitController } from './cameraOrbitController';
+import { CameraOrbitController, type OrbitInputElement } from './cameraOrbitController';
 
 
 export class CameraManager {
@@ -8,14 +8,13 @@ export class CameraManager {
 	private readonly orbitControls: CameraOrbitController;
 
 	constructor(
-		private readonly container: HTMLCanvasElement,
-		renderer: THREE.WebGLRenderer,
-		options: { autoRotate: boolean }
+		inputElement: OrbitInputElement,
+		options: { autoRotate: boolean; width: number; height: number }
 	) {
-		this.camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+		this.camera = new THREE.PerspectiveCamera(75, options.width / options.height, 0.1, 1000);
 		this.camera.position.set(0, -1, 5);
 
-		this.orbitControls = new CameraOrbitController(this.camera, renderer, {
+		this.orbitControls = new CameraOrbitController(this.camera, inputElement, {
 			minPolarAngle: 0.2 * Math.PI,
 			maxPolarAngle: 0.55 * Math.PI,
 			idlePolarAngle: 0.35 * Math.PI,
@@ -34,8 +33,8 @@ export class CameraManager {
 		this.orbitControls.update(deltaTime);
 	}
 
-	onSceneResize(): void {
-		this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
+	onSceneResize(width: number, height: number): void {
+		this.camera.aspect = width / height;
 		this.camera.updateProjectionMatrix();
 	}
 }

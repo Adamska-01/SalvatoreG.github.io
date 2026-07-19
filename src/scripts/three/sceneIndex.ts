@@ -1,10 +1,6 @@
-import { AmbientLightEntity } from './ambientLight';
-import { CameraManager } from './cameraManager';
-import { CodingSetup } from './codingSetup';
+import { createScene } from './sceneCore';
+import { forwardElementEvents } from './elementProxy';
 import { LoadingProgress } from './loadingProgress';
-import { ModelLoader } from './modelLoader';
-import { RenderManager } from './renderManager';
-import { SceneManager } from './sceneManager';
 import { withBase } from '../paths';
 
 
@@ -21,35 +17,56 @@ export function initScene(): void {
 
 	initialised = true;
 
+	const loadingProgress = new LoadingProgress();
 	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-	const renderManager = new RenderManager(canvas);
-	const cameraManager = new CameraManager(canvas, renderManager.renderer, {
+	const sceneOptions = {
+		width: canvas.clientWidth,
+		height: canvas.clientHeight,
+		pixelRatio: Math.min(window.devicePixelRatio, 2),
 		autoRotate: !prefersReducedMotion,
-	});
-	const sceneManager = new SceneManager();
+		modelURL: new URL(withBase('/models/CodingSetup/scene.gltf'), window.location.origin).href,
+	};
 
-	renderManager.initialise(sceneManager.scene, cameraManager.camera);
+	// Preferred path: run the whole scene in a worker via OffscreenCanvas so
+	// model parsing/shader compilation can never block the page.
+	if (typeof canvas.transferControlToOffscreen === 'function') {
+		const worker = new Worker(new URL('./sceneWorker.ts', import.meta.url), { type: 'module' });
+		const offscreen = canvas.transferControlToOffscreen();
 
-	const loadingProgress = new LoadingProgress();
-	const modelLoader = new ModelLoader(loadingProgress.manager);
+		worker.postMessage({ type: 'init', canvas: offscreen, ...sceneOptions }, [offscreen]);
 
-	new AmbientLightEntity(0xa290fe, 0.15, sceneManager);
-	new CodingSetup(withBase('/models/CodingSetup/scene.gltf'), modelLoader, sceneManager);
+		worker.onmessage = (message) => {
+			const data = message.data;
 
-	let previousTime: number | undefined;
+			if (data.type === 'progress')
+				loadingProgress.trackDownload(data.loaded, data.total);
+			else if (data.type === 'ready')
+				loadingProgress.finish();
+			else if (data.type === 'error')
+				loadingProgress.fail(data.url);
+		};
 
-	renderManager.renderer.setAnimationLoop((time: number) => {
-		const deltaTime = previousTime === undefined ? 0 : (time - previousTime) / 1000;
-		previousTime = time;
+		forwardElementEvents(canvas, (event) => worker.postMessage({ type: 'event', event }));
 
-		sceneManager.update(deltaTime);
-		renderManager.update(deltaTime);
-		cameraManager.update(deltaTime);
+		window.addEventListener('resize', () => {
+			worker.postMessage({ type: 'resize', width: canvas.clientWidth, height: canvas.clientHeight });
+		});
+
+		return;
+	}
+
+	// Fallback (no OffscreenCanvas support): run on the main thread as before.
+	const core = createScene({
+		canvas,
+		inputElement: canvas,
+		...sceneOptions,
+		onProgress: (loaded, total) => loadingProgress.trackDownload(loaded, total),
+		onReady: () => loadingProgress.finish(),
+		onError: (url) => loadingProgress.fail(url),
 	});
 
 	window.addEventListener('resize', () => {
-		renderManager.onSceneResize();
-		cameraManager.onSceneResize();
+		core.resize(canvas.clientWidth, canvas.clientHeight);
 	});
 }

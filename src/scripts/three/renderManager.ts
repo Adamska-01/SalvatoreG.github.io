@@ -9,15 +9,20 @@ export class RenderManager {
 	private scene?: THREE.Scene;
 	private camera?: THREE.PerspectiveCamera;
 
-	constructor(private readonly canvas: HTMLCanvasElement) {
+	/**
+	 * Sizes are passed in explicitly (instead of reading canvas.clientWidth)
+	 * so the same code runs on the main thread and in a worker, where the
+	 * OffscreenCanvas has no layout box.
+	 */
+	constructor(canvas: HTMLCanvasElement | OffscreenCanvas, width: number, height: number, pixelRatio: number) {
 		this.renderer = new THREE.WebGLRenderer({
 			canvas,
 			antialias: true,
 			alpha: true,
 		});
 
-		this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-		this.renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+		this.renderer.setPixelRatio(pixelRatio);
+		this.renderer.setSize(width, height, false);
 		this.renderer.setClearColor(RenderManager.CLEAR_COLOR, 1);
 	}
 
@@ -32,7 +37,7 @@ export class RenderManager {
 		this.renderer.render(this.scene, this.camera);
 	}
 
-	onSceneResize(): void {
-		this.renderer.setSize(this.canvas.clientWidth, this.canvas.clientHeight, false);
+	onSceneResize(width: number, height: number): void {
+		this.renderer.setSize(width, height, false);
 	}
 }

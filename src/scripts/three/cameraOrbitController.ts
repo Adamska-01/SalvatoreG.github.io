@@ -2,6 +2,12 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 
+/**
+ * Real canvas on the main thread, or the worker-side ElementProxyReceiver —
+ * OrbitControls only needs the element-ish surface both provide.
+ */
+export type OrbitInputElement = HTMLElement | (object & { clientHeight: number });
+
 export interface OrbitControllerOptions {
 	minPolarAngle: number;
 	maxPolarAngle: number;
@@ -33,8 +39,8 @@ export class CameraOrbitController {
 	private readonly lerpDuration = 1.5;
 	private isIdle = true;
 
-	constructor(camera: THREE.PerspectiveCamera, renderer: THREE.WebGLRenderer, options: OrbitControllerOptions) {
-		this.orbitControls = new OrbitControls(camera, renderer.domElement);
+	constructor(camera: THREE.PerspectiveCamera, inputElement: OrbitInputElement, options: OrbitControllerOptions) {
+		this.orbitControls = new OrbitControls(camera, inputElement as HTMLElement);
 
 		this.currentMinPolarAngle = this.minPolarAngle = options.minPolarAngle;
 		this.currentMaxPolarAngle = this.maxPolarAngle = options.maxPolarAngle;
