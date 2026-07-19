@@ -21,6 +21,14 @@ const projectSchema = ({ image }: { image: () => any }) =>
 		links: z.array(z.object({ text: z.string(), href: z.url() })).default([]),
 	});
 
+const standardSchema = ({ image }: { image: () => any }) =>
+	z.object({
+		title: z.string(),
+		/** Meta description for SEO */
+		description: z.string(),
+	});
+
+
 const personalProjects = defineCollection({
 	loader: glob({ pattern: '**/*.md', base: './src/content/personal-projects' }),
 	schema: projectSchema,
@@ -31,4 +39,9 @@ const workProjects = defineCollection({
 	schema: projectSchema,
 });
 
-export const collections = { personalProjects, workProjects };
+const pages = defineCollection({
+	loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
+	schema: standardSchema,
+});
+
+export const collections = { personalProjects, workProjects, pages };
