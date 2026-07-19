@@ -180,15 +180,19 @@ const mediaCount = videos.length + images.length;
 		transform: rotate(180deg);
 	}
 
-	/* Fullscreen image zoom */
+	/* Fullscreen image zoom (lightbox) */
 	.zoom-overlay {
 		position: fixed;
 		inset: 0;
 		z-index: 999;
-		background-color: rgba(0, 0, 0, 0.7);
+		background-color: rgba(10, 10, 10, 0.75);
+		backdrop-filter: blur(14px) saturate(0.85);
+		-webkit-backdrop-filter: blur(14px) saturate(0.85);
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		cursor: zoom-out;
+		animation: zoom-overlay-in 0.25s ease;
 	}
 
 	.zoom-overlay[hidden] {
@@ -196,29 +200,46 @@ const mediaCount = videos.length + images.length;
 	}
 
 	.zoom-overlay img {
-		max-width: 85%;
-		max-height: 80dvh;
-		border-radius: 1em;
+		max-width: min(92vw, 1400px);
+		max-height: 86dvh;
+		border-radius: 12px;
 		object-fit: contain;
-		animation: fade-in var(--page-fade-time) ease forwards;
+		box-shadow: 0 24px 70px rgba(0, 0, 0, 0.65);
+		animation: zoom-image-in 0.25s ease;
+	}
+
+	@keyframes zoom-overlay-in {
+		from { opacity: 0; }
+		to { opacity: 1; }
+	}
+
+	@keyframes zoom-image-in {
+		from {
+			opacity: 0;
+			transform: scale(0.92);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
 	}
 
 	.overlay-close {
 		position: absolute;
-		top: 40px;
-		right: 40px;
-		width: 40px;
-		height: 40px;
-		border: none;
+		top: max(24px, env(safe-area-inset-top));
+		right: 24px;
+		width: 44px;
+		height: 44px;
+		border: 1px solid rgba(255, 255, 255, 0.15);
 		border-radius: 50%;
-		background: transparent;
+		background: rgba(255, 255, 255, 0.08);
 		color: var(--close-button-X-color);
 		cursor: pointer;
 		transition: background var(--transition-time);
 	}
 
 	.overlay-close:hover {
-		background: var(--close-button-border-color);
+		background: rgba(255, 255, 255, 0.2);
 	}
 
 	.overlay-close::before,
@@ -307,8 +328,9 @@ const mediaCount = videos.length + images.length;
 			return;
 		}
 
+		// Lightbox: any click inside it closes it (image, backdrop, or X)
 		const overlay = target.closest<HTMLElement>('[data-gallery-overlay]');
-		if (overlay && (target.closest('[data-gallery-overlay-close]') || target === overlay)) {
+		if (overlay) {
 			overlay.hidden = true;
 		}
 	});

@@ -4,54 +4,95 @@ import { withBase } from '../scripts/paths';
 interface Props {
 	/** Optional href for a back arrow (e.g. project detail → project list) */
 	backHref?: string;
+	/**
+	 * Set on pages of a section whose list ↔ detail navigation should slide.
+	 * Pages sharing the same sectionName keep the panel frame static and
+	 * horizontally slide only the content inside it (legacy behavior).
+	 * Pages without it (about/contact/404) fade as a whole on navigation.
+	 */
+	sectionName?: string;
 }
 
-const { backHref } = Astro.props;
+const { backHref, sectionName } = Astro.props;
+const contentName = sectionName ? `${sectionName}-content` : undefined;
 ---
 
 <div class="panel-wrapper">
-	<section class="content-panel">
-		<div class="panel-controls">
-			{
-				backHref && (
-					<a class="back-button" href={backHref} aria-label="Back">
-						<span class="arrow-icon" aria-hidden="true" />
-					</a>
-				)
-			}
-			<a class="close-button" href={withBase('/')} aria-label="Close"></a>
-		</div>
-		<div class="content-separator"></div>
-		<div class="panel-content">
-			<slot />
-		</div>
-	</section>
+	<a class="panel-backdrop" href={withBase('/')} aria-hidden="true" tabindex="-1"></a>
+	{
+		sectionName ? (
+			<section class="content-panel" transition:name={`${sectionName}-frame`}>
+				<div class="panel-controls">
+					{backHref && (
+						<a class="back-button" href={backHref} aria-label="Back">
+							<span class="arrow-icon" aria-hidden="true" />
+						</a>
+					)}
+					<a class="close-button" href={withBase('/')} aria-label="Close" />
+				</div>
+				<div class="content-separator" />
+				<div class="panel-content" data-panel-content={contentName} transition:name={contentName}>
+					<slot />
+				</div>
+			</section>
+		) : (
+			<section class="content-panel">
+				<div class="panel-controls">
+					{backHref && (
+						<a class="back-button" href={backHref} aria-label="Back">
+							<span class="arrow-icon" aria-hidden="true" />
+						</a>
+					)}
+					<a class="close-button" href={withBase('/')} aria-label="Close" />
+				</div>
+				<div class="content-separator" />
+				<div class="panel-content">
+					<slot />
+				</div>
+			</section>
+		)
+	}
 </div>
 
 <style>
 	.panel-wrapper {
 		display: flex;
 		justify-content: center;
+		align-items: flex-start;
 		position: relative;
-		z-index: 1;
+		height: 100%;
+		padding-bottom: 10px;
+	}
+
+	/* Invisible click-catcher: clicking outside the panel closes it. */
+	.panel-backdrop {
+		position: fixed;
+		inset: 0;
+		z-index: -1;
+		cursor: default;
 	}
 
 	.content-panel {
+		position: relative;
+		z-index: 1;
 		display: flex;
 		flex-direction: column;
 		width: min(90vw, 90vh);
-		max-height: calc(100dvh - 19dvh);
+		max-height: 100%;
 		border-radius: 10px;
 		background-color: var(--panel-background-color);
 		overflow: hidden;
-		animation: fade-in var(--page-fade-time) ease forwards;
+		/* open/close/tab-switch fades are handled by view transitions. */
 	}
 
 	.panel-controls {
 		display: flex;
-		flex-direction: row-reverse;
-		justify-content: space-between;
+		align-items: center;
 		padding: 2px;
+	}
+
+	.panel-controls .close-button {
+		margin-left: auto;
 	}
 
 	.content-separator {
@@ -63,6 +104,7 @@ const { backHref } = Astro.props;
 
 	.panel-content {
 		overflow-y: auto;
+		min-height: 0;
 		padding: 0 10px 10px;
 	}
 
@@ -140,4 +182,84 @@ const { backHref } = Astro.props;
 			width: 96vw;
 		}
 	}
-</style>fd
+</style>
+
+<style is:global>
+	/*
+	 * Legacy-style horizontal slide for list ↔ detail navigation, applied only
+	 * when both the outgoing and incoming page share the same panel content
+	 * (html[data-section-nav], set by the before-swap handler below). All other
+	 * navigations fall back to the default view-transition crossfade.
+	 */
+	html[data-section-nav]::view-transition-image-pair(projects-content),
+	html[data-section-nav]::view-transition-image-pair(work-content) {
+		overflow: clip;
+	}
+
+	html[data-section-nav]::view-transition-old(projects-content),
+	html[data-section-nav]::view-transition-old(work-content) {
+		animation: vt-slide-out-left var(--transition-time) ease both;
+	}
+
+	html[data-section-nav]::view-transition-new(projects-content),
+	html[data-section-nav]::view-transition-new(work-content) {
+		animation: vt-slide-in-right var(--transition-time) ease both;
+	}
+
+	/* History back: reverse direction (detail → list slides right) */
+	html[data-section-nav][data-astro-transition='back']::view-transition-old(projects-content),
+	html[data-section-nav][data-astro-transition='back']::view-transition-old(work-content) {
+		animation-name: vt-slide-out-right;
+	}
+
+	html[data-section-nav][data-astro-transition='back']::view-transition-new(projects-content),
+	html[data-section-nav][data-astro-transition='back']::view-transition-new(work-content) {
+		animation-name: vt-slide-in-left;
+	}
+
+	@keyframes vt-slide-out-left {
+		to { transform: translateX(-100%); }
+	}
+
+	@keyframes vt-slide-in-right {
+		from { transform: translateX(100%); }
+	}
+
+	@keyframes vt-slide-out-right {
+		to { transform: translateX(100%); }
+	}
+
+	@keyframes vt-slide-in-left {
+		from { transform: translateX(-100%); }
+	}
+</style>
+
+<script>
+	// Back arrow: use real history navigation when possible so the slide
+	// animation plays in reverse (Astro reverses transitions on back-nav).
+	// Falls back to the href (forward slide) when the page was opened directly.
+	document.addEventListener('click', (event) => {
+		const back = (event.target as HTMLElement).closest('.back-button');
+
+		if (back && window.history.state?.index > 0) {
+			event.preventDefault();
+			window.history.back();
+		}
+	});
+
+	// Slide only when old AND new page share the same panel content (i.e.
+	// list ↔ detail within a section). Everything else keeps the fade.
+	// The flag must be applied AFTER Astro's swap: the swap copies the new
+	// page's <html> attributes, wiping anything set before it.
+	document.addEventListener('astro:before-swap', (event) => {
+		const marker = document.querySelector<HTMLElement>('[data-panel-content]')?.dataset.panelContent;
+		const swapEvent = event as any;
+		const paired = !!marker && !!swapEvent.newDocument.querySelector(`[data-panel-content="${marker}"]`);
+
+		const originalSwap = swapEvent.swap;
+		swapEvent.swap = () => {
+			originalSwap();
+			document.documentElement.toggleAttribute('data-section-nav', paired);
+		};
+	});
+</script>

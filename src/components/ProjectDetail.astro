@@ -7,15 +7,17 @@ import TechIcons from './TechIcons.astro';
 interface Props {
 	entry: CollectionEntry<'personalProjects'> | CollectionEntry<'workProjects'>;
 	backHref: string;
+	/** Shared with the section's list page so list ↔ detail slides */
+	sectionName: string;
 }
 
-const { entry, backHref } = Astro.props;
+const { entry, backHref, sectionName } = Astro.props;
 const { title, images, videos, technologies, links } = entry.data;
 
 const { Content } = await render(entry);
 ---
 
-<ContentPanel backHref={backHref}>
+<ContentPanel backHref={backHref} sectionName={sectionName}>
 	<article>
 		<h1 class="project-title header-font line-long">{title}</h1>
 
@@ -82,8 +84,7 @@ const { Content } = await render(entry);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 8px;
-		padding: 8px 0 15px;
+		gap: 5px;
 	}
 
 	.no-links {

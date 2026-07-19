@@ -6,17 +6,13 @@
 ---
 
 <div id="scene-root" transition:persist="scene-root">
-	<div id="progress-container">
-		<div id="barcontainer">
-			<div id="progress-title">Loading</div>
-			<div id="progress-percentage-container">Progress: <span id="progress-percentage"></span></div>
-			<div id="progress-graph">
-				<div id="progress-bar"></div>
-			</div>
-			<div class="progress-info-container"><span id="progress-info"></span></div>
+	<canvas id="scene-canvas" aria-hidden="true"></canvas>
+	<div id="scene-loader" role="status" aria-label="Loading 3D scene">
+		<div id="scene-loader-label">loading scene <span id="scene-loader-percentage">0%</span></div>
+		<div id="scene-loader-track">
+			<div id="scene-loader-bar"></div>
 		</div>
 	</div>
-	<canvas id="scene-canvas" aria-hidden="true"></canvas>
 </div>
 
 <style>
@@ -33,71 +29,60 @@
 		background-color: black;
 	}
 
-	/* Loading progress overlay */
-	#progress-container {
-		z-index: 9999;
+	/*
+	 * Minimal in-scene loader: sits over the (black) canvas, under all UI.
+	 * Never blocks interaction — the page is usable while the model loads.
+	 */
+	#scene-loader {
 		position: fixed;
-		inset: 0;
+		top: 55%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+		pointer-events: none;
+		transition: opacity 0.4s ease;
+	}
+
+	#scene-loader.done {
+		opacity: 0;
+	}
+
+	#scene-loader-label {
 		font-family: monospace;
-		font-size: 2vh;
-		color: var(--dark, #000);
+		font-size: 0.85rem;
+		letter-spacing: 0.08em;
+		color: rgba(255, 255, 255, 0.55);
+	}
+
+	#scene-loader.error #scene-loader-label {
+		color: #ff6b6b;
+	}
+
+	#scene-loader-percentage {
+		color: var(--accent-green);
+	}
+
+	#scene-loader-track {
+		width: min(200px, 50vw);
+		height: 3px;
+		border-radius: 2px;
+		background: rgba(255, 255, 255, 0.12);
 		overflow: hidden;
-		background: var(--bright, #fff);
 	}
 
-	#barcontainer {
-		position: absolute;
-		top: 18vh;
-		left: 0;
-		right: 0;
-		height: 75vh;
-		overflow: hidden;
-	}
-
-	#progress-title {
-		font-size: 7vh;
-		margin-left: 10vw;
-		margin-bottom: 7vh;
-		font-weight: 700;
-	}
-
-	#progress-title::after {
-		content: '...';
-		animation: dots 1s infinite;
-	}
-
-	@keyframes dots {
-		25% { content: ''; }
-		50% { content: '.'; }
-		75% { content: '..'; }
-		100% { content: '...'; }
-	}
-
-	#progress-percentage-container,
-	#progress-info {
-		margin-left: 10vw;
-		margin-bottom: 1vh;
-	}
-
-	#progress-graph {
-		height: 3vh;
-		width: 80vw;
-		border: 1px solid var(--dark, #000);
-		overflow: hidden;
-		margin-bottom: 5vh;
-		margin-left: 10vw;
-	}
-
-	#progress-bar {
-		height: 3vh;
+	#scene-loader-bar {
 		width: 0;
-		background: var(--dark, #000);
-		transition: width 0.5s;
+		height: 100%;
+		border-radius: inherit;
+		background: var(--accent-green);
+		transition: width 0.4s ease;
 	}
 
-	.progress-info-container {
-		margin-left: 10vw;
-		margin-right: 10vw;
+	#scene-loader.error #scene-loader-bar {
+		background: #ff6b6b;
 	}
 </style>
 

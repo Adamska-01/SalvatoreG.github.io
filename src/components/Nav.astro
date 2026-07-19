@@ -12,7 +12,7 @@ const currentPath = Astro.url.pathname;
 const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''));
 ---
 
-<div class="nav-wrapper header-font">
+<div class="nav-wrapper header-font" transition:persist="main-nav">
 	<nav class="nav" aria-label="Main navigation">
 		<ul class="nav_links">
 			{
@@ -48,6 +48,7 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 		display: flex;
 		align-items: center;
 		position: relative;
+		z-index: 0;
 		overflow: hidden;
 		padding: 0 1em;
 		transition: box-shadow 0.3s ease;
@@ -147,12 +148,52 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 </style>
 
 <script>
-	function positionNavLight() {
+	import { navigate } from 'astro:transitions/client';
+
+	
+	// Re-clicking the tab of the section you are already in closes the panel
+	// (navigates home) instead of re-navigating to the same page, which would
+	// replay the slide/fade animation on identical content.
+	const homeUrl = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
+	const stripSlash = (path: string) => path.replace(/\/$/, '');
+
+	document.addEventListener('click', (event) => {
+		const link = (event.target as Element).closest<HTMLAnchorElement>('.nav_link a');
+
+		if (link && stripSlash(new URL(link.href).pathname) === stripSlash(window.location.pathname)) {
+			event.preventDefault();
+			navigate(homeUrl);
+		}
+	});
+
+	// The nav DOM persists across navigations (transition:persist), so the
+	// server-rendered .active state goes stale after the first page. This
+	// script re-derives the active tab from the URL on every navigation and
+	// moves the light — CSS transitions on the surviving element make it
+	// glide and color-lerp between tabs, like the legacy site.
+	function updateNav() {
 		const nav = document.querySelector<HTMLElement>('.nav');
 		const light = document.querySelector<HTMLElement>('.nav_light');
-		const active = document.querySelector<HTMLElement>('.nav_link.active');
 
 		if (!nav || !light) return;
+
+		const links = nav.querySelectorAll<HTMLElement>('.nav_link');
+		let active: HTMLElement | undefined;
+
+		links.forEach((li) => {
+			const href = li.querySelector('a')?.getAttribute('href') ?? '';
+			const isActive = href !== '' && window.location.pathname.startsWith(href.replace(/\/$/, ''));
+
+			li.classList.toggle('active', isActive);
+
+			const link = li.querySelector('a');
+			if (link) {
+				if (isActive) link.setAttribute('aria-current', 'page');
+				else link.removeAttribute('aria-current');
+			}
+
+			if (isActive) active = li;
+		});
 
 		if (!active) {
 			light.classList.remove('visible');
@@ -176,6 +217,6 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 		light.classList.add('visible');
 	}
 
-	document.addEventListener('astro:page-load', positionNavLight);
-	window.addEventListener('resize', positionNavLight);
+	document.addEventListener('astro:page-load', updateNav);
+	window.addEventListener('resize', updateNav);
 </script>
