@@ -18,5 +18,5 @@ const { entry } = Astro.props;
 ---
 
 <BaseLayout title={`${entry.data.title} - Salvatore Galeotta`} description={entry.data.summary}>
-	<ProjectDetail entry={entry} backHref={withBase('/projects/')} />
+	<ProjectDetail entry={entry} backHref={withBase('/projects/')} sectionName="projects" />
 </BaseLayout>
