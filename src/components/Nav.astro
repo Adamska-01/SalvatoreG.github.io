@@ -2,31 +2,107 @@
 import { withBase } from '../scripts/paths';
 
 const tabs = [
-	{ label: 'About', href: withBase('/about/'), accent: 'var(--about-color)' },
-	{ label: 'Projects', href: withBase('/projects/'), accent: 'var(--projects-color)' },
-	{ label: 'Work', href: withBase('/work/'), accent: 'var(--work-color)' },
-	{ label: 'Contact', href: withBase('/contact/'), accent: 'var(--contact-color)' },
+	{
+		label: 'About',
+		href: withBase('/about/'),
+		accent: 'var(--about-color)',
+		icon: '<circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line>',
+	},
+	{
+		label: 'Projects',
+		href: withBase('/projects/'),
+		accent: 'var(--projects-color)',
+		icon: '<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>',
+	},
+	{
+		label: 'Work',
+		href: withBase('/work/'),
+		accent: 'var(--work-color)',
+		icon: '<rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>',
+	},
+	{
+		label: 'Contact',
+		href: withBase('/contact/'),
+		accent: 'var(--contact-color)',
+		icon: '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>',
+	},
 ];
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''));
 ---
 
-<div class="nav-wrapper header-font" transition:persist="main-nav">
-	<nav class="nav" aria-label="Main navigation">
-		<ul class="nav_links">
+<div class="nav-wrapper" transition:persist="main-nav">
+	<nav class="navbar" aria-label="Main navigation">
+		<a href={withBase('/')} class="navbar-brand header-font">
+			<div class="logo-icon" aria-hidden="true"></div>
+			<span class="brand-text">
+				<span class="brand-title">Salvatore Galeotta</span>
+				<span class="brand-subtitle">Software Developer</span>
+			</span>
+		</a>
+
+		<ul class="navbar-nav">
 			{
 				tabs.map((tab) => (
-					<li class:list={['nav_link', { active: isActive(tab.href) }]} style={`--tab-accent: ${tab.accent}`}>
-						<a href={tab.href} aria-current={isActive(tab.href) ? 'page' : undefined}>
-							{tab.label}
+					<li class="nav-item" style={`--tab-accent: ${tab.accent}`}>
+						<a
+							href={tab.href}
+							class:list={['nav-link', { active: isActive(tab.href) }]}
+							data-accent={tab.accent}
+							aria-current={isActive(tab.href) ? 'page' : undefined}
+						>
+							<svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true" set:html={tab.icon} />
+							<span>{tab.label}</span>
 						</a>
 					</li>
 				))
 			}
 		</ul>
-		<div class="nav_light" aria-hidden="true"></div>
+
+		<button class="mobile-toggle" aria-label="Open menu" aria-expanded="false">
+			<span class="hamburger" aria-hidden="true">
+				<span></span>
+				<span></span>
+				<span></span>
+			</span>
+		</button>
 	</nav>
+
+	<div class="mobile-menu-overlay" aria-hidden="true"></div>
+
+	<div class="mobile-menu">
+		<div class="mobile-menu-header">
+			<a href={withBase('/')} class="navbar-brand header-font">
+				<div class="logo-icon" aria-hidden="true"></div>
+				<span class="brand-text">
+					<span class="brand-title">Salvatore Galeotta</span>
+					<span class="brand-subtitle">Software Developer</span>
+				</span>
+			</a>
+			<button class="mobile-menu-close" aria-label="Close menu">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
+		<ul class="mobile-menu-nav">
+			{
+				tabs.map((tab) => (
+					<li class="mobile-menu-item" style={`--tab-accent: ${tab.accent}`}>
+						<a
+							href={tab.href}
+							class:list={['mobile-menu-link', { active: isActive(tab.href) }]}
+							data-accent={tab.accent}
+							aria-current={isActive(tab.href) ? 'page' : undefined}
+						>
+							<svg class="mobile-menu-icon" viewBox="0 0 24 24" aria-hidden="true" set:html={tab.icon} />
+							<span>{tab.label}</span>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
 </div>
 
 <style>
@@ -34,115 +110,399 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		padding: 0.5em 0;
+		padding: 0.8em 0 0.5em;
 	}
 
-	.nav {
-		background-color: var(--tab-color);
+	.navbar {
+		background: color-mix(in srgb, var(--tab-color) 75%, transparent);
+		backdrop-filter: blur(20px);
+		-webkit-backdrop-filter: blur(20px);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		border-radius: 50px;
+		padding: 13px 26px;
 		width: 100%;
-		max-width: min(90vw, 90vh);
-		height: 3.5em;
-		border-radius: 1.2em;
-		border-top: 1px solid rgba(255, 255, 255, 0.05);
-		box-shadow: 0 0.5em 0.8em var(--default-shadow);
+		max-width: min(90vw, 1000px);
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
+		gap: 1em;
+		box-shadow:
+			0 0.5em 0.8em var(--default-shadow),
+			inset 0 1px 0 rgba(255, 255, 255, 0.08);
+		transition: box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 		position: relative;
-		z-index: 0;
 		overflow: hidden;
-		padding: 0 1em;
-		transition: box-shadow 0.3s ease;
 	}
 
-	.nav:has(.nav_link.active) {
-		box-shadow: 0 0.5em 0.8em color-mix(in srgb, var(--active-color) 40%, transparent);
-	}
-
-	.nav_links {
-		width: 100%;
-		display: flex;
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-
-	.nav_link {
-		flex-grow: 1;
-		text-align: center;
-	}
-
-	.nav_link a {
-		display: block;
-		width: 100%;
-		font-size: clamp(0.9rem, 1.4vw, 1.4rem);
-		font-weight: bold;
-		color: var(--text-color);
-		opacity: 0.5;
-		text-decoration: none;
-		padding: 0.8em 0;
-		transition: opacity 0.3s ease, color 0.3s ease;
-		position: relative;
-		z-index: 2;
-	}
-
-	.nav_link.active a {
-		opacity: 1;
-		color: var(--tab-accent);
-	}
-
-	/* Highlight bar above active tab */
-	.nav_light {
-		position: absolute;
-		top: 0;
-		height: 0.15em;
-		border-radius: 5px;
-		background-color: var(--active-color, var(--about-color));
-		color: var(--active-color, var(--about-color));
-		width: 4.5em;
-		left: 0;
-		transition:
-			opacity 0.3s ease,
-			left 0.3s ease,
-			width 0.3s ease,
-			background-color 0.3s ease;
-		opacity: 0;
-		z-index: 1;
-		pointer-events: none;
-	}
-
-	.nav_light.visible {
-		opacity: 1;
-	}
-
-	/* Beam cone effect */
-	.nav_light::before {
+	/* Shine sweep on hover */
+	.navbar::before {
 		content: '';
 		position: absolute;
-		top: 0.3em;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 130%;
-		height: 5em;
-		background: linear-gradient(
-			to bottom,
-			color-mix(in srgb, currentColor 30%, transparent) -50%,
-			transparent 90%
-		);
-		clip-path: polygon(30% 0, 70% 0, 100% 100%, 0% 100%);
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+		transition: left 0.8s ease;
 		pointer-events: none;
-		filter: blur(2px);
 	}
 
-	@media (max-width: 600px) {
-		.nav {
-			height: 3em;
-			border-radius: 1em;
-			padding: 0 0.5em;
+	.navbar:hover::before {
+		left: 100%;
+	}
+
+	.navbar:hover {
+		transform: translateY(-2px);
+	}
+
+	/* Shadow tints with the active section's accent */
+	.navbar:has(.nav-link.active) {
+		box-shadow:
+			0 0.5em 0.8em color-mix(in srgb, var(--active-color, var(--default-shadow)) 40%, transparent),
+			inset 0 1px 0 rgba(255, 255, 255, 0.08);
+	}
+
+	/* ==================== BRAND ==================== */
+	.navbar-brand {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		text-decoration: none;
+		z-index: 2;
+		position: relative;
+		flex-shrink: 0;
+	}
+
+	.logo-icon {
+		width: 44px;
+		height: 44px;
+		background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		overflow: hidden;
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+		flex-shrink: 0;
+	}
+
+	.logo-icon::before {
+		content: '';
+		position: absolute;
+		width: 21px;
+		height: 21px;
+		background: rgba(25, 25, 25, 0.85);
+		border-radius: 50%;
+		animation: logo-pulse 2s ease-in-out infinite;
+	}
+
+	@keyframes logo-pulse {
+		0%,
+		100% {
+			transform: scale(1);
+			opacity: 0.8;
+		}
+		50% {
+			transform: scale(1.2);
+			opacity: 1;
+		}
+	}
+
+	.brand-text {
+		display: flex;
+		flex-direction: column;
+		line-height: 1.25;
+		white-space: nowrap;
+	}
+
+	.brand-title {
+		font-size: 1.2rem;
+		font-weight: bold;
+		color: var(--accent-green);
+	}
+
+	.brand-subtitle {
+		font-size: 0.95rem;
+		font-weight: bold;
+		color: var(--accent-blue);
+	}
+
+	/* ==================== NAV LINKS ==================== */
+	.navbar-nav {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		z-index: 2;
+		position: relative;
+	}
+
+	.nav-link {
+		display: flex;
+		align-items: center;
+		gap: 7px;
+		padding: 12px 18px;
+		text-decoration: none;
+		color: var(--text-color);
+		opacity: 0.55;
+		font-weight: 500;
+		font-size: 1rem;
+		border-radius: 25px;
+		transition:
+			opacity 0.3s ease,
+			color 0.3s ease,
+			background 0.3s ease,
+			box-shadow 0.3s ease,
+			transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+		position: relative;
+		white-space: nowrap;
+	}
+
+	.nav-link:hover {
+		opacity: 1;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+		transform: translateY(-2px);
+	}
+
+	.nav-link.active {
+		opacity: 1;
+		color: var(--tab-accent);
+		background: color-mix(in srgb, var(--tab-accent) 12%, transparent);
+		box-shadow:
+			inset 0 1px 0 color-mix(in srgb, var(--tab-accent) 30%, transparent),
+			0 4px 12px color-mix(in srgb, var(--tab-accent) 25%, transparent);
+	}
+
+	.nav-icon {
+		width: 18px;
+		height: 18px;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		transition: transform 0.3s ease;
+	}
+
+	.nav-link:hover .nav-icon {
+		transform: scale(1.1);
+	}
+
+	/* ==================== MOBILE TOGGLE ==================== */
+	.mobile-toggle {
+		display: none;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 8px;
+		border-radius: 50%;
+		transition: background 0.3s ease, transform 0.3s ease;
+		z-index: 2;
+		position: relative;
+		flex-shrink: 0;
+	}
+
+	.mobile-toggle:hover {
+		background: rgba(255, 255, 255, 0.1);
+		transform: scale(1.1);
+	}
+
+	.hamburger {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		width: 24px;
+		height: 18px;
+		justify-content: center;
+	}
+
+	.hamburger span {
+		width: 24px;
+		height: 2px;
+		background: var(--text-color);
+		border-radius: 2px;
+		transition: all 0.3s ease;
+		display: block;
+	}
+
+	.mobile-toggle.active .hamburger span:nth-child(1) {
+		transform: rotate(45deg) translate(4px, 4px);
+	}
+
+	.mobile-toggle.active .hamburger span:nth-child(2) {
+		opacity: 0;
+		transform: translateX(-20px);
+	}
+
+	.mobile-toggle.active .hamburger span:nth-child(3) {
+		transform: rotate(-45deg) translate(4px, -4px);
+	}
+
+	/* ==================== MOBILE MENU ==================== */
+	.mobile-menu-overlay {
+		position: fixed;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.8);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		z-index: 1500;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.3s ease, visibility 0.3s ease;
+		pointer-events: none;
+	}
+
+	.mobile-menu-overlay.active {
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+	}
+
+	.mobile-menu {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+		height: 100dvh;
+		background: linear-gradient(
+			160deg,
+			var(--body-background-color) 0%,
+			color-mix(in srgb, var(--tab-color) 70%, var(--accent-blue) 4%) 55%,
+			var(--tab-color) 100%
+		);
+		z-index: 1600;
+		transform: translateY(-100%);
+		visibility: hidden;
+		transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), visibility 0.4s;
+		overflow-y: auto;
+		pointer-events: auto;
+	}
+
+	.mobile-menu.active {
+		transform: translateY(0);
+		visibility: visible;
+	}
+
+	.mobile-menu-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 25px 25px 18px;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.mobile-menu-close {
+		background: none;
+		border: none;
+		color: var(--close-button-X-color);
+		font-size: 2rem;
+		cursor: pointer;
+		padding: 8px;
+		border-radius: 50%;
+		transition: background 0.3s ease, transform 0.3s ease;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 48px;
+		height: 48px;
+	}
+
+	.mobile-menu-close:hover {
+		background: var(--close-button-border-color);
+		transform: scale(1.1);
+	}
+
+	.mobile-menu-nav {
+		padding: 30px 25px;
+		list-style: none;
+		margin: 0;
+	}
+
+	.mobile-menu-link {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		padding: 18px 22px;
+		text-decoration: none;
+		color: var(--text-color);
+		opacity: 0.85;
+		font-weight: 500;
+		font-size: 1.1rem;
+		border-radius: 20px;
+		transition:
+			background 0.3s ease,
+			color 0.3s ease,
+			border-color 0.3s ease,
+			transform 0.3s ease;
+		background: rgba(255, 255, 255, 0.05);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		margin-bottom: 12px;
+	}
+
+	.mobile-menu-link:hover {
+		background: rgba(255, 255, 255, 0.12);
+		opacity: 1;
+		transform: translateX(8px);
+		border-color: rgba(255, 255, 255, 0.2);
+	}
+
+	.mobile-menu-link.active {
+		opacity: 1;
+		color: var(--tab-accent);
+		background: color-mix(in srgb, var(--tab-accent) 12%, transparent);
+		border-color: color-mix(in srgb, var(--tab-accent) 35%, transparent);
+	}
+
+	.mobile-menu-icon {
+		width: 24px;
+		height: 24px;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		flex-shrink: 0;
+	}
+
+	/* ==================== RESPONSIVE ==================== */
+	@media (max-width: 992px) {
+		.navbar-nav {
+			display: none;
 		}
 
-		.nav_link a {
-			font-size: clamp(0.8rem, 2vw, 1.1rem);
-			padding: 0.6em 0;
+		.mobile-toggle {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.navbar {
+			padding: 9px 16px;
+			max-width: calc(100vw - 20px);
+		}
+
+		.logo-icon {
+			width: 40px;
+			height: 40px;
+		}
+
+		.logo-icon::before {
+			width: 19px;
+			height: 19px;
+		}
+
+		.brand-title {
+			font-size: 1.05rem;
+		}
+
+		.brand-subtitle {
+			font-size: 0.8rem;
 		}
 	}
 </style>
@@ -150,73 +510,118 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 <script>
 	import { navigate } from 'astro:transitions/client';
 
-	
-	// Re-clicking the tab of the section you are already in closes the panel
-	// (navigates home) instead of re-navigating to the same page, which would
-	// replay the slide/fade animation on identical content.
 	const homeUrl = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
 	const stripSlash = (path: string) => path.replace(/\/$/, '');
 
-	document.addEventListener('click', (event) => {
-		const link = (event.target as Element).closest<HTMLAnchorElement>('.nav_link a');
+	function setMenuOpen(open: boolean) {
+		document.querySelector('.mobile-toggle')?.classList.toggle('active', open);
+		document.querySelector('.mobile-toggle')?.setAttribute('aria-expanded', String(open));
+		document.querySelector('.mobile-menu')?.classList.toggle('active', open);
+		document.querySelector('.mobile-menu-overlay')?.classList.toggle('active', open);
+		document.body.style.overflow = open ? 'hidden' : '';
+	}
 
-		if (link && stripSlash(new URL(link.href).pathname) === stripSlash(window.location.pathname)) {
+	// Capture phase: must run (and preventDefault) before Astro's ClientRouter
+	// click listener, which otherwise starts navigating immediately and cuts
+	// the mobile menu's close animation short.
+	document.addEventListener('click', (event) => {
+		const target = event.target as Element;
+
+		if (target.closest('.mobile-toggle')) {
+			setMenuOpen(!document.querySelector('.mobile-menu')?.classList.contains('active'));
+			return;
+		}
+
+		if (target.closest('.mobile-menu-close') || target.closest('.mobile-menu-overlay')) {
+			setMenuOpen(false);
+			return;
+		}
+
+		const link = target.closest<HTMLAnchorElement>('.nav-link, .mobile-menu-link');
+
+		if (!link) return;
+
+		// Re-clicking the tab of the section you are already in closes the panel
+		// (navigates home) instead of re-navigating to the same page, which would
+		// replay the slide/fade animation on identical content.
+		const samePath = stripSlash(new URL(link.href).pathname) === stripSlash(window.location.pathname);
+		const destination = samePath ? homeUrl : link.href;
+
+		// From the mobile menu, navigating immediately would let the page swap
+		// cut the menu's slide-up short — close it first, navigate when the
+		// transition ends (timeout fallback in case it never fires).
+		if (link.classList.contains('mobile-menu-link')) {
+			event.preventDefault();
+			setMenuOpen(false);
+
+			const menu = document.querySelector('.mobile-menu');
+			let navigated = false;
+			const go = () => {
+				if (navigated) return;
+				navigated = true;
+				menu?.removeEventListener('transitionend', onEnd);
+				navigate(destination);
+			};
+			// transitionend bubbles up from the menu links' own transitions, so
+			// only accept the menu's slide (transform) finishing.
+			const onEnd = (event: TransitionEvent) => {
+				if (event.target === menu && event.propertyName === 'transform') go();
+			};
+
+			menu?.addEventListener('transitionend', onEnd);
+			setTimeout(go, 500);
+			return;
+		}
+
+		if (samePath) {
 			event.preventDefault();
 			navigate(homeUrl);
+		}
+	}, true);
+
+	document.addEventListener('keydown', (event) => {
+		if (event.key === 'Escape' && document.querySelector('.mobile-menu')?.classList.contains('active')) {
+			setMenuOpen(false);
+		}
+	});
+
+	window.addEventListener('resize', () => {
+		if (window.innerWidth > 992 && document.querySelector('.mobile-menu')?.classList.contains('active')) {
+			setMenuOpen(false);
 		}
 	});
 
 	// The nav DOM persists across navigations (transition:persist), so the
-	// server-rendered .active state goes stale after the first page. This
-	// script re-derives the active tab from the URL on every navigation and
-	// moves the light — CSS transitions on the surviving element make it
-	// glide and color-lerp between tabs, like the legacy site.
+	// server-rendered .active state goes stale after the first page. Re-derive
+	// the active link from the URL on every navigation, for both the desktop
+	// links and the mobile menu links, and tint the navbar shadow to match.
 	function updateNav() {
-		const nav = document.querySelector<HTMLElement>('.nav');
-		const light = document.querySelector<HTMLElement>('.nav_light');
+		const navbar = document.querySelector<HTMLElement>('.navbar');
 
-		if (!nav || !light) return;
+		if (!navbar) return;
 
-		const links = nav.querySelectorAll<HTMLElement>('.nav_link');
-		let active: HTMLElement | undefined;
+		let accent: string | undefined;
 
-		links.forEach((li) => {
-			const href = li.querySelector('a')?.getAttribute('href') ?? '';
-			const isActive = href !== '' && window.location.pathname.startsWith(href.replace(/\/$/, ''));
+		document.querySelectorAll<HTMLAnchorElement>('.nav-link, .mobile-menu-link').forEach((link) => {
+			const href = link.getAttribute('href') ?? '';
+			const isActive =
+				href !== '' &&
+				stripSlash(href) !== stripSlash(homeUrl) &&
+				window.location.pathname.startsWith(stripSlash(href));
 
-			li.classList.toggle('active', isActive);
+			link.classList.toggle('active', isActive);
 
-			const link = li.querySelector('a');
-			if (link) {
-				if (isActive) link.setAttribute('aria-current', 'page');
-				else link.removeAttribute('aria-current');
+			if (isActive) {
+				link.setAttribute('aria-current', 'page');
+				accent = link.dataset.accent;
+			} else {
+				link.removeAttribute('aria-current');
 			}
-
-			if (isActive) active = li;
 		});
 
-		if (!active) {
-			light.classList.remove('visible');
-			nav.style.removeProperty('--active-color');
-			return;
-		}
-
-		const accent = getComputedStyle(active).getPropertyValue('--tab-accent').trim();
-		const lightLeft = active.offsetLeft + active.offsetWidth / 2 - light.offsetWidth / 2;
-
-		// Snap into place without animating when the light was hidden
-		if (!light.classList.contains('visible')) {
-			light.style.transition = 'none';
-			light.style.left = `${lightLeft}px`;
-			void light.offsetWidth; // force reflow
-			light.style.transition = '';
-		}
-
-		nav.style.setProperty('--active-color', accent);
-		light.style.left = `${lightLeft}px`;
-		light.classList.add('visible');
+		if (accent) navbar.style.setProperty('--active-color', accent);
+		else navbar.style.removeProperty('--active-color');
 	}
 
 	document.addEventListener('astro:page-load', updateNav);
-	window.addEventListener('resize', updateNav);
 </script>

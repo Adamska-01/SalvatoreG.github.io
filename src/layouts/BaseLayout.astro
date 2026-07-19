@@ -47,11 +47,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<Scene3D />
 
 		<div id="ui-root">
-			<header id="headline" class="header-font">
-				<span class="headline-title">Salvatore Galeotta</span>
-				<span class="headline-subtitle">Software Developer</span>
-			</header>
-
 			<Nav />
 
 			<main>
@@ -85,31 +80,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		pointer-events: auto;
 	}
 
-	#headline {
-		height: 10vh;
-		height: 10dvh;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		text-align: center;
-	}
-
-	.headline-title {
-		font-size: var(--text-title);
-		font-weight: bold;
-		color: var(--accent-green);
-	}
-
-	.headline-subtitle {
-		font-size: var(--text-big);
-		font-weight: bold;
-		color: var(--accent-blue);
-		margin-top: 10px;
-	}
-
 	main {
 		flex: 1;
 		min-height: 0;
-		margin-top: 10px;
+		margin-top: 15px;
 	}
 </style>

@@ -19,39 +19,33 @@ const contentName = sectionName ? `${sectionName}-content` : undefined;
 
 <div class="panel-wrapper">
 	<a class="panel-backdrop" href={withBase('/')} aria-hidden="true" tabindex="-1"></a>
-	{
-		sectionName ? (
-			<section class="content-panel" transition:name={`${sectionName}-frame`}>
-				<div class="panel-controls">
-					{backHref && (
-						<a class="back-button" href={backHref} aria-label="Back">
-							<span class="arrow-icon" aria-hidden="true" />
-						</a>
-					)}
-					<a class="close-button" href={withBase('/')} aria-label="Close" />
-				</div>
-				<div class="content-separator" />
+	{/* All panels share one frame name: within a section (list ↔ detail) the
+	    frame stays static while the content slides; across sections the paired
+	    frames enable the sequential fade below (data-panel-switch). */}
+	<section class="content-panel" transition:name="panel-frame">
+		<div class="panel-controls">
+			{
+				backHref && (
+					<a class="back-button" href={backHref} aria-label="Back">
+						<span class="arrow-icon" aria-hidden="true" />
+					</a>
+				)
+			}
+			<a class="close-button" href={withBase('/')} aria-label="Close" />
+		</div>
+		<div class="content-separator" />
+		{
+			contentName ? (
 				<div class="panel-content" data-panel-content={contentName} transition:name={contentName}>
 					<slot />
 				</div>
-			</section>
-		) : (
-			<section class="content-panel">
-				<div class="panel-controls">
-					{backHref && (
-						<a class="back-button" href={backHref} aria-label="Back">
-							<span class="arrow-icon" aria-hidden="true" />
-						</a>
-					)}
-					<a class="close-button" href={withBase('/')} aria-label="Close" />
-				</div>
-				<div class="content-separator" />
+			) : (
 				<div class="panel-content">
 					<slot />
 				</div>
-			</section>
-		)
-	}
+			)
+		}
+	</section>
 </div>
 
 <style>
@@ -217,6 +211,38 @@ const contentName = sectionName ? `${sectionName}-content` : undefined;
 		animation-name: vt-slide-in-left;
 	}
 
+	/*
+	 * Section → section switch (html[data-panel-switch], set below when both
+	 * pages have a panel but their content isn't paired): the old panel fades
+	 * out completely, then the new one fades in — sequential, not a crossfade.
+	 * Reuses the fade-in/fade-out keyframes from global.css.
+	 */
+	html[data-panel-switch]::view-transition-group(panel-frame) {
+		animation-duration: calc(2 * var(--page-fade-time));
+	}
+
+	html[data-panel-switch]::view-transition-old(panel-frame) {
+		animation: fade-out var(--page-fade-time) ease both;
+	}
+
+	html[data-panel-switch]::view-transition-new(panel-frame) {
+		animation: fade-in var(--page-fade-time) ease both;
+		animation-delay: var(--page-fade-time);
+	}
+
+	/* The inner content is its own view-transition group — sync it with the
+	   frame's sequential fade or it would pop in before the panel is there. */
+	html[data-panel-switch]::view-transition-old(projects-content),
+	html[data-panel-switch]::view-transition-old(work-content) {
+		animation: fade-out var(--page-fade-time) ease both;
+	}
+
+	html[data-panel-switch]::view-transition-new(projects-content),
+	html[data-panel-switch]::view-transition-new(work-content) {
+		animation: fade-in var(--page-fade-time) ease both;
+		animation-delay: var(--page-fade-time);
+	}
+
 	@keyframes vt-slide-out-left {
 		to { transform: translateX(-100%); }
 	}
@@ -236,8 +262,7 @@ const contentName = sectionName ? `${sectionName}-content` : undefined;
 
 <script>
 	// Back arrow: use real history navigation when possible so the slide
-	// animation plays in reverse (Astro reverses transitions on back-nav).
-	// Falls back to the href (forward slide) when the page was opened directly.
+	// animation plays in reverse.
 	document.addEventListener('click', (event) => {
 		const back = (event.target as HTMLElement).closest('.back-button');
 
@@ -247,19 +272,32 @@ const contentName = sectionName ? `${sectionName}-content` : undefined;
 		}
 	});
 
-	// Slide only when old AND new page share the same panel content (i.e.
-	// list ↔ detail within a section). Everything else keeps the fade.
-	// The flag must be applied AFTER Astro's swap: the swap copies the new
-	// page's <html> attributes, wiping anything set before it.
+	// Navigating from a detail page up to its section list.
+	document.addEventListener('astro:before-preparation', (event) => {
+		const prep = event as any;
+		const from = (prep.from.pathname as string).replace(/\/$/, '');
+		const to = (prep.to.pathname as string).replace(/\/$/, '');
+
+		if (prep.direction === 'forward' && from.startsWith(to + '/')) {
+			prep.direction = 'back';
+		}
+	});
+
+	// Slide only when old AND new page share the same panel content.
 	document.addEventListener('astro:before-swap', (event) => {
 		const marker = document.querySelector<HTMLElement>('[data-panel-content]')?.dataset.panelContent;
 		const swapEvent = event as any;
 		const paired = !!marker && !!swapEvent.newDocument.querySelector(`[data-panel-content="${marker}"]`);
+		const panelSwitch =
+			!paired &&
+			!!document.querySelector('.content-panel') &&
+			!!swapEvent.newDocument.querySelector('.content-panel');
 
 		const originalSwap = swapEvent.swap;
 		swapEvent.swap = () => {
 			originalSwap();
 			document.documentElement.toggleAttribute('data-section-nav', paired);
+			document.documentElement.toggleAttribute('data-panel-switch', panelSwitch);
 		};
 	});
 </script>
