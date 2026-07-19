@@ -11,7 +11,7 @@ const { Content } = await render(entry);
 
 <BaseLayout title={entry.data.title} description={entry.data.description}>
 	<ContentPanel>
-		<div class="about markdown">
+		<div class="about">
 			<Content />
 		</div>
 	</ContentPanel>
@@ -22,7 +22,7 @@ const { Content } = await render(entry);
 		font-size: var(--text-medium);
 		text-align: justify;
 		text-align-last: left;
-		padding: 7px;
+		padding: 7px 7px 0px;
 	}
 
 	/* Green accent for **bold** text, same convention as project pages */
@@ -100,6 +100,6 @@ const { Content } = await render(entry);
 	/* Center the plain list under Technologies & Tools */
 	.about :global(h2:last-of-type ~ ul) {
 		width: fit-content;
-		margin: 0 auto 15px;
+		margin: 0 auto 0px;
 	}
 </style>
