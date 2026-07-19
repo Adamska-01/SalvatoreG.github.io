@@ -21,7 +21,7 @@ const projectSchema = ({ image }: { image: () => any }) =>
 		links: z.array(z.object({ text: z.string(), href: z.url() })).default([]),
 	});
 
-const standardSchema = ({ image }: { image: () => any }) =>
+const standardSchema = () =>
 	z.object({
 		title: z.string(),
 		/** Meta description for SEO */
@@ -39,6 +39,7 @@ const workProjects = defineCollection({
 	schema: projectSchema,
 });
 
+/** Standalone editable pages (e.g. about) — pure Markdown, no fixed structure */
 const pages = defineCollection({
 	loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
 	schema: standardSchema,
