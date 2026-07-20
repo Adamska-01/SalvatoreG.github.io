@@ -11,76 +11,36 @@ const { Content } = await render(entry);
 
 <BaseLayout title={entry.data.title} description={entry.data.description}>
 	<ContentPanel>
-		<div class="about">
+		<div class="about prose">
 			<Content />
 		</div>
 	</ContentPanel>
 </BaseLayout>
 
+<!-- Base typography/layout comes from the shared .prose class (prose.css);
+     only about-specific styling lives here. -->
 <style>
-	.about {
-		font-size: var(--text-medium);
-		text-align: justify;
-		text-align-last: left;
-		padding: 7px 7px 0px;
+	/* Lead paragraph: slightly larger and brighter to open the page */
+	.about > :global(p:first-child) {
+		font-size: 1.12em;
+		color: var(--text-color);
 	}
 
-	/* Green accent for **bold** text, same convention as project pages */
-	.about :global(strong) {
-		color: var(--accent-green);
-		font-weight: 600;
-	}
-
-	.about :global(a) {
-		color: var(--link-color);
-		text-decoration: underline;
-		transition: color 0.2s ease;
-	}
-
-	.about :global(a:hover) {
-		color: var(--link-hover-color);
-	}
-
-	.about :global(li) {
-		margin-bottom: 3px;
-	}
-
-	/* ## headings render like the legacy section titles */
-	.about :global(h2) {
-		font-family: var(--font-header);
-		font-optical-sizing: auto;
-		font-weight: 700;
-		font-size: var(--text-big);
-		text-align: center;
-		margin: 25px auto 12px;
-		padding-bottom: 5px;
-		border-bottom: 2px solid white;
-		width: 90%;
-	}
-
-	/* ### headings = green sub-sections */
-	.about :global(h3) {
-		color: var(--accent-green);
-		font-size: var(--text-medium);
-		font-weight: 600;
-		margin: 14px 0 4px;
-	}
-
-	/* Education logos: centered images with hover grow; links around them lose underline */
-	.about :global(p:has(> a > img)) {
-		text-align: center;
-		text-align-last: center;
-	}
-
+	/* ==================== EDUCATION LOGOS ==================== */
+	/* Markdown renders each logo as p > a > img: center the link block and
+	   let the plain image selectors do the rest (no extra wrappers needed). */
 	.about :global(a:has(> img)) {
-		display: inline-block;
+		display: block;
+		width: fit-content;
+		margin: 1.4em auto 0.6em;
 		text-decoration: none;
 	}
 
 	.about :global(img) {
-		width: 90px;
+		width: 96px;
 		height: auto;
-		transition: transform 0.2s linear;
+		display: block;
+		transition: transform 0.25s ease, filter 0.25s ease;
 	}
 
 	.about :global(img[alt*='Righi']) {
@@ -88,18 +48,41 @@ const { Content } = await render(entry);
 	}
 
 	.about :global(a:hover > img) {
-		transform: scale(1.04);
+		transform: scale(1.05);
+		filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
 	}
 
-	/* Center the education date lines (paragraph right after a logo paragraph) */
+	/* Date line directly under a logo: small, muted, centered */
 	.about :global(p:has(> a > img) + p) {
 		text-align: center;
-		text-align-last: center;
+		font-size: 0.85em;
+		letter-spacing: 0.06em;
+		color: color-mix(in srgb, var(--text-color) 55%, transparent);
+		margin-bottom: 1.6em;
 	}
 
-	/* Center the plain list under Technologies & Tools */
-	.about :global(h2:last-of-type ~ ul) {
-		width: fit-content;
-		margin: 0 auto 0px;
+	/* Technologies & Tools (the page's final list) rendered as chips */
+	.about :global(ul:last-of-type) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+		list-style: none;
+		margin: 1.2em 0 0;
+		padding: 0;
+	}
+
+	.about :global(ul:last-of-type li) {
+		margin: 0;
+		padding: 0.4em 1em;
+		font-size: 0.92em;
+		background: var(--card-background-color);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		border-radius: 999px;
+		transition: transform 0.2s ease, border-color 0.2s ease;
+	}
+
+	.about :global(ul:last-of-type li:hover) {
+		transform: translateY(-2px);
+		border-color: color-mix(in srgb, var(--accent-green) 45%, transparent);
 	}
 </style>

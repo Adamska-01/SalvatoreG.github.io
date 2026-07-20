@@ -22,7 +22,7 @@ const groups = [...new Set(sorted.map((entry) => entry.data.group))];
 	{
 		groups.map((group) => (
 			<section class="project-group">
-				<h2 class="group-title header-font line-long">{group}</h2>
+				<h2 class="group-title header-font accent-title">{group}</h2>
 				<div class="card-grid">
 					{sorted
 						.filter((entry) => entry.data.group === group)
@@ -48,9 +48,7 @@ const groups = [...new Set(sorted.map((entry) => entry.data.group))];
 
 	.group-title {
 		font-size: var(--text-big);
-		text-align: center;
 		margin: 0 auto 15px;
-		padding-bottom: 5px;
 	}
 
 	.card-grid {

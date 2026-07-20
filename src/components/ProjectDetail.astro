@@ -19,18 +19,18 @@ const { Content } = await render(entry);
 
 <ContentPanel backHref={backHref} sectionName={sectionName}>
 	<article>
-		<h1 class="project-title header-font line-long">{title}</h1>
+		<h1 class="project-title header-font accent-title">{title}</h1>
 
 		<MediaGallery projectTitle={title} images={images} videos={videos} />
 
-		<div class="markdown">
+		<div class="prose">
 			<Content />
 		</div>
 
-		<h2 class="section-title header-font line-long">Technologies</h2>
+		<h2 class="section-title header-font accent-title">Technologies</h2>
 		<TechIcons technologies={technologies} />
 
-		<h2 class="section-title header-font line-long">Links</h2>
+		<h2 class="section-title header-font accent-title">Links</h2>
 		<div class="project-links">
 			{links.length === 0 && <span class="no-links">No links are available.</span>}
 			{
@@ -48,43 +48,15 @@ const { Content } = await render(entry);
 	.project-title,
 	.section-title {
 		font-size: var(--text-big);
-		text-align: center;
-		margin: 12px auto;
-		padding-bottom: 5px;
+		margin: 12px auto 15px;
 		font-weight: 700;
-	}
-
-	.markdown {
-		font-size: var(--text-medium);
-		text-align: justify;
-		text-align-last: left;
-		padding: 7px;
-	}
-
-	.markdown :global(strong) {
-		color: var(--accent-green);
-		font-weight: 600;
-	}
-
-	.markdown :global(a) {
-		color: var(--link-color);
-		text-decoration: underline;
-		transition: color 0.2s ease;
-	}
-
-	.markdown :global(a:hover) {
-		color: var(--link-hover-color);
-	}
-
-	.markdown :global(li) {
-		margin-bottom: 3px;
 	}
 
 	.project-links {
 		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 5px;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.6rem;
 	}
 
 	.no-links {

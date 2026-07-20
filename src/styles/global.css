@@ -1,4 +1,5 @@
 @import './tokens.css';
+@import './prose.css';
 
 *,
 *::before,
@@ -53,12 +54,17 @@ img {
 
 a.link {
 	color: var(--link-color);
+	font-weight: 500;
 	text-decoration: underline;
-	transition: color 0.2s ease;
+	text-decoration-thickness: 1px;
+	text-decoration-color: color-mix(in srgb, var(--link-color) 35%, transparent);
+	text-underline-offset: 0.2em;
+	transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
 a.link:hover {
 	color: var(--link-hover-color);
+	text-decoration-color: currentColor;
 }
 
 .header-font {
@@ -78,20 +84,6 @@ a.link:hover {
 .expand-on-hover:hover {
 	transform: scale(1.04);
 	cursor: pointer;
-}
-
-/* Section divider lines (legacy line-long / line-short) */
-.line-long {
-	border-bottom: 2px solid white;
-	width: 90%;
-	text-align: center;
-	margin: 0 auto;
-}
-
-.line-short {
-	border-bottom: 2px solid white;
-	width: 50%;
-	margin: 0 auto;
 }
 
 @keyframes fade-in {

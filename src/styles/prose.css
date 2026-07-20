@@ -1,0 +1,106 @@
+/*
+ * Shared content styling.
+ *
+ * .prose        — long-form markdown/text content (about page, project and
+ *                 work detail descriptions). Layout, rhythm, links, lists,
+ *                 headings. Page-specific tweaks stay in each page's styles.
+ * .accent-title — centered display title over a subtle hairline
+ *                 (project/work titles, group titles, contact sections).
+ */
+
+.prose {
+	max-width: 70ch;
+	margin-inline: auto;
+	padding: 1.25rem 1rem;
+	font-size: var(--text-medium);
+	line-height: 1.75;
+	color: color-mix(in srgb, var(--text-color) 90%, transparent);
+}
+
+.prose p {
+	margin: 0 0 1.1em;
+}
+
+/* Green accent for **bold** text */
+.prose strong {
+	color: var(--accent-green);
+	font-weight: 600;
+}
+
+.prose a {
+	color: var(--link-color);
+	font-weight: 500;
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-decoration-color: color-mix(in srgb, var(--link-color) 35%, transparent);
+	text-underline-offset: 0.2em;
+	transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.prose a:hover {
+	color: var(--link-hover-color);
+	text-decoration-color: currentColor;
+}
+
+.prose ul {
+	margin: 0.6em 0 1.4em;
+	padding-left: 1.2em;
+}
+
+.prose li {
+	margin-bottom: 0.5em;
+	padding-left: 0.2em;
+}
+
+.prose li::marker {
+	color: var(--accent-green);
+}
+
+/* ## sections: left-aligned over a subtle full-width hairline */
+.prose h2 {
+	font-family: var(--font-header);
+	font-optical-sizing: auto;
+	font-weight: 700;
+	font-size: var(--text-big);
+	color: var(--text-color);
+	margin: 1.6em 0 0.9em;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ### sub-sections: green label with a small glowing dot */
+.prose h3 {
+	display: flex;
+	align-items: center;
+	gap: 0.55em;
+	color: var(--accent-green);
+	font-size: 1.05em;
+	font-weight: 600;
+	margin: 1.9em 0 0.6em;
+}
+
+.prose h3::before {
+	content: '';
+	flex-shrink: 0;
+	width: 0.4em;
+	height: 0.4em;
+	border-radius: 50%;
+	background: var(--accent-green);
+	box-shadow: 0 0 8px color-mix(in srgb, var(--accent-green) 70%, transparent);
+}
+
+/* Centered display titles outside prose flow */
+.accent-title {
+	width: 90%;
+	margin-inline: auto;
+	text-align: center;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 600px) {
+	.prose {
+		padding: 0.9rem 0.4rem;
+		line-height: 1.65;
+	}
+}
