@@ -47,36 +47,25 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 	<div class="mobile-menu-overlay" aria-hidden="true"></div>
 
 	<div class="mobile-menu">
-		<div class="mobile-menu-header">
-			<a href={withBase('/')} class="navbar-brand">
-				<div class="nav-avatar" aria-hidden="true"><span class="header-font">SG</span></div>
-				<span class="brand-text">
-					<span class="nav-name">Salvatore Galeotta</span>
-					<span class="nav-role header-font">.NET backend &amp; game developer</span>
-				</span>
-			</a>
-			<button class="mobile-menu-close" aria-label="Close menu">
-				<span aria-hidden="true">&times;</span>
-			</button>
+		<div class="mobile-menu-inner">
+			<ul class="mobile-menu-nav">
+				{
+					sections.map((tab) => (
+						<li class="mobile-menu-item" style={`--tab-accent: ${tab.accent}`}>
+							<a
+								href={tab.href}
+								class:list={['mobile-menu-link', { active: isActive(tab.href) }]}
+								data-accent={tab.accent}
+								aria-current={isActive(tab.href) ? 'page' : undefined}
+							>
+								<svg class="mobile-menu-icon" viewBox="0 0 24 24" aria-hidden="true" set:html={tab.icon} />
+								<span>{tab.label}</span>
+							</a>
+						</li>
+					))
+				}
+			</ul>
 		</div>
-
-		<ul class="mobile-menu-nav">
-			{
-				sections.map((tab) => (
-					<li class="mobile-menu-item" style={`--tab-accent: ${tab.accent}`}>
-						<a
-							href={tab.href}
-							class:list={['mobile-menu-link', { active: isActive(tab.href) }]}
-							data-accent={tab.accent}
-							aria-current={isActive(tab.href) ? 'page' : undefined}
-						>
-							<svg class="mobile-menu-icon" viewBox="0 0 24 24" aria-hidden="true" set:html={tab.icon} />
-							<span>{tab.label}</span>
-						</a>
-					</li>
-				))
-			}
-		</ul>
 	</div>
 </div>
 
@@ -85,7 +74,6 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 		position: sticky;
 		top: 0;
 		z-index: 20;
-		padding: 14px clamp(12px, 3vw, 28px) 0;
 	}
 
 	.navbar {
@@ -93,18 +81,17 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 		align-items: center;
 		justify-content: center;
 		gap: 20px;
-		width: auto;
-		max-width: min(96vw, 1180px);
-		margin: 0 auto;
-		padding: 12px clamp(12px, 1.5vw, 22px);
-		border-radius: 999px;
-		background: color-mix(in srgb, var(--tab-color) 82%, transparent);
+		width: 100%;
+		padding: 14px clamp(10px, 1.5vw, 20px);
+		background: color-mix(in srgb, var(--tab-color) 88%, transparent);
 		backdrop-filter: blur(16px);
 		-webkit-backdrop-filter: blur(16px);
-		border: 1px solid rgba(255, 255, 255, 0.08);
-		box-shadow: 0 14px 34px -14px color-mix(in srgb, var(--active-color, transparent) 40%, transparent),
-			inset 0 1px 0 rgba(255, 255, 255, 0.06);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 		transition: box-shadow 0.4s ease;
+	}
+
+	.navbar:has(.nav-link.active) {
+		box-shadow: 0 8px 30px -6px color-mix(in srgb, var(--active-color, transparent) 45%, transparent);
 	}
 
 	/* ==================== BRAND ==================== */
@@ -275,8 +262,12 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 
 	/* ==================== MOBILE MENU ==================== */
 	.mobile-menu-overlay {
-		position: fixed;
-		inset: 0;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		height: 100vh;
+		height: 100dvh;
 		background: rgba(0, 0, 0, 0.8);
 		backdrop-filter: blur(10px);
 		-webkit-backdrop-filter: blur(10px);
@@ -294,56 +285,31 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 	}
 
 	.mobile-menu {
-		position: fixed;
-		top: 0;
+		position: absolute;
+		top: 100%;
 		left: 0;
-		width: 100%;
-		height: 100vh;
-		height: 100dvh;
-		background: linear-gradient(160deg, var(--bg) 0%, var(--tab-color) 55%, var(--tab-color) 100%);
+		right: 0;
 		z-index: 1600;
-		transform: translateY(-100%);
+		display: grid;
+		grid-template-rows: 0fr;
 		visibility: hidden;
-		transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), visibility 0.4s;
-		overflow-y: auto;
-		pointer-events: auto;
+		background: linear-gradient(180deg, var(--tab-color) 0%, var(--bg) 100%);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+		transition: grid-template-rows 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), visibility 0.4s;
 	}
 
 	.mobile-menu.active {
-		transform: translateY(0);
+		grid-template-rows: 1fr;
 		visibility: visible;
 	}
 
-	.mobile-menu-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 20px 20px 16px;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-	}
-
-	.mobile-menu-close {
-		background: none;
-		border: none;
-		color: var(--close-button-X-color);
-		font-size: 1.8rem;
-		cursor: pointer;
-		padding: 8px;
-		border-radius: 50%;
-		transition: background 0.3s ease;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 44px;
-		height: 44px;
-	}
-
-	.mobile-menu-close:hover {
-		background: var(--close-button-border-color);
+	.mobile-menu-inner {
+		overflow: hidden;
+		min-height: 0;
 	}
 
 	.mobile-menu-nav {
-		padding: 24px 20px;
+		padding: 20px 20px 24px;
 		list-style: none;
 		margin: 0;
 	}
@@ -443,7 +409,7 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 			return;
 		}
 
-		if (target.closest('.mobile-menu-close') || target.closest('.mobile-menu-overlay')) {
+		if (target.closest('.mobile-menu-overlay')) {
 			setMenuOpen(false);
 			return;
 		}
@@ -474,9 +440,9 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 				navigate(destination);
 			};
 			// transitionend bubbles up from the menu links' own transitions, so
-			// only accept the menu's slide (transform) finishing.
+			// only accept the menu's own collapse (grid-template-rows) finishing.
 			const onEnd = (event: TransitionEvent) => {
-				if (event.target === menu && event.propertyName === 'transform') go();
+				if (event.target === menu && event.propertyName === 'grid-template-rows') go();
 			};
 
 			menu?.addEventListener('transitionend', onEnd);
