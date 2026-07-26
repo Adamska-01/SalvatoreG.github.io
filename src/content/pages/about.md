@@ -20,17 +20,9 @@ Whether building robust backend systems or experimenting with game tech, I care 
 
 ## Education
 
-BSc (Hons) Computer Games Programming at [Solent University](https://www.solent.ac.uk/courses/undergraduate/computer-games-programming-and-design-bsc).
+[![Solent University logo](../../assets/symbols/UniversityLogo.png) **Solent University**<br>2019–2022<br>BSc (Hons) Computer Games Programming](https://www.solent.ac.uk/courses/undergraduate/computer-games-programming-and-design-bsc)
 
-[![Solent University logo](../../assets/symbols/UniversityLogo.png)](https://www.solent.ac.uk/courses/undergraduate/computer-games-programming-and-design-bsc)
-
-2019 - 2022
-
-Electronics Diploma at [IISS Augusto Righi](https://www.iissrighi.it/indirizzo-di-studio/elettronica-ed-elettrotecnica/).
-
-[![IISS Augusto Righi logo](../../assets/symbols/IISSAugustoRighi_Logo.png)](https://www.iissrighi.it/indirizzo-di-studio/elettronica-ed-elettrotecnica/)
-
-2010 – 2016
+[![IISS Augusto Righi logo](../../assets/symbols/IISSAugustoRighi_Logo.png) **IISS Augusto Righi**<br>2010–2016<br>Electronics Diploma](https://www.iissrighi.it/indirizzo-di-studio/elettronica-ed-elettrotecnica/)
 
 ## Experience
 
