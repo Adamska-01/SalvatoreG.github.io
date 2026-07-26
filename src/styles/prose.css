@@ -11,7 +11,6 @@
 .prose {
 	max-width: 70ch;
 	margin-inline: auto;
-	padding: 1.25rem 1rem;
 	font-size: var(--text-medium);
 	line-height: 1.75;
 	color: color-mix(in srgb, var(--text-color) 90%, transparent);
@@ -100,7 +99,6 @@
 
 @media (max-width: 600px) {
 	.prose {
-		padding: 0.9rem 0.4rem;
 		line-height: 1.65;
 	}
 }

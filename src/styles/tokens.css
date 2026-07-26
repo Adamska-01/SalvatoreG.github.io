@@ -1,31 +1,35 @@
 /* Design tokens — single source of truth for colors, fonts, sizes, timings */
 :root {
 	/* Surfaces */
-	--body-background-color: rgb(35, 35, 35);
-	--panel-background-color: rgba(40, 40, 40, 0.9);
-	--card-background-color: rgba(71, 71, 71, 0.4);
-	--chip-background-color: #222831e6;
-	--tab-color: #191919;
+	--bg: oklch(18% 0.012 95);
+	--bg-hi: oklch(24% 0.018 95);
+	--body-background-color: var(--bg);
+	--panel-background-color: oklch(22% 0.014 95 / 0.94);
+	--card-background-color: oklch(27% 0.016 95 / 0.55);
+	--card-border-color: oklch(14% 0.01 95);
+	--chip-background-color: oklch(20% 0.01 95 / 0.9);
+	--tab-color: oklch(13% 0.01 95);
+	--tab-color-solid: oklch(15% 0.01 95);
 
 	/* Text */
-	--text-color: #ffffff;
-	--accent-green: #bada55;
-	--accent-blue: #80ccff;
-	--link-color: #4aa5f0;
-	--link-hover-color: #2f8cd2;
+	--text-color: oklch(95% 0.008 95);
+	--accent-green: oklch(80% 0.15 145);
+	--accent-blue: oklch(80% 0.11 232);
+	--link-color: oklch(75% 0.12 232);
+	--link-hover-color: oklch(65% 0.13 232);
 
 	/* Nav tab accents */
-	--about-color: #00f7ff;
-	--projects-color: #ff0000;
-	--work-color: #adff2f;
-	--contact-color: #ee82ee;
-	--default-shadow: rgba(100, 100, 100, 0.3);
+	--about-color: oklch(78% 0.12 200);
+	--projects-color: oklch(78% 0.15 28);
+	--work-color: oklch(80% 0.16 128);
+	--contact-color: oklch(78% 0.12 322);
+	--default-shadow: rgba(0, 0, 0, 0.35);
 
 	/* Misc */
-	--list-item-highlight-color: rgba(207, 49, 49, 0.35);
-	--media-highlight-color: rgb(165, 201, 88);
+	--list-item-highlight-color: color-mix(in srgb, var(--accent-green) 18%, transparent);
+	--media-highlight-color: var(--accent-green);
 	--close-button-X-color: rgba(255, 255, 255, 1);
-	--close-button-border-color: rgba(202, 202, 202, 0.3);
+	--close-button-border-color: rgba(255, 255, 255, 0.12);
 
 	/* Fonts */
 	--font-header: 'Doto', sans-serif;
@@ -37,6 +41,8 @@
 	--text-medium-2: calc(5px + 2vmin);
 	--text-medium: calc(5px + 1.2vmin);
 	--text-small: calc(5px + 1vmin);
+	--text-card-title: 1.05rem;
+	--text-card-meta: 0.8rem;
 
 	/* Motion */
 	--transition-time: 0.5s;
