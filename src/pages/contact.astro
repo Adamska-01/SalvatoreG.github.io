@@ -3,9 +3,12 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContentPanel from '../components/ContentPanel.astro';
 import { withBase } from '../scripts/paths';
+import { sections } from '../scripts/sections';
 import githubIcon from '../assets/symbols/github.png';
 import linkedinIcon from '../assets/symbols/linkedin.png';
 import pdfIcon from '../assets/symbols/pdf.png';
+
+const emailIcon = sections.find((section) => section.id === 'contact')!.icon;
 ---
 
 <BaseLayout
@@ -14,31 +17,63 @@ import pdfIcon from '../assets/symbols/pdf.png';
 >
 	<ContentPanel>
 		<div class="contact">
-			<p>Hope you're having a great time exploring my website!</p>
-			<p>Feel free to reach out if you'd like to get in touch 😊</p>
-			<p>
-				<a href="mailto:salvatoreg.jobs@gmail.com" class="link">salvatoreg.jobs@gmail.com</a>
-			</p>
+			<p class="lead">Interested in working together or just want to connect?</p>
+			<p class="sub">Reach out below. 🙂</p>
 
-			<div class="socials">
-				<a href="https://github.com/Adamska-01" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
-					<Image class="social-icon expand-on-hover" src={githubIcon} alt="GitHub" width={50} />
+			<div class="contact-grid">
+				<a class="contact-card" href="mailto:salvatoreg.jobs@gmail.com">
+					<span class="contact-label">
+						<svg
+							class="email-icon"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+							set:html={emailIcon}
+						/>
+						EMAIL
+					</span>
+					<span class="contact-value">salvatoreg.jobs@gmail.com</span>
 				</a>
 				<a
+					class="contact-card"
+					href="https://github.com/Adamska-01"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="GitHub profile"
+				>
+					<span class="contact-label">
+						<Image src={githubIcon} alt="" width={18} height={18} densities={[1, 2, 3]} />
+						GITHUB
+					</span>
+					<span class="contact-value">Adamska-01</span>
+				</a>
+				<a
+					class="contact-card contact-card-blue"
 					href="https://www.linkedin.com/in/salvatore-galeotta-10baa9127/"
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="LinkedIn profile"
 				>
-					<Image class="social-icon expand-on-hover" src={linkedinIcon} alt="LinkedIn" width={50} />
+					<span class="contact-label">
+						<Image src={linkedinIcon} alt="" width={18} height={18} densities={[1, 2, 3]} />
+						LINKEDIN
+					</span>
+					<span class="contact-value">Salvatore Galeotta</span>
 				</a>
 			</div>
 
-			<h2 class="section-title header-font accent-title">My Resume</h2>
 			<!-- PDF icon made by Dimitry Miroliubov, https://www.flaticon.com/authors/dimitry-miroliubov -->
-			<a class="resume-link" href={withBase('/downloads/Salvatore_Galeotta_CV.pdf')} target="_blank">
-				<Image class="resume-icon expand-on-hover" src={pdfIcon} alt="" width={120} />
-				<span>Click to view</span>
+			<a class="resume-card" href={withBase('/downloads/Salvatore_Galeotta_CV.pdf')} target="_blank">
+				<Image class="resume-icon" src={pdfIcon} alt="" width={42} densities={[1, 2, 3]} />
+				<div class="resume-text">
+					<span class="contact-label">RESUME</span>
+					<span class="resume-title">View full CV (PDF)</span>
+				</div>
+				<span class="resume-arrow" aria-hidden="true">&#8594;</span>
 			</a>
 		</div>
 	</ContentPanel>
@@ -46,44 +81,117 @@ import pdfIcon from '../assets/symbols/pdf.png';
 
 <style>
 	.contact {
+		max-width: 640px;
+		margin: 0 auto;
+		padding: 6px 0;
+	}
+
+	.lead {
 		text-align: center;
-		font-size: var(--text-medium);
-		padding: 7px 7px 7px;
+		font-size: calc(var(--text-medium) * 1.12);
+		margin: 0 0 4px;
 	}
 
-	.contact p {
-		padding: 7px;
-		margin: 0;
+	.sub {
+		text-align: center;
+		font-size: calc(var(--text-medium) * 1.12);
+		color: color-mix(in srgb, var(--text-color) 65%, transparent);
+		margin: 0 0 26px;
 	}
 
-	.socials {
+	.contact-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+		gap: 14px;
+	}
+
+	.contact-card {
 		display: flex;
-		justify-content: center;
-		gap: 15px;
-		padding: 20px 0;
-	}
-
-	.social-icon {
-		width: min(50px, 10vw);
-		height: auto;
-	}
-
-	.section-title {
-		font-size: var(--text-big);
-		margin: 20px auto 15px;
-	}
-
-	.resume-link {
-		display: inline-flex;
 		flex-direction: column;
-		align-items: center;
 		gap: 10px;
-		color: var(--text-color);
+		padding: 18px;
+		border-radius: 14px;
+		background: var(--card-background-color);
+		border: 1px solid var(--card-border-color);
 		text-decoration: none;
+		color: var(--text-color);
+		transition: border-color 0.2s ease, background 0.2s ease;
 	}
 
-	.resume-icon {
-		width: min(120px, 20vw);
-		height: auto;
+	.contact-card:hover {
+		border-color: color-mix(in srgb, var(--accent-green) 45%, var(--card-border-color));
+		background: color-mix(in srgb, var(--accent-green) 8%, var(--card-background-color));
+	}
+
+	.contact-card-blue:hover {
+		border-color: color-mix(in srgb, var(--accent-blue) 45%, var(--card-border-color));
+		background: color-mix(in srgb, var(--accent-blue) 8%, var(--card-background-color));
+	}
+
+	.contact-label {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-family: monospace;
+		font-size: 0.76rem;
+		letter-spacing: 0.06em;
+		color: color-mix(in srgb, var(--text-color) 55%, var(--tab-color));
+	}
+
+	.contact-label :global(img) {
+		width: 18px;
+		height: 18px;
+	}
+
+	.email-icon {
+		width: 18px;
+		height: 18px;
+		flex-shrink: 0;
+	}
+
+	.contact-value {
+		font-size: 0.95rem;
+		font-weight: 600;
+		word-break: break-word;
+	}
+
+	.resume-card {
+		display: flex;
+		align-items: center;
+		gap: 18px;
+		margin-top: 16px;
+		padding: 20px 22px;
+		border-radius: 14px;
+		background: var(--card-background-color);
+		border: 1px solid var(--card-border-color);
+		text-decoration: none;
+		color: var(--text-color);
+		transition: border-color 0.2s ease, background 0.2s ease;
+	}
+
+	.resume-card:hover {
+		border-color: color-mix(in srgb, var(--accent-blue) 45%, var(--card-border-color));
+		background: color-mix(in srgb, var(--accent-blue) 8%, var(--card-background-color));
+	}
+
+	.resume-card :global(img) {
+		flex-shrink: 0;
+	}
+
+	.resume-text {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.resume-title {
+		font-size: 1rem;
+		font-weight: 600;
+	}
+
+	.resume-arrow {
+		margin-left: auto;
+		font-size: 1.2rem;
+		color: var(--accent-blue);
 	}
 </style>

@@ -46,6 +46,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 	<body>
 		<Scene3D />
 
+		<div id="grain" aria-hidden="true"></div>
+
 		<div id="ui-root">
 			<Nav />
 
@@ -57,6 +59,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 </html>
 
 <style>
+	#grain {
+		position: fixed;
+		inset: 0;
+		z-index: 1;
+		pointer-events: none;
+		opacity: 0.035;
+		background-image: repeating-linear-gradient(115deg, #fff 0px, #fff 1px, transparent 1px, transparent 3px);
+	}
+
 	#ui-root {
 		position: relative;
 		z-index: 1;

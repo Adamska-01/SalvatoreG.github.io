@@ -16,4 +16,77 @@ const jsonLd = JSON.stringify({
 
 <BaseLayout title="Salvatore Galeotta - Portfolio" description={description}>
 	<script type="application/ld+json" set:html={jsonLd} is:inline />
+
+	<div class="home-hero">
+		<div class="home-spacer" aria-hidden="true"></div>
+	</div>
+
+	<div class="orbit-hint" aria-hidden="true">
+		<svg class="orbit-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+			<path d="M20 11A8 8 0 1 0 9 20.5" />
+			<path d="M20 5v6h-6" />
+		</svg>
+		<span>drag to orbit</span>
+	</div>
 </BaseLayout>
+
+<style>
+	.home-hero {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 66vh;
+		padding: 10px 20px 40px;
+	}
+
+	.home-spacer {
+		width: min(78vw, 560px);
+		height: min(48vh, 420px);
+	}
+
+	/* A quiet corner badge instead of text sitting over the model. */
+	.orbit-hint {
+		position: fixed;
+		right: calc(40px + env(safe-area-inset-right));
+		bottom: calc(40px + env(safe-area-inset-bottom));
+		z-index: 50;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		padding: 8px 14px;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--tab-color) 75%, transparent);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		font-family: monospace;
+		font-size: 0.75rem;
+		color: color-mix(in srgb, var(--text-color) 55%, transparent);
+		pointer-events: none;
+		opacity: 1;
+	}
+
+	.orbit-hint-icon {
+		width: 15px;
+		height: 15px;
+		color: var(--accent-green);
+		animation: hint-spin 3s linear infinite;
+	}
+
+	@keyframes hint-spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	@media (max-width: 600px) {
+		.orbit-hint span {
+			display: none;
+		}
+	}
+</style>

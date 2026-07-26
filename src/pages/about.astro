@@ -26,39 +26,51 @@ const { Content } = await render(entry);
 		color: var(--text-color);
 	}
 
-	/* ==================== EDUCATION LOGOS ==================== */
-	/* Markdown renders each logo as p > a > img: center the link block and
-	   let the plain image selectors do the rest (no extra wrappers needed). */
+	/* ==================== EDUCATION CARDS ==================== */
 	.about :global(a:has(> img)) {
-		display: block;
-		width: fit-content;
-		margin: 1.4em auto 0.6em;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 5px;
+		width: 40%;
+		margin: 1.2em auto;
+		padding: 16px 14px;
+		background: var(--card-background-color);
+		border: 1px solid var(--card-border-color);
+		border-radius: 12px;
 		text-decoration: none;
+		text-align: center;
+		font-size: 0.8em;
+		line-height: 1.4;
+		color: color-mix(in srgb, var(--text-color) 65%, transparent);
+		transition: transform 0.2s ease, border-color 0.2s ease;
 	}
 
-	.about :global(img) {
-		width: 96px;
+	.about :global(a:has(> img):hover) {
+		transform: translateY(-2px);
+		border-color: color-mix(in srgb, var(--accent-green) 40%, var(--card-border-color));
+	}
+
+	.about :global(a:has(> img) img) {
+		width: 66px;
 		height: auto;
 		display: block;
 		transition: transform 0.25s ease, filter 0.25s ease;
 	}
 
-	.about :global(img[alt*='Righi']) {
+	.about :global(a:has(> img) img[alt*='Righi']) {
 		border-radius: 50%;
 	}
 
-	.about :global(a:hover > img) {
+	.about :global(a:has(> img):hover img) {
 		transform: scale(1.05);
 		filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
 	}
 
-	/* Date line directly under a logo: small, muted, centered */
-	.about :global(p:has(> a > img) + p) {
-		text-align: center;
-		font-size: 0.85em;
-		letter-spacing: 0.06em;
-		color: color-mix(in srgb, var(--text-color) 55%, transparent);
-		margin-bottom: 1.6em;
+	.about :global(a:has(> img) strong) {
+		font-size: 1.15em;
+		font-weight: 600;
+		color: var(--text-color);
 	}
 
 	/* Technologies & Tools (the page's final list) rendered as chips */

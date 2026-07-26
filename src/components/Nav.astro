@@ -1,32 +1,7 @@
 ---
+import { sections } from '../scripts/sections';
 import { withBase } from '../scripts/paths';
 
-const tabs = [
-	{
-		label: 'About',
-		href: withBase('/about/'),
-		accent: 'var(--about-color)',
-		icon: '<circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line>',
-	},
-	{
-		label: 'Projects',
-		href: withBase('/projects/'),
-		accent: 'var(--projects-color)',
-		icon: '<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>',
-	},
-	{
-		label: 'Work',
-		href: withBase('/work/'),
-		accent: 'var(--work-color)',
-		icon: '<rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>',
-	},
-	{
-		label: 'Contact',
-		href: withBase('/contact/'),
-		accent: 'var(--contact-color)',
-		icon: '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>',
-	},
-];
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''));
@@ -34,17 +9,17 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 
 <div class="nav-wrapper" transition:persist="main-nav">
 	<nav class="navbar" aria-label="Main navigation">
-		<a href={withBase('/')} class="navbar-brand header-font">
-			<div class="logo-icon" aria-hidden="true"></div>
+		<a href={withBase('/')} class="navbar-brand">
+			<div class="nav-avatar" aria-hidden="true"><span class="header-font">SG</span></div>
 			<span class="brand-text">
-				<span class="brand-title">Salvatore Galeotta</span>
-				<span class="brand-subtitle">Software Developer</span>
+				<span class="nav-name">Salvatore Galeotta</span>
+				<span class="nav-role header-font">.NET backend &amp; game developer</span>
 			</span>
 		</a>
 
 		<ul class="navbar-nav">
 			{
-				tabs.map((tab) => (
+				sections.map((tab) => (
 					<li class="nav-item" style={`--tab-accent: ${tab.accent}`}>
 						<a
 							href={tab.href}
@@ -73,11 +48,11 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 
 	<div class="mobile-menu">
 		<div class="mobile-menu-header">
-			<a href={withBase('/')} class="navbar-brand header-font">
-				<div class="logo-icon" aria-hidden="true"></div>
+			<a href={withBase('/')} class="navbar-brand">
+				<div class="nav-avatar" aria-hidden="true"><span class="header-font">SG</span></div>
 				<span class="brand-text">
-					<span class="brand-title">Salvatore Galeotta</span>
-					<span class="brand-subtitle">Software Developer</span>
+					<span class="nav-name">Salvatore Galeotta</span>
+					<span class="nav-role header-font">.NET backend &amp; game developer</span>
 				</span>
 			</a>
 			<button class="mobile-menu-close" aria-label="Close menu">
@@ -87,7 +62,7 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 
 		<ul class="mobile-menu-nav">
 			{
-				tabs.map((tab) => (
+				sections.map((tab) => (
 					<li class="mobile-menu-item" style={`--tab-accent: ${tab.accent}`}>
 						<a
 							href={tab.href}
@@ -107,59 +82,29 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 
 <style>
 	.nav-wrapper {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: 0.8em 0 0.5em;
+		position: sticky;
+		top: 0;
+		z-index: 20;
+		padding: 14px clamp(12px, 3vw, 28px) 0;
 	}
 
 	.navbar {
-		background: color-mix(in srgb, var(--tab-color) 75%, transparent);
-		backdrop-filter: blur(20px);
-		-webkit-backdrop-filter: blur(20px);
-		border: 1px solid rgba(255, 255, 255, 0.08);
-		border-radius: 50px;
-		padding: 13px 26px;
-		width: 100%;
-		max-width: min(90vw, 1000px);
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
-		gap: 1em;
-		box-shadow:
-			0 0.5em 0.8em var(--default-shadow),
-			inset 0 1px 0 rgba(255, 255, 255, 0.08);
-		transition: box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-		position: relative;
-		overflow: hidden;
-	}
-
-	/* Shine sweep on hover */
-	.navbar::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: -100%;
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
-		transition: left 0.8s ease;
-		pointer-events: none;
-	}
-
-	.navbar:hover::before {
-		left: 100%;
-	}
-
-	.navbar:hover {
-		transform: translateY(-2px);
-	}
-
-	/* Shadow tints with the active section's accent */
-	.navbar:has(.nav-link.active) {
-		box-shadow:
-			0 0.5em 0.8em color-mix(in srgb, var(--active-color, var(--default-shadow)) 40%, transparent),
-			inset 0 1px 0 rgba(255, 255, 255, 0.08);
+		justify-content: center;
+		gap: 20px;
+		width: auto;
+		max-width: min(96vw, 1180px);
+		margin: 0 auto;
+		padding: 12px clamp(12px, 1.5vw, 22px);
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--tab-color) 82%, transparent);
+		backdrop-filter: blur(16px);
+		-webkit-backdrop-filter: blur(16px);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		box-shadow: 0 14px 34px -14px color-mix(in srgb, var(--active-color, transparent) 40%, transparent),
+			inset 0 1px 0 rgba(255, 255, 255, 0.06);
+		transition: box-shadow 0.4s ease;
 	}
 
 	/* ==================== BRAND ==================== */
@@ -171,68 +116,55 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 		z-index: 2;
 		position: relative;
 		flex-shrink: 0;
+		min-width: 0;
 	}
 
-	.logo-icon {
-		width: 44px;
-		height: 44px;
-		background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+	.nav-avatar {
+		width: 36px;
+		height: 36px;
 		border-radius: 50%;
+		flex-shrink: 0;
+		background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		position: relative;
-		overflow: hidden;
 		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-		flex-shrink: 0;
 	}
 
-	.logo-icon::before {
-		content: '';
-		position: absolute;
-		width: 21px;
-		height: 21px;
-		background: rgba(25, 25, 25, 0.85);
-		border-radius: 50%;
-		animation: logo-pulse 2s ease-in-out infinite;
-	}
-
-	@keyframes logo-pulse {
-		0%,
-		100% {
-			transform: scale(1);
-			opacity: 0.8;
-		}
-		50% {
-			transform: scale(1.2);
-			opacity: 1;
-		}
+	.nav-avatar span {
+		font-weight: 700;
+		font-size: 0.78rem;
+		color: var(--tab-color-solid);
 	}
 
 	.brand-text {
 		display: flex;
 		flex-direction: column;
-		line-height: 1.25;
+		line-height: 1.3;
 		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
-	.brand-title {
-		font-size: 1.2rem;
-		font-weight: bold;
-		color: var(--accent-green);
+	.nav-name {
+		font-family: monospace;
+		font-size: 0.66rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: color-mix(in srgb, var(--accent-blue) 85%, var(--text-color));
 	}
 
-	.brand-subtitle {
-		font-size: 0.95rem;
-		font-weight: bold;
-		color: var(--accent-blue);
+	.nav-role {
+		font-size: 0.85rem;
+		font-weight: 700;
+		color: var(--text-color);
 	}
 
 	/* ==================== NAV LINKS ==================== */
 	.navbar-nav {
 		display: flex;
 		align-items: center;
-		gap: 5px;
+		gap: 26px;
 		list-style: none;
 		margin: 0;
 		padding: 0;
@@ -244,21 +176,16 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 		display: flex;
 		align-items: center;
 		gap: 7px;
-		padding: 12px 18px;
+		padding: 9px 16px;
 		text-decoration: none;
 		color: var(--text-color);
-		opacity: 0.55;
+		opacity: 0.62;
 		font-weight: 500;
-		font-size: 1rem;
-		border-radius: 25px;
-		transition:
-			opacity 0.3s ease,
-			color 0.3s ease,
-			background 0.3s ease,
-			box-shadow 0.3s ease,
-			transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-		position: relative;
+		font-size: 0.92rem;
 		white-space: nowrap;
+		border-radius: 20px;
+		transition: opacity 0.3s ease, color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease,
+			transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	}
 
 	.nav-link:hover {
@@ -271,14 +198,14 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 		opacity: 1;
 		color: var(--tab-accent);
 		background: color-mix(in srgb, var(--tab-accent) 12%, transparent);
-		box-shadow:
-			inset 0 1px 0 color-mix(in srgb, var(--tab-accent) 30%, transparent),
+		box-shadow: inset 0 1px 0 color-mix(in srgb, var(--tab-accent) 30%, transparent),
 			0 4px 12px color-mix(in srgb, var(--tab-accent) 25%, transparent);
 	}
 
 	.nav-icon {
-		width: 18px;
-		height: 18px;
+		width: 16px;
+		height: 16px;
+		flex-shrink: 0;
 		fill: none;
 		stroke: currentColor;
 		stroke-width: 2;
@@ -294,51 +221,56 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 	/* ==================== MOBILE TOGGLE ==================== */
 	.mobile-toggle {
 		display: none;
+		flex-direction: column;
+		gap: 4px;
+		width: 34px;
+		height: 34px;
+		align-items: center;
+		justify-content: center;
 		background: none;
 		border: none;
 		cursor: pointer;
-		padding: 8px;
+		padding: 6px;
 		border-radius: 50%;
-		transition: background 0.3s ease, transform 0.3s ease;
+		transition: background 0.3s ease;
 		z-index: 2;
 		position: relative;
 		flex-shrink: 0;
+		margin-left: auto;
 	}
 
 	.mobile-toggle:hover {
 		background: rgba(255, 255, 255, 0.1);
-		transform: scale(1.1);
 	}
 
 	.hamburger {
 		display: flex;
 		flex-direction: column;
 		gap: 4px;
-		width: 24px;
-		height: 18px;
+		width: 20px;
+		height: 16px;
 		justify-content: center;
 	}
 
 	.hamburger span {
-		width: 24px;
+		width: 20px;
 		height: 2px;
 		background: var(--text-color);
 		border-radius: 2px;
-		transition: all 0.3s ease;
+		transition: all 0.25s ease;
 		display: block;
 	}
 
 	.mobile-toggle.active .hamburger span:nth-child(1) {
-		transform: rotate(45deg) translate(4px, 4px);
+		transform: translateY(6px) rotate(45deg);
 	}
 
 	.mobile-toggle.active .hamburger span:nth-child(2) {
 		opacity: 0;
-		transform: translateX(-20px);
 	}
 
 	.mobile-toggle.active .hamburger span:nth-child(3) {
-		transform: rotate(-45deg) translate(4px, -4px);
+		transform: translateY(-6px) rotate(-45deg);
 	}
 
 	/* ==================== MOBILE MENU ==================== */
@@ -368,12 +300,7 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 		width: 100%;
 		height: 100vh;
 		height: 100dvh;
-		background: linear-gradient(
-			160deg,
-			var(--body-background-color) 0%,
-			color-mix(in srgb, var(--tab-color) 70%, var(--accent-blue) 4%) 55%,
-			var(--tab-color) 100%
-		);
+		background: linear-gradient(160deg, var(--bg) 0%, var(--tab-color) 55%, var(--tab-color) 100%);
 		z-index: 1600;
 		transform: translateY(-100%);
 		visibility: hidden;
@@ -391,33 +318,32 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 25px 25px 18px;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		padding: 20px 20px 16px;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 	}
 
 	.mobile-menu-close {
 		background: none;
 		border: none;
 		color: var(--close-button-X-color);
-		font-size: 2rem;
+		font-size: 1.8rem;
 		cursor: pointer;
 		padding: 8px;
 		border-radius: 50%;
-		transition: background 0.3s ease, transform 0.3s ease;
+		transition: background 0.3s ease;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 48px;
-		height: 48px;
+		width: 44px;
+		height: 44px;
 	}
 
 	.mobile-menu-close:hover {
 		background: var(--close-button-border-color);
-		transform: scale(1.1);
 	}
 
 	.mobile-menu-nav {
-		padding: 30px 25px;
+		padding: 24px 20px;
 		list-style: none;
 		margin: 0;
 	}
@@ -425,41 +351,35 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 	.mobile-menu-link {
 		display: flex;
 		align-items: center;
-		gap: 16px;
-		padding: 18px 22px;
+		gap: 14px;
+		padding: 16px 18px;
 		text-decoration: none;
 		color: var(--text-color);
 		opacity: 0.85;
 		font-weight: 500;
-		font-size: 1.1rem;
-		border-radius: 20px;
-		transition:
-			background 0.3s ease,
-			color 0.3s ease,
-			border-color 0.3s ease,
-			transform 0.3s ease;
-		background: rgba(255, 255, 255, 0.05);
-		border: 1px solid rgba(255, 255, 255, 0.1);
-		margin-bottom: 12px;
+		font-size: 1.05rem;
+		border-radius: 14px;
+		transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+		background: rgba(255, 255, 255, 0.04);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		margin-bottom: 10px;
 	}
 
 	.mobile-menu-link:hover {
-		background: rgba(255, 255, 255, 0.12);
+		background: rgba(255, 255, 255, 0.1);
 		opacity: 1;
-		transform: translateX(8px);
-		border-color: rgba(255, 255, 255, 0.2);
 	}
 
 	.mobile-menu-link.active {
 		opacity: 1;
 		color: var(--tab-accent);
-		background: color-mix(in srgb, var(--tab-accent) 12%, transparent);
+		background: color-mix(in srgb, var(--tab-accent) 14%, transparent);
 		border-color: color-mix(in srgb, var(--tab-accent) 35%, transparent);
 	}
 
 	.mobile-menu-icon {
-		width: 24px;
-		height: 24px;
+		width: 20px;
+		height: 20px;
 		fill: none;
 		stroke: currentColor;
 		stroke-width: 2;
@@ -469,40 +389,31 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 	}
 
 	/* ==================== RESPONSIVE ==================== */
-	@media (max-width: 992px) {
+	/* The big brand↔links gap only makes sense when the links are actually
+	   showing — on mobile .navbar-nav is hidden, so this would otherwise
+	   land between the logo and the hamburger button and overflow the
+	   screen. */
+	@media (min-width: 1001px) {
+		.navbar-brand {
+			margin-right: 120px;
+		}
+	}
+
+	@media (max-width: 1000px) {
 		.navbar-nav {
 			display: none;
 		}
 
 		.mobile-toggle {
 			display: flex;
-			align-items: center;
-			justify-content: center;
 		}
 	}
 
-	@media (max-width: 480px) {
-		.navbar {
-			padding: 9px 16px;
-			max-width: calc(100vw - 20px);
-		}
-
-		.logo-icon {
-			width: 40px;
-			height: 40px;
-		}
-
-		.logo-icon::before {
-			width: 19px;
-			height: 19px;
-		}
-
-		.brand-title {
-			font-size: 1.05rem;
-		}
-
-		.brand-subtitle {
-			font-size: 0.8rem;
+	/* Only drop the name/role text on genuinely tight phone widths, where it
+	   would otherwise crowd the avatar + hamburger button. */
+	@media (max-width: 420px) {
+		.brand-text {
+			display: none;
 		}
 	}
 </style>
@@ -586,7 +497,7 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 	});
 
 	window.addEventListener('resize', () => {
-		if (window.innerWidth > 992 && document.querySelector('.mobile-menu')?.classList.contains('active')) {
+		if (window.innerWidth > 1000 && document.querySelector('.mobile-menu')?.classList.contains('active')) {
 			setMenuOpen(false);
 		}
 	});
@@ -594,7 +505,7 @@ const isActive = (href: string) => currentPath.startsWith(href.replace(/\/$/, ''
 	// The nav DOM persists across navigations (transition:persist), so the
 	// server-rendered .active state goes stale after the first page. Re-derive
 	// the active link from the URL on every navigation, for both the desktop
-	// links and the mobile menu links, and tint the navbar shadow to match.
+	// links and the mobile menu links, and tint the navbar underline to match.
 	function updateNav() {
 		const navbar = document.querySelector<HTMLElement>('.navbar');
 

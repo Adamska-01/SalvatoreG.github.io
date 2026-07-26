@@ -3,6 +3,8 @@ import type { CollectionEntry } from 'astro:content';
 import ContentPanel from './ContentPanel.astro';
 import ProjectCard from './ProjectCard.astro';
 import { withBase } from '../scripts/paths';
+import { sections } from '../scripts/sections';
+
 
 interface Props {
 	entries: CollectionEntry<'personalProjects'>[] | CollectionEntry<'workProjects'>[];
@@ -16,6 +18,7 @@ const { entries, basePath, sectionName } = Astro.props;
 
 const sorted = [...entries].sort((a, b) => a.data.order - b.data.order);
 const groups = [...new Set(sorted.map((entry) => entry.data.group))];
+const accent = sections.find((section) => section.id === sectionName)?.accent ?? 'var(--accent-green)';
 ---
 
 <ContentPanel sectionName={sectionName}>
@@ -33,6 +36,7 @@ const groups = [...new Set(sorted.map((entry) => entry.data.group))];
 								dateRange={entry.data.dateRange}
 								summary={entry.data.summary}
 								preview={entry.data.preview}
+								accent={accent}
 							/>
 						))}
 				</div>
@@ -43,12 +47,12 @@ const groups = [...new Set(sorted.map((entry) => entry.data.group))];
 
 <style>
 	.project-group {
-		margin: 12px 0 0px;
+		margin: 4px 0 28px;
 	}
 
 	.group-title {
 		font-size: var(--text-big);
-		margin: 0 auto 15px;
+		margin: 0 auto 18px;
 	}
 
 	.card-grid {
@@ -56,5 +60,6 @@ const groups = [...new Set(sorted.map((entry) => entry.data.group))];
 		flex-wrap: wrap;
 		justify-content: center;
 		align-content: center;
+		gap: 16px;
 	}
 </style>

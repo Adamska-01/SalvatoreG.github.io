@@ -1,5 +1,7 @@
 ---
 import { withBase } from '../scripts/paths';
+import { sectionForPath } from '../scripts/sections';
+
 
 interface Props {
 	/** Optional href for a back arrow (e.g. project detail → project list) */
@@ -15,6 +17,19 @@ interface Props {
 
 const { backHref, sectionName } = Astro.props;
 const contentName = sectionName ? `${sectionName}-content` : undefined;
+
+const section = sectionForPath(Astro.url.pathname);
+const panelAccent = section?.accent ?? 'var(--accent-blue)';
+
+// Append the detail slug to the section label
+let panelLabel = section?.panelLabel ?? '~';
+if (section) {
+	const stripSlash = (path: string) => path.replace(/\/$/, '');
+	const remainder = stripSlash(Astro.url.pathname).slice(stripSlash(section.href).length);
+	const slug = remainder.replace(/^\//, '');
+	if (slug)
+		panelLabel += `/${slug}`;
+}
 ---
 
 <div class="panel-wrapper">
@@ -22,7 +37,8 @@ const contentName = sectionName ? `${sectionName}-content` : undefined;
 	{/* All panels share one frame name: within a section (list ↔ detail) the
 	    frame stays static while the content slides; across sections the paired
 	    frames enable the sequential fade below (data-panel-switch). */}
-	<section class="content-panel" transition:name="panel-frame">
+	<section class="content-panel" transition:name="panel-frame" style={`--panel-accent: ${panelAccent};`}>
+		<div class="panel-top-line"></div>
 		<div class="panel-controls">
 			{
 				backHref && (
@@ -31,9 +47,10 @@ const contentName = sectionName ? `${sectionName}-content` : undefined;
 					</a>
 				)
 			}
+			<span class="panel-marker" aria-hidden="true"></span>
+			<span class="panel-label">{panelLabel}<span class="panel-cursor"></span></span>
 			<a class="close-button" href={withBase('/')} aria-label="Close" />
 		</div>
-		<div class="content-separator" />
 		{
 			contentName ? (
 				<div class="panel-content" data-panel-content={contentName} transition:name={contentName}>
@@ -73,33 +90,71 @@ const contentName = sectionName ? `${sectionName}-content` : undefined;
 		flex-direction: column;
 		width: min(90vw, 90vh);
 		max-height: 100%;
-		border-radius: 10px;
+		border-radius: 14px;
 		background-color: var(--panel-background-color);
+		border: 1px solid rgba(255, 255, 255, 0.09);
+		box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 		overflow: hidden;
 		/* open/close/tab-switch fades are handled by view transitions. */
+	}
+
+	.panel-top-line {
+		height: 2px;
+		width: 100%;
+		background: linear-gradient(90deg, transparent, var(--panel-accent), transparent);
+		flex-shrink: 0;
 	}
 
 	.panel-controls {
 		display: flex;
 		align-items: center;
-		padding: 2px;
+		gap: 10px;
+		padding: 12px 10px 12px 18px;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+		flex-shrink: 0;
+	}
+
+	.panel-marker {
+		width: 7px;
+		height: 7px;
+		border-radius: 2px;
+		flex-shrink: 0;
+		background: var(--panel-accent);
+		box-shadow: 0 0 8px color-mix(in srgb, var(--panel-accent) 70%, transparent);
+	}
+
+	.panel-label {
+		font-family: monospace;
+		font-size: 0.8rem;
+		letter-spacing: 0.02em;
+		color: color-mix(in srgb, var(--text-color) 52%, transparent);
+	}
+
+	.panel-cursor {
+		display: inline-block;
+		width: 0.55em;
+		color: var(--panel-accent);
+		animation: term-cursor 1.1s step-end infinite;
+	}
+
+	.panel-cursor::before {
+		content: '_';
 	}
 
 	.panel-controls .close-button {
 		margin-left: auto;
 	}
 
-	.content-separator {
-		width: 100%;
-		height: 1px;
-		background-color: rgb(184, 186, 190);
-		flex-shrink: 0;
-	}
-
 	.panel-content {
 		overflow-y: auto;
 		min-height: 0;
-		padding: 0 10px 10px;
+		padding: 26px 30px 34px;
+	}
+
+	@media (max-width: 600px) {
+		.panel-content {
+			padding: 18px 16px 24px;
+		}
 	}
 
 	/* Close (X) button — ported from legacy buttons.css */

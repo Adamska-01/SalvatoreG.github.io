@@ -2,84 +2,99 @@
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
+
 interface Props {
 	href: string;
 	title: string;
 	dateRange: string;
 	summary: string;
 	preview: ImageMetadata;
+	accent: string;
 }
 
-const { href, title, dateRange, summary, preview } = Astro.props;
+const { href, title, dateRange, summary, preview, accent } = Astro.props;
 ---
 
-<a class="project-card expand-on-hover" href={href}>
-	<Image src={preview} alt={`${title} preview`} widths={[320, 640]} sizes="(max-width: 768px) 45vw, 30vw" />
-	<span class="card-title header-font">{title}</span>
-	<span class="card-date">{dateRange}</span>
-	<span class="card-summary">{summary}</span>
+<a class="project-card" href={href} style={`--card-accent: ${accent};`}>
+	<div class="card-image">
+		<Image src={preview} alt={`${title} preview`} widths={[320, 640]} sizes="(max-width: 768px) 45vw, 30vw" />
+	</div>
+	<div class="card-body">
+		<span class="card-title header-font">{title}</span>
+		<span class="card-date">{dateRange}</span>
+		<span class="card-summary">{summary}</span>
+	</div>
 </a>
 
 <style>
 	.project-card {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		text-align: center;
-		width: 31%;
-		margin: 0.5%;
-		padding-bottom: 10px;
-		border: solid 2px #000000;
-		border-radius: 10px;
-		background-color: var(--card-background-color);
-		transition: background-color 0.3s, transform 0.2s linear;
+		width: 258px;
+		max-width: 44vw;
 		text-decoration: none;
 		color: var(--text-color);
+		background: var(--card-background-color);
+		border: 1px solid var(--card-border-color);
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+		transition: transform 0.18s ease, background-color 0.25s ease, border-color 0.25s ease;
 	}
 
 	.project-card:hover {
-		background-color: var(--list-item-highlight-color);
+		transform: scale(1.025);
+		background-color: color-mix(in srgb, var(--card-accent) 18%, var(--card-background-color));
+		border-color: color-mix(in srgb, var(--card-accent) 42%, var(--card-border-color));
 	}
 
-	.project-card img {
-		width: 94%;
-		height: auto;
-		margin-top: 2.1%;
-		border: solid 2px #000000;
-		border-radius: inherit;
+	.card-image {
+		position: relative;
+		width: 100%;
+		aspect-ratio: 16 / 10;
+		overflow: hidden;
+		border-bottom: 1px solid var(--card-border-color);
+		flex-shrink: 0;
+	}
+
+	.card-image :global(img) {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
+	.card-body {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		flex: 1;
+		padding: 14px 16px 16px;
 	}
 
 	.card-title {
-		margin-top: 8px;
-		font-size: 1.5rem;
-		font-weight: bold;
+		font-size: var(--text-card-title);
+		font-weight: 700;
 		color: var(--accent-green);
+		line-height: 1.25;
 	}
 
 	.card-date {
-		font-size: 1.1rem;
+		font-size: var(--text-card-meta);
+		color: color-mix(in srgb, var(--text-color) 60%, transparent);
 	}
 
 	.card-summary {
-		margin: 8px 6px 0;
-		font-size: 1rem;
+		font-size: var(--text-card-meta);
+		margin-top: 4px;
+		line-height: 1.5;
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 480px) {
 		.project-card {
-			width: 46%;
-		}
-
-		.card-title {
-			font-size: 1.1rem;
-		}
-
-		.card-date {
-			font-size: 0.9rem;
-		}
-
-		.card-summary {
-			font-size: 0.85rem;
+			max-width: 100%;
 		}
 	}
 </style>

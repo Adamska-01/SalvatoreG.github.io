@@ -3,6 +3,8 @@ import { render, type CollectionEntry } from 'astro:content';
 import ContentPanel from './ContentPanel.astro';
 import MediaGallery from './MediaGallery.astro';
 import TechIcons from './TechIcons.astro';
+import { sections } from '../scripts/sections';
+
 
 interface Props {
 	entry: CollectionEntry<'personalProjects'> | CollectionEntry<'workProjects'>;
@@ -13,12 +15,13 @@ interface Props {
 
 const { entry, backHref, sectionName } = Astro.props;
 const { title, images, videos, technologies, links } = entry.data;
+const accent = sections.find((section) => section.id === sectionName)?.accent ?? 'var(--accent-green)';
 
 const { Content } = await render(entry);
 ---
 
 <ContentPanel backHref={backHref} sectionName={sectionName}>
-	<article>
+	<article style={`--card-accent: ${accent};`}>
 		<h1 class="project-title header-font accent-title">{title}</h1>
 
 		<MediaGallery projectTitle={title} images={images} videos={videos} />
@@ -67,19 +70,20 @@ const { Content } = await render(entry);
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		border-radius: 50dvh;
-		background-color: #444;
+		border-radius: 999px;
+		background-color: var(--card-background-color);
+		border: 1px solid rgba(255, 255, 255, 0.1);
 		width: fit-content;
 		padding: 10px 20px;
 		font-size: var(--text-medium);
 		text-decoration: none;
 		cursor: pointer;
 		color: var(--text-color);
-		transition: background-color 0.3s ease, color 0.3s ease;
+		transition: background-color 0.2s ease, border-color 0.2s ease;
 	}
 
 	.link-button:hover {
-		background-color: white;
-		color: black;
+		background-color: color-mix(in srgb, var(--card-accent, var(--accent-green)) 20%, var(--card-background-color));
+		border-color: color-mix(in srgb, var(--card-accent, var(--accent-green)) 45%, rgba(255, 255, 255, 0.1));
 	}
 </style>
