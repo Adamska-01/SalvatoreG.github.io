@@ -20,10 +20,9 @@ const externalLinks = {
 	},
 };
 
-// Deployed as a GitHub Pages *project* site, so all URLs live under /SalvatoreG.github.io
+// Deployed to a custom domain via GitHub Pages
 export default defineConfig({
-	site: 'https://adamska-01.github.io',
-	base: '/SalvatoreG.github.io',
+	site: 'https://portfolio.adamskadev.net',
 	integrations: [sitemap()],
 	compressHTML: true,
 	markdown: {
